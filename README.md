@@ -6,4 +6,6 @@
 [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas)
 
 ## Codacy
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9106912acf4e42f38eef7f27eb0c8522)](https://app.codacy.com/gh/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/dashboard)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9106912acf4e42f38eef7f27eb0c8522)](https://www.codacy.com/manual/2020-2-PROYCVDS-Oompa-Loompas
+/2020-2-PROYCVDS-Oompa-Loompas?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2020-2-PROYCVDS-Oompa-Loompas
+/2020-2-PROYCVDS-Oompa-Loompas&amp;utm_campaign=Badge_Grade)

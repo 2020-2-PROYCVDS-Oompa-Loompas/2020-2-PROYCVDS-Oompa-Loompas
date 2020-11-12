@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable
 {
-	private int id;
+	private int carnet;
 	private String nombre;
 	private String apellido;
 	private String correo;
@@ -17,12 +17,12 @@ public class Usuario implements Serializable
 	public Usuario(){}
 	
 	/**
-	* Establecemos el id asignado al usuario
-	* @param id
+	* Establecemos el carnet asignado al usuario
+	* @param carnet
 	*/
-	public void setId(int id) 
+	public void setCarnet(int carnet) 
 	{
-		this.id=id;
+		this.carnet=carnet;
 	}
 	
 	/**
@@ -71,12 +71,12 @@ public class Usuario implements Serializable
 	}
 	
 	/**
-	* Obtener el id del usuario ingresado al sistema
+	* Obtener el carnet del usuario ingresado al sistema
 	* @return id
 	*/
-	public int getId()
+	public int getCarnet()
 	{
-		return id;
+		return carnet;
 	}
 	
 	/**

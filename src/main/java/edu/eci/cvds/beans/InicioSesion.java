@@ -48,6 +48,11 @@ public class InicioSesion extends BaseRegistroLabBean
 		this.correo = correo;
 	}
 	
+	public void seConectoConJava()
+	{
+		System.out.println("Presionaste iniciar Sesion y llegaste a la clase de java");
+	}
+	
 	/**
 	* Establecemos la contraseña del usuario
 	* @param contrasena

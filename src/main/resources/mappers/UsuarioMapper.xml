@@ -5,16 +5,25 @@
   
 <mapper namespace="edu.eci.cvds.mappers.UsuarioMapper">
 	<select id="getUsuario" parameterType="map" resultMap="UsuarioResult">
-		SELECT * FROM usuario WHERE correo=#{correo}
+		SELECT
+		u.carnet
+		u.nombre
+		u.correo
+		u.contrasena
+		u.estado
+		u.rol
+		FROM usuario as u
+		WHERE u.correo = #{correo};
 	</select>
 	<insert id="registrarUsuario" parameterType="map">
-		insert into usuario values(#{nombre},#{estado},#{correo},#{contrasena},#{carnet})
+		insert into usuario values(#{carnet},#{nombre},#{correo},#{contrasena},#{estado}, #{rol})
 	</insert>
 	<resultMap type='Usuario' id='UsuarioResult'>
 	    <id property='id' column='carnet'/>
 	    <result property="nombre" column="nombre"></result>
-	    <result property="estado" column="estado"></result>
 	    <result property="correo" column="correo"></result>
-	    <result property="contrasena" column="contrasena"/>      
+	    <result property="contrasena" column="contrasena"></result>
+	    <result property="estado" column="estado"/>    
+		<result property="rol" column="rol"/>
 	</resultMap>
 </mapper>
