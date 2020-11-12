@@ -13,6 +13,5 @@ import edu.eci.cvds.entities.Usuario;
 
 public interface ServiciosECILab 
 {	
-	public Usuario getUsuario(String correo);
-	public void registrarUsuario(int carnet, String nombre, String correo, String contrasena, String estado, String rol);
+	//public Usuario getUsuario(String correo);	
 }

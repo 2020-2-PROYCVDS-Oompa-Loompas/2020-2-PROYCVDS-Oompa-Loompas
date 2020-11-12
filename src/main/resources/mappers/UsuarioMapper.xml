@@ -3,27 +3,38 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-<mapper namespace="edu.eci.cvds.mappers.UsuarioMapper">
-	<select id="getUsuario" parameterType="map" resultMap="UsuarioResult">
-		SELECT
-		u.carnet
-		u.nombre
-		u.correo
-		u.contrasena
-		u.estado
-		u.rol
-		FROM usuario as u
-		WHERE u.correo = #{correo};
-	</select>
-	<insert id="registrarUsuario" parameterType="map">
-		insert into usuario values(#{carnet},#{nombre},#{correo},#{contrasena},#{estado}, #{rol})
-	</insert>
+<mapper namespace="edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper">
+	
+	
 	<resultMap type='Usuario' id='UsuarioResult'>
-	    <id property='id' column='carnet'/>
-	    <result property="nombre" column="nombre"></result>
-	    <result property="correo" column="correo"></result>
-	    <result property="contrasena" column="contrasena"></result>
-	    <result property="estado" column="estado"/>    
-		<result property="rol" column="rol"/>
+		<id property='carnet' column='carnet'/>
+		<id property='nombre' column='nombre'/>
+	    <id property='correo' column='correo'/>
+	    <id property='contrasena' column='contrasena'/>
+	    <id property='estado' column='estado'/>
+		<result property='rol' column='rol'/>	
 	</resultMap>
+	
+	<select parameterType="map" id="consultarUsuarios" resultMap="UsuarioResult">
+		select 
+		u.nombre,
+		u.carnet,
+		u.correo,
+		u.contrasena,
+		u.estado,
+		u.rol
+		FROM usuario as u;
+	</select>
+	
+	<select id="consultarUsuarioLog" resultMap="UsuarioResult">
+		SELECT
+		u.nombre,
+		u.carnet,
+		u.correo,
+		u.contrasena,
+		u.estado,
+		u.rol
+		FROM usuario as u 
+		WHERE u.carnet = #{carneT} and u.contrasena = #{contrasenA};
+	</select>
 </mapper>
