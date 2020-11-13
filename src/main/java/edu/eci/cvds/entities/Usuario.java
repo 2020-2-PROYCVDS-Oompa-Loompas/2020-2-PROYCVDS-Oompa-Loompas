@@ -4,123 +4,119 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable
 {
-	private int id;
+	private int carnet;
 	private String nombre;
-	private String apellido;
 	private String correo;
-	private String rol;
 	private String contrasena;
+	private String estado;
+	private String rol;
+	
 	
 	/**
 	* Constructor del usuario en el sistema
 	*/
 	public Usuario(){}
-	
+
+
 	/**
-	* Establecemos el id asignado al usuario
-	* @param id
-	*/
-	public void setId(int id) 
-	{
-		this.id=id;
+	 * @return the carnet
+	 */
+	public int getCarnet() {
+		return carnet;
 	}
-	
+
+
 	/**
-	* Establecemos el nombre del usuario ingresado al sistema
-	* @param nombre
-	*/
-	public void setNombre(String nombre) 
-	{
+	 * @param carnet the carnet to set
+	 */
+	public void setCarnet(int carnet) {
+		this.carnet = carnet;
+	}
+
+
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
+
 	/**
-	* Establecemos el apellido del usuario ingresado al sistema
-	* @param apellido
-	*/
-	public void setApellido(String apellido)
-	{
-		this.apellido = apellido;
+	 * @return the correo
+	 */
+	public String getCorreo() {
+		return correo;
 	}
-	
+
+
 	/**
-	* Establecemos el correo del usuario ingresado al sistema
-	* @param correo
-	*/
-	public void setCorreo(String correo)
-	{
+	 * @param correo the correo to set
+	 */
+	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	
+
+
 	/**
-	* Establecemos el rol del usuario ingresado al sistema
-	* @param rol
-	*/
-	public void setRol(String rol)
-	{
+	 * @return the contrasena
+	 */
+	public String getContrasena() {
+		return contrasena;
+	}
+
+
+	/**
+	 * @param contrasena the contrasena to set
+	 */
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+
+
+	/**
+	 * @return the estado
+	 */
+	public String getEstado() {
+		return estado;
+	}
+
+
+	/**
+	 * @param estado the estado to set
+	 */
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
+	/**
+	 * @return the rol
+	 */
+	public String getRol() {
+		return rol;
+	}
+
+
+	/**
+	 * @param rol the rol to set
+	 */
+	public void setRol(String rol) {
 		this.rol = rol;
 	}
 	
-	/**
-	* Establecemos el contraseña del usuario ingresado al sistema
-	* @param contrasena
-	*/
-	public void setContra(String contrasena)
-	{
-		this.contrasena = contrasena;
-	}
+	@Override
+    public String toString() {
+        return "Usuario {carnet: " + carnet + ", nombre: " + nombre + " ,correo: " + correo + ", contraseña: " + contrasena + ", estado : " + estado + ", rol: " + rol  + "}\n";
+    }
 	
-	/**
-	* Obtener el id del usuario ingresado al sistema
-	* @return id
-	*/
-	public int getId()
-	{
-		return id;
-	}
 	
-	/**
-	* Obtener el nombre del usuario ingresado al sistema
-	* @return nombre
-	*/
-	public String getNombre()
-	{
-		return nombre;
-	}
-	
-	/**
-	* Obtener el apellido del usuario ingresado al sistema
-	* @return apellido
-	*/
-	public String getApellido() 
-	{
-		return apellido;
-	}
-	
-	/**
-	* Obtener el rol del usuario ingresado al sistema
-	* @return rol
-	*/
-	public String getRol() 
-	{
-		return rol;
-	}
-	
-	/**
-	* Obtener la contraseña del usuario ingresado al sistema
-	* @return contrasena
-	*/
-	public String getContrasena()
-	{
-		return contrasena;
-	}
-	
-	/**
-	* Obtener el correo del usuario ingresado al sistema
-	* @return correo
-	*/
-	public String getCorreo()
-	{
-		return correo;
-	}
 }

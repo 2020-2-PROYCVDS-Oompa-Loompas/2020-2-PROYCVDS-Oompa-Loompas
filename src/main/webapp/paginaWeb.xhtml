@@ -17,17 +17,17 @@
 				</div>
 				
 				<div id="segundo" class="formulario">
-					<img class="avatar" src= "img/sistemas.png" alt="Logo de login"/>
+					<img class="avatar" src= "img/logov2.png" alt="Logo de login"/>
 					<h2 style="color: white">Iniciar Sesión</h2>
-					<form action="#">
-						<input type="text" placeholder="Usuario" id="atributo"></input>
-						<input type="password" placeholder="Contraseña" id="contra"></input>
-						<input type="submit" value="Iniciar Sesión" id="boton"></input>
-					</form>
+					<h:form action="#">
+						<p:inputText id="atributo" value="#{shiroBean.username}" type="text" placeholder="Usuario"></p:inputText>
+						<p:inputText id="contra" value="#{shiroBean.password}" type="password" placeholder="Contraseña"></p:inputText>
+						<p:commandButton value="Iniciar Sesión" type="submit" id="boton" actionListener="#{shiroBean.doLogin()}"></p:commandButton>
+					</h:form>
 				</div>
 				
 				<div id ="tercero" class="formulario">
-					<img class="avatar" src= "img/sistemas.png" alt="Logo de login"/>
+					<img class="avatar" src= "img/logov2.png" alt="Logo de login"/>
 					<div id="hi" class="botonVolver">
 						<span id="sg" style="color: white" onclick="mostrar()"> Volver</span>
 					</div>

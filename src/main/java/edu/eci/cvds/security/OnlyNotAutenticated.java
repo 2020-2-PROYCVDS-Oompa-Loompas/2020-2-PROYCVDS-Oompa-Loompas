@@ -24,7 +24,7 @@ public class OnlyNotAutenticated extends AccessControlFilter{
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
 
-        if (SecurityUtils.getSubject().hasRole("Administrador")) {
+        if (SecurityUtils.getSubject().hasRole("ESTUDIANTE")) {
             welcomeurl="/faces/login.xhtml";
         } else if(SecurityUtils.getSubject().hasRole("Proponente")){
             welcomeurl="/faces/login.xhtml";

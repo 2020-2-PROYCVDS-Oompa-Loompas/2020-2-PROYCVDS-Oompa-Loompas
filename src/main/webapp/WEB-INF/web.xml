@@ -57,7 +57,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/paginaWeb.html</welcome-file>
+        <welcome-file>faces/paginaWeb.xhtml</welcome-file>
     </welcome-file-list>
     <listener>
         <listener-class>edu.eci.cvds.guice.GuiceContextListener</listener-class>

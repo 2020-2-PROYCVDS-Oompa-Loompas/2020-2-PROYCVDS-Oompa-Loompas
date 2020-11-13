@@ -31,26 +31,46 @@ import org.apache.shiro.crypto.hash.Sha256Hash;
 @SessionScoped
 @ManagedBean(name = "shiroBean", eager = true)
 public class ShiroBean implements Serializable {
+	
+	
 
     private static final Logger log = LoggerFactory.getLogger(ShiroBean.class);
 	private String username;
     private String password;
     private Boolean rememberMe = false;
-    private String redirectUrl = "/faces/inicio.html";
+    private String redirectUrl = "/faces/inicio.xhtml";
     static Subject subject;
 
     /**
      * Try and authenticate the user
      */
     public void doLogin() {
-    	subject = SecurityUtils.getSubject();
-    	if (getUsername()=="") {
-    		setUsername(null);}
-        UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), new Sha256Hash(getPassword()).toHex());
+    	//System.out.println("Entra1");
+    	
+    	/*if (getUsername()=="") {
+    		setUsername(null);}*/
+        
+        //System.out.println("Entra2");
+		
         try {
-            subject.login(token);
-            if (subject.hasRole("Administrativo")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/inicioAdministrador.xhtml");
+        	System.out.println("Entra a try");
+        	
+        	System.out.println(getUsername());
+        	System.out.println(getPassword());
+        	FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/inicio.xhtml");
+        	Subject currentUser = SecurityUtils.getSubject();
+			String hex = new Sha256Hash(password).toHex();
+			System.out.println(hex);
+			UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), hex);
+			token.setRememberMe(true);
+			currentUser.login(token);
+            
+			
+            
+            /*
+            if (subject.hasRole("ESTUDIANTE")) {
+            	System.out.println("Entra a rol");
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/inicio.xhtml");
 			} 
             /*
 			else if (subject.hasRole("Proponente")) {

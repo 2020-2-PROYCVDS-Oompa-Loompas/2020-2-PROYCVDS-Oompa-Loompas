@@ -1,48 +1,42 @@
 package edu.eci.cvds.servicios;
 
-
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.JOptionPane;
-
-import org.apache.shiro.SecurityUtils;
-
 import com.google.inject.Inject;
-import edu.eci.cvds.excepciones.ECILabExcepcion;
-//import com.registerLab.DAO.ElementoDAO;
-//import com.registerLab.DAO.EquipoDAO;
-//import com.registerLab.DAO.LaboratorioDAO;
-//import com.registerLab.DAO.NovedadDAO;
-//import com.registerLab.DAO.UsuarioDAO;
-//import com.registerLab.entities.Elemento;
-//import com.registerLab.entities.Equipo;
-//import com.registerLab.entities.Laboratorio;
-//import com.registerLab.entities.Novedad;
-import edu.eci.cvds.entities.Usuario;
+import com.google.inject.Singleton;
 
-public  class ServiciosECILabImpl implements ServiciosECILab
+import edu.eci.cvds.persistencia.PersistenceException;
+import edu.eci.cvds.persistencia.UsuarioDAO;
+import edu.eci.cvds.entities.Usuario;
+import edu.eci.cvds.servicios.ExcepcionServiciosLab;
+import edu.eci.cvds.servicios.ServiciosLab;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.List;
+import org.mybatis.guice.transactional.Transactional;
+
+@Singleton
+public  class ServiciosECILabImpl implements ServiciosLab
 {
-	//@Inject
-	//private UsuarioDAO usuario;
-	//@Inject
-	//private EquipoDAO equipo;
-	//@Inject
-	//private LaboratorioDAO laboratorio;
-	//@Inject
-	//private NovedadDAO novedad;
-	//@Inject
-	//private ElementoDAO elemento;
+	@Inject
+	private UsuarioDAO usuarioDAO;
 	
-	
-	/*
-	 * @param correo - correo del usuario a buscar
-	 * @return devuelve el Usuario correspondiente al correo
-	 */
-	//public Usuario getUsuario(String correo) 
-	//{
-		//return usuario.getUsuario(correo);
-	//}
+	@Override
+	   public Usuario consultarUsuarioLog(int carnet, String contrasena) throws PersistenceException{
+		   try {
+	            return usuarioDAO.obtenerUsuarioLog(carnet,contrasena);
+	        } catch (PersistenceException e) {
+	            throw new PersistenceException("Error al consultar el item " + carnet, e);
+	        }
+	   }
+	   
+	@Override
+	   public List<Usuario> consultarUsuarios() throws PersistenceException{
+		   try {
+	            return usuarioDAO.obtenerUsuarios();
+	        } catch (PersistenceException e) {
+	            throw new PersistenceException("Error al consultar el item ", e);
+	        }
+	   }
 	
 }
