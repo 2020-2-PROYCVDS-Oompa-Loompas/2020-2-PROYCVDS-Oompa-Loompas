@@ -9,14 +9,19 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import edu.eci.cvds.entities.Usuario;
+
 import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
 import java.util.logging.Level;
 import javax.faces.bean.ManagedBean;
 import org.apache.shiro.authc.AuthenticationException;
@@ -25,6 +30,8 @@ import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Sha256Hash;
+
+
 
 @Named
 @Stateless
@@ -51,37 +58,40 @@ public class ShiroBean implements Serializable {
     		setUsername(null);}*/
         
         //System.out.println("Entra2");
+    	subject = SecurityUtils.getSubject();
+    	if (getUsername()=="") {
+    		setUsername(null);}
+        UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), new Sha256Hash(getPassword()).toHex());
 		
         try {
         	System.out.println("Entra a try");
+        	subject.login(token);
+        	
         	
         	System.out.println(getUsername());
         	System.out.println(getPassword());
-        	FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/inicio.xhtml");
-        	Subject currentUser = SecurityUtils.getSubject();
-			String hex = new Sha256Hash(password).toHex();
-			System.out.println(hex);
-			UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), hex);
-			token.setRememberMe(true);
-			currentUser.login(token);
-            
-			
-            
-            /*
+        	//ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+        	//context.redirect(context.getRequestContextPath()+"/inicio.xhtml");
+        	//FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/inicio.xhtml");
+        	//Subject currentUser = SecurityUtils.getSubject();
+			//String hex = new Sha256Hash(password).toHex();
+			//System.out.println(hex);
+			//UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), hex);
+			//token.setRememberMe(true);
+			//currentUser.login(token);
+			System.out.println("pruebaRol");
+			System.out.println(subject.hasRole(""));
+			System.out.println(subject.hasRole("ESTUDIANTE"));
+
+		   
+        
             if (subject.hasRole("ESTUDIANTE")) {
             	System.out.println("Entra a rol");
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/inicio.xhtml");
+            	ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+            	context.redirect(context.getRequestContextPath()+"/inicio.xhtml");
 			} 
-            /*
-			else if (subject.hasRole("Proponente")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/inicioUsuarioProponente.xhtml");
-			}
-			else if (subject.hasRole("Publico")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/inicioPublico.xhtml");
-			}
-			else if (subject.hasRole("PersonalPMO")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/InicioPMO.xhtml");
-			}*/
+            
+			
 			
         }
         catch (NullPointerException e) {

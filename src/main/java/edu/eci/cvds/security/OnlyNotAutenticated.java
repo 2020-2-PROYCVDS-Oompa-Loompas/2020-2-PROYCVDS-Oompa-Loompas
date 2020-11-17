@@ -25,15 +25,8 @@ public class OnlyNotAutenticated extends AccessControlFilter{
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
 
         if (SecurityUtils.getSubject().hasRole("ESTUDIANTE")) {
-            welcomeurl="/faces/login.xhtml";
-        } else if(SecurityUtils.getSubject().hasRole("Proponente")){
-            welcomeurl="/faces/login.xhtml";
-        }else if(SecurityUtils.getSubject().hasRole("Publico")){
-            welcomeurl="/faces/login.xhtml";
-        }
-        else if(SecurityUtils.getSubject().hasRole("PersonalPMO")){
-            welcomeurl="/faces/login.xhtml";
-        }
+            welcomeurl="/faces/paginaWeb.xhtml";
+        } 
         WebUtils.issueRedirect(request, response, welcomeurl);
         return false;//What to do if try to go to login -> go welcome page of auth ursers
     }
