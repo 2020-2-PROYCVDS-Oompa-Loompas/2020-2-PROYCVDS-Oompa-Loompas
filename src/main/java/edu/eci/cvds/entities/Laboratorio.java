@@ -50,6 +50,10 @@ public class Laboratorio {
 		this.capacidad = capacidad;
 	}
 	
-	
+	@Override
+    public String toString() 
+	{
+        return "Laboratorio {id: " + id + ", nombre: " + nombre + " , capacidad: " + capacidad + "}\n";
+    }
 
 }

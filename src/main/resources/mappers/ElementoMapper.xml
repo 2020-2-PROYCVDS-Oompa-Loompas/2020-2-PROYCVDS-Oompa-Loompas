@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace = "edu.eci.cvds.persistencia.mybatisimpl.mappers.ElementoMapper">
+  	<select parameterType = "map" id = "getElemento" resultMap = "ElementoResult">
+  		SELECT
+  		u.id,
+  		u.fabricante,
+  		u.idequipo,
+  		u.disponible,
+  		u.nombre
+  		FROM elemento as u
+  		WHERE id = #{id};
+  	</select>
+  	<insert parameterType = "map" id = "agregarElemento">
+  		INSERT INTO elemento
+  		(id, fabricante, idequipo, disponible, nombre)
+  		VALUES 
+  		(#{id}, #{fabricante}, #{idequipo}, #{disponible}, #{nombre});
+  	</insert>
+  	
+  	<resultMap type = 'Elemento' id = 'ElementoResult'>
+  		<id property = 'id' column = 'id' />
+  		<result property = "fabricante" column = "fabricante" />
+  		<result property = "idequipo" column = "idequipo" />
+  		<result property = "disponible" column = "disponible" />
+  		<result property = "nombre" column = "nombre" />
+  	</resultMap>
+  </mapper>

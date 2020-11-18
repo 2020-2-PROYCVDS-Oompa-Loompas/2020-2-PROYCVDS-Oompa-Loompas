@@ -8,10 +8,10 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
- 
-
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper;
+import edu.eci.cvds.persistencia.mybatisimpl.mappers.ElementoMapper;
+import edu.eci.cvds.persistencia.mybatisimpl.mappers.LaboratorioMapper;
+import edu.eci.cvds.persistencia.mybatisimpl.mappers.NovedadMapper;
 import edu.eci.cvds.servicios.ServiciosECILabImpl;
 import edu.eci.cvds.servicios.ServiciosLab;
 import edu.eci.cvds.servicios.ServiciosLabFactory;
@@ -48,26 +48,27 @@ public class App
         
         //Crear el mapper y usarlo: 
         UsuarioMapper cm= sqlss.getMapper(UsuarioMapper.class);
+        NovedadMapper nm = sqlss.getMapper(NovedadMapper.class);
+        LaboratorioMapper lm = sqlss.getMapper(LaboratorioMapper.class);
+        ElementoMapper em = sqlss.getMapper(ElementoMapper.class);
         //cm...
         System.out.println("Consulta Usuarios");
         System.out.println(cm.consultarUsuarios());
         System.out.println("----------------------");
         System.out.println("----------------------");
+		System.out.println("Consulta las novedades");
+		System.out.println(nm.getNovedades());
+		System.out.println("----------------------");
+        System.out.println("----------------------");
+        //System.out.println("Insertar Laboratorio");
+		//lm.agregarLaboratorio(2, "Lab. Redes", 15);
+		//System.out.println("--Laboratorio agregado--");
+        System.out.println("Registrar Elemento");
+        em.agregarElemento(1, "HP", 0, true, "Teclado");
+        System.out.println("--Elemento Agregado--");
+        System.out.println("----------------------");
        
-        /*Date fi = new Date(113,4,5);
-        Date ff = new Date(113,5,5);
-        cm.agregarItemRentadoACliente(-706, 4, fi, ff);
-        System.out.println(cm.consultarCliente(-706));
-        System.out.println("----------------------");
-        System.out.println("----------------------");
-        System.out.println("agregar Item");
-        ItemMapper im = sqlss.getMapper(ItemMapper.class);
-        TipoItem tip = new TipoItem(2, "Accion");
-        Date fecha = new Date(116,6,6);
-        //Item itemNuevo = new Item(tip, 2122, "BicicletaNo2", "es un medio de transporte", fecha, 100, "Diario", "Accion");
-        //im.insertarItem(itemNuevo);
-        System.out.println(im.consultarItem(2122));
-        */
+
         sqlss.commit();
         
         

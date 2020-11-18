@@ -1,19 +1,18 @@
 package edu.eci.cvds.entities;
 
-
-import java.awt.List;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Novedad {
-	
+public class Novedad implements Serializable
+{	
 	private int id;
 	private Date fecha;
 	private int carnet;
-	private int idLaboratorio;
-	private int idEquipo;
+	private int idlaboratorio;
+	private int idequipo;
 	private String descripcion;
-	private String tipoNovedad;
+	private String tiponovedad;
 	
 	public Novedad() {}
 
@@ -63,28 +62,28 @@ public class Novedad {
 	 * @return the idLaboratorio
 	 */
 	public int getIdLaboratorio() {
-		return idLaboratorio;
+		return idlaboratorio;
 	}
 
 	/**
 	 * @param idLaboratorio the idLaboratorio to set
 	 */
 	public void setIdLaboratorio(int idLaboratorio) {
-		this.idLaboratorio = idLaboratorio;
+		this.idlaboratorio = idLaboratorio;
 	}
 
 	/**
 	 * @return the idEquipo
 	 */
 	public int getIdEquipo() {
-		return idEquipo;
+		return idequipo;
 	}
 
 	/**
 	 * @param idEquipo the idEquipo to set
 	 */
 	public void setIdEquipo(int idEquipo) {
-		this.idEquipo = idEquipo;
+		this.idequipo = idEquipo;
 	}
 
 	/**
@@ -105,19 +104,23 @@ public class Novedad {
 	 * @return the tipoNovedad
 	 */
 	public String getTipoNovedad() {
-		return tipoNovedad;
+		return tiponovedad;
 	}
 
 	/**
 	 * @param tipoNovedad the tipoNovedad to set
 	 */
 	public void setTipoNovedad(String tipoNovedad) {
-		this.tipoNovedad = tipoNovedad;
+		this.tiponovedad = tipoNovedad;
 	}
 	
 	public String getFechaString() {
 		SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
         return dt1.format(this.fecha);
 	}
-
+	
+	@Override
+    public String toString() {
+        return "Novedad {id: " + id + ", fecha: " + fecha + " ,carnet: " + carnet + ", idlaboratorio: " + idlaboratorio + ", idequipo : " + idequipo + ", descripcion: " + descripcion  + ", tipo novedad: " + tiponovedad + "}\n";
+    }
 }

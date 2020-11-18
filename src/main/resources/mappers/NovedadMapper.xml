@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.eci.cvds.persistencia.mybatisimpl.mappers.NovedadMapper">
+ 
+ <select parameterType="map" id="getNovedad" resultMap="NovedadResult">
+ 	SELECT
+ 	u.id,
+ 	u.fecha,
+ 	u.carnet,
+ 	u.idlaboratorio,
+ 	u.idequipo,
+ 	u.descripcion,
+ 	u.tiponovedad
+ 	FROM novedad as u
+ 	WHERE id=#{idNov};
+ </select>
+  <select parameterType="map" id="getNovedades" resultMap="NovedadResult">
+ 	SELECT
+ 	a.id,
+ 	a.fecha,
+ 	a.carnet,
+ 	a.idlaboratorio,
+ 	a.idequipo,
+ 	a.descripcion,
+ 	a.tiponovedad
+ 	FROM novedad as a;
+ </select>
+
+	<resultMap type='Novedad' id='NovedadResult'>
+	    <id property='id' column='id'/>
+	    <result property="fecha" column="fecha"></result>
+	    <result property="carnet" column="carnet"></result>
+	    <result property="idlaboratorio" column="idlaboratorio"></result>
+		<result property="idequipo" column="idequipo"></result>
+		<result property="descripcion" column="descripcion"></result>
+		<result property="tiponovedad" column="tiponovedad"></result>
+	</resultMap>
+</mapper>
