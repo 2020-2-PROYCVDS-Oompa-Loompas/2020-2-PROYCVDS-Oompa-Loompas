@@ -14,7 +14,7 @@
 | Juan Carlos Alayón Molina | Team Developer |
 | Jonathan Fabián Paez Torres | Team Developer |
 | Jose María Castro Ortega | Team Developer |
-| Jose María Castro Ortega | Product Owner |
+| Oscar David Ospina Rodriguez | Product Owner |
 
 ## Descripción general 🚀
 
