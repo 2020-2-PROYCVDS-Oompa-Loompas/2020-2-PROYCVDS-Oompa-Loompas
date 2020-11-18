@@ -18,7 +18,7 @@
 
 ## Descripción general
 
-Esta aplicación tiene como objetivo poder brindar un servicio de para el laboratorio de Ingeniería de sistemas de la Escuela Colombiana Julio Garavito, donde se puede ver los laboratorios registrados y que equipos están en cada laboratorio con sus respectivos elementos de cada Equipo. Se podrá revisar un historial de novedades que se han realizado durante el tiempo.
+Esta aplicación tiene como objetivo poder brindar un servicio de información y registro para el laboratorio de Ingeniería de sistemas de la Escuela Colombiana Julio Garavito, donde se puede ver los laboratorios registrados y que equipos están en cada laboratorio con sus respectivos elementos de cada Equipo. Se podrá revisar un historial de novedades que se han realizado durante el tiempo.
 
 ## Pagina Web
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://oompa-loompas.herokuapp.com/faces/paginaWeb.xhtml)
