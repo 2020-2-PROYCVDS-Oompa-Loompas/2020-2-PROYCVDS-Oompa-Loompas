@@ -30,3 +30,10 @@ Esta aplicación tiene como objetivo poder brindar un servicio de información y
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9106912acf4e42f38eef7f27eb0c8522)](https://www.codacy.com/manual/2020-2-PROYCVDS-Oompa-Loompas
 /2020-2-PROYCVDS-Oompa-Loompas?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2020-2-PROYCVDS-Oompa-Loompas
 /2020-2-PROYCVDS-Oompa-Loompas&amp;utm_campaign=Badge_Grade)
+
+## Funcionalidad y/o manual de usuario
+
+Como pagina inicial tendremos el login para iniciar sesión, donde cada usuario ingresara con su usuario y contraseña ya registrado en la base de datos. Dependiendo su rol la página web lo redirigirá a una página web que le ofrecerá ciertas funcionalidades.
+A demás se podrá registrar un nuevo usuario
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/pagina.PNG)
