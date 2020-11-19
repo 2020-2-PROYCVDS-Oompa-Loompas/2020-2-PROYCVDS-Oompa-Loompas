@@ -3,204 +3,178 @@
         PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html	xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
          xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
-
-<h:head><title>Administer Computers</title>
+<head>
     <style type="text/css">
 
-			* {
-				margin:0px;
-				background:#000000
-				padding:0px;
-			}
-			body{
-			    background:#000000
-			}
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
 
-			#header {
-                background:#000000;
-                font-weight: bolder;
-                padding:10px;
+        body {
+          font-family: 'Century Gothic', sans-serif;
+        }
+        header {
+            width: 100%;
+            padding: 40px;
+            color: #24303c;
+            text-align: center;
+            background: #059836;
+        }
+        nav ul {
+            list-style: none;
+            background: #24303c;
+            text-align: center;
+        }
+        .nav li ul { /*esconde los submenus*/
+			display:none;
+			position:absolute;
+			min-width:140px;
+		}
+		.nav li:hover > ul {/*este es*/
+			display:block;
+		}
 
-                margin:35px 320px;
-                width:100%;
-                justify-content: center;
-                align-items: center;
+        nav ul li{
+            display: inline-block;
+            padding: 20px;
+            transition: all ease-in-out 250ms;
+        }
 
+        ul li a {
+            color: white;
+            text-decoration: none;
+        }
 
-
-			}
-			.oso{
-                color: #FFFFFF;
-                margin:10px 260px;
-                /*float:left;*/
-				font-family:Arial, Helvetica, sans-serif;
-				/*padding:5px 12px;*/
-			}
-            .pers{
-                color:white;
-                background:#1B8344;
-                font-weight: bolder;
-                padding:5px;
-                font-family:cursive;
-                margin:5px;
-                /*width:100%;*/
-            }
-
-            .pers ul li{
- 			    padding:5px;
- 			    margin:5px;
- 			}
- 			#container{
-
-                background:#000000;
-                font-weight: bolder;
-                padding:5px;
-
-                margin:5px 0px;
-                width:100%;
-
-            }
-
-			ul, ol {
-				list-style:none;
-			}
-
-			.nav {
-				width:1000px; /*Le establecemos un ancho*/
-				margin:0 auto; /*Centramos automaticamente*/
-			}
-
-			.nav > li {
-				float:left;
-			}
-
-			.nav li a {
-				background-color:#08630B;
-				color:#FFFDFD;
-				text-decoration:none;
-				padding:10px 12px;
-				display:block;
-			}
-
-			.nav li a:hover {
-				background-color:#434343;
-			}
-
-			.nav li ul {
-				display:none;
-				position:absolute;
-				min-width:140px;
-			}
-
-			.nav li:hover > ul {
-				display:block;
-			}
-
-			.nav li ul li {
-				position:relative;
-			}
-
-			.nav li ul li ul {
-				right:-140px;
-				top:0px;
-			}
-			.avatar {
-                width: 15px;
-                height: 15px;
-                border-radius: 50%;
-
-                position: relative;
-                top: 30px; left: 580px;
-            }
-            #cuerpo{
-                background-color:#000000;
-                color:#FFFDFD;
-                margin:5px 0px;
+        nav ul li:hover{
+            background: #059836;
+        }
+        .hide{
+            font-size: 22px;
+            padding: 16px;
+            background-color:#2D302E;
+            cursor: pointer;
+            display: none;
+        }
+        @media (max-width: 768px){
+            ul li{
                 width: 100%;
-                height: 100vh;
+                padding: 16px;
+                text-align: left;
             }
-            #Prueba{
-                background-color:#08630B;
+            nav ul{
+                display: none;
+            }
+            .hide{
+                display: block;
+            }
+        }
+        body{
+            background-image :
+            linear-gradient(
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(img/Escuela.jpg);
+            background-image-repeat : no-repeat;
+            background-size: 100% 100%;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            text-align: center;
 
-                width: 100%;
-                height: 100vh;
-            }
-            .caja{
-              display: flex;
-              flex-flow: column wrap;
-              justify-content: center;
-              align-items: center;
-              background: #333944;
-            }
+
+        }
+        .text{
+            padding: 55px;
+            color: #93A197;
+            font-size: 12px;
+            text-align: justify;
+        }
+        footer{
+            font-size: 14px;
+            width: 100%;
+            padding: 8px;
+            color: white;
+            text-align: center;
+            background: #24303c;
+            margin: 0px auto;
+            position: absolute;
+            bottom: 0;/*Este es que lo ancla/*
+
+
+        }
+        #p{
+            color: white;
+        }
+
+
 
 		</style>
-</h:head>
-<h:body style="margin:0px; padding:0px;">
-
-    <div id="Prueba">
-        <div id="container">
-            <div id="header">
-
-                <b class="oso">SISTEMA DE REGISTRO</b>
-                <br></br>
-                <br></br>
-
-
-                <nav> <!-- Aqui estamos iniciando la nueva etiqueta nav -->
-                    <ul class="nav">
-
-                        <li><a href="">Equipo</a>
-                            <ul>
-                                <li><a href="">Registrar Equipo</a></li>
-                                <li><a href="">Asociar Equipo</a></li>
-                                <li><a href="">Dar de baja Equipo</a></li>
-                                <li><a href="">Reporte Equipo</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">Elementos</a>
-                            <ul>
-                                <li><a href="">Registrar Elemento</a></li>
-                                <li><a href="">Dar de baja Elemento</a></li>
-                                <li><a href="">Historial Elementos</a></li>
-                                <li><a href="">Reporte Elementos</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">Laboratorio</a>
-                            <ul>
-                                <li><a href="">Registrar Laboratorio</a></li>
-                                <li><a href="">Asociar Equipo</a></li>
-                                <li><a href="">Reporte Laboratorio</a></li>
-                                <li><a href="">Cerrar Laboratorio</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">Novedad</a></li>
-                    </ul>
-                </nav><!-- Aqui estamos cerrando la nueva etiqueta nav -->
-            </div>
-        </div>
-
-        <div id="cuerpo">
-
-            <br></br>
-            Aqui podras:
-            <br></br>
-            <ol style="list-style-type: decimal-leading-zero; padding-left: 2em;">
-                <li>Añadir los diferentes elementos</li>
-                <li>Asociarlos con los laboratorio</li>
-                <li>Controlar y monitorear los laboratosios</li>
-            </ol>
-            <br></br>
-            <div class="avatar">
-                <img src="img/sistemas.png" alt="Cargando imagen..."/>
-            </div>
-
-
-        </div>
-
-
+</head>
+<body>
+<header>
+    <h1>ADMINISTRADOR USUARIO</h1>
+</header>
+<nav>
+    <ul class="nav">
+        <li><a href="">Equipo</a>
+            <ul>
+                <li><a href="">Registrar Equipo</a></li>
+                <li><a href="">Asociar Equipo</a></li>
+                <li><a href="">Dar de baja Equipo</a></li>
+                <li><a href="">Reporte Equipo</a></li>
+            </ul>
+        </li>
+        <li><a href="">Elementos</a>
+            <ul>
+                <li><a href="">Registrar Elemento</a></li>
+                <li><a href="">Dar de baja Elemento</a></li>
+                <li><a href="">Historial Elementos</a></li>
+                <li><a href="">Reporte Elementos</a></li>
+            </ul>
+        </li>
+        <li><a href="">Laboratorio</a>
+            <ul>
+                <li><a href="RegistroLaboratorio.xhtml">Registrar Laboratorio</a></li>
+                <li><a href="">Asociar Equipo</a></li>
+                <li><a href="">Reporte Laboratorio</a></li>
+                <li><a href="">Cerrar Laboratorio</a></li>
+            </ul>
+        </li>
+        <li><a href="">Novedad</a>
+            <ul>
+                <li><a href="">Registrar Novedad</a></li>
+                <li><a href="">Ver Novedades</a></li>
+                <li><a href="">Reporte Laboratorio</a></li>
+                <li><a href="">Cerrar Laboratorio</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="hide">
+        <i class="fa fa-bars" aris-hidden="true"></i>Menu
     </div>
 
+</nav>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+        $(".hide").on('click', function(){
+            $("nav ul").toggle('slow');
+        })
+    </script>
+<div class="portada">
+    <div class="text">
+        <h1> Plataforma Historial de Equipos, es una herramienta donde el personal del laboratorio de informática (LabInfo) pertenecientes a la decanatura de Ingeniería de Sistemas de la Escuela Colombiana de Ingeniería Julio Garavito, pueden registrar los laboratorio, equipos y elementos de cada equipo, junto con las novedades que se realizan a cada uno de estos.</h1>
 
-</h:body>
+    </div>
+</div>
+<footer>
+    Derechos Reservados &copy; 2020 <br></br>
+    Desarrolado por OOMPA_LOOMPAS
+    <p><a href="paginaWeb.xhtml">Cerrar Sesion</a></p>
+</footer>
+</body>
 
 </html>
