@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace = "edu.eci.cvds.persistencia.mybatisimpl.mappers.EquipoMapper">
+  	
+  	<select id = "getEquipo" parameterType = "map" resultMap = "EquipoResult" >
+  		SELECT
+  		u.id,
+  		u.nombre,
+  		u.disponible
+  		FROM equipo as u
+  		WHERE id = #{id};
+  	</select>
+  	<insert parameterType = "map" id = "agregarEquipo">
+  		INSERT INTO equipo
+  		(nombre, disponible)
+  		VALUES
+  		(#{nombre}, #{disponible});
+  	</insert>
+  	
+  	<resultMap type = 'Equipo' id = 'EquipoResult'>
+  		<id property = 'id' column = 'id' />
+  		<result property = "nombre" column = "nombre" />
+  		<result property = "disponible" column = "disponible" />
+  	</resultMap>
+  
+  </mapper>

@@ -4,6 +4,7 @@ public class Equipo {
 	
 	private int id;
 	private String nombre;
+	private boolean disponible;
 	
 	public Equipo() {}
 
@@ -35,6 +36,19 @@ public class Equipo {
 		this.nombre = nombre;
 	}
 	
+	public void setDisponible(boolean disponible)
+	{
+		this.disponible = disponible;
+	}
 	
+	public boolean getDisponible()
+	{
+		return disponible;
+	}
+	
+	@Override
+    public String toString() {
+        return "Equipo {id: " + id + ", nombre: " + nombre + " , disponible: " + disponible +"}\n";
+    }
 
 }

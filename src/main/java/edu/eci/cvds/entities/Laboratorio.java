@@ -5,6 +5,7 @@ public class Laboratorio {
 	private int id;
 	private String nombre;
 	private int capacidad;
+	private boolean disponible;
 	
 	public Laboratorio() {}
 
@@ -50,10 +51,20 @@ public class Laboratorio {
 		this.capacidad = capacidad;
 	}
 	
+	public void setDisponible(boolean disponible)
+	{
+		this.disponible = disponible;
+	}
+	
+	public boolean getDisponible()
+	{
+		return disponible;
+	}
+	
 	@Override
     public String toString() 
 	{
-        return "Laboratorio {id: " + id + ", nombre: " + nombre + " , capacidad: " + capacidad + "}\n";
+        return "Laboratorio {id: " + id + ", nombre: " + nombre + " , capacidad: " + capacidad + ", disponible: " + disponible +"}\n";
     }
 
 }

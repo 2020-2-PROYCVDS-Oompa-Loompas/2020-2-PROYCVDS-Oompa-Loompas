@@ -5,29 +5,36 @@
   
 <mapper namespace="edu.eci.cvds.persistencia.mybatisimpl.mappers.NovedadMapper">
  
- <select parameterType="map" id="getNovedad" resultMap="NovedadResult">
- 	SELECT
- 	u.id,
- 	u.fecha,
- 	u.carnet,
- 	u.idlaboratorio,
- 	u.idequipo,
- 	u.descripcion,
- 	u.tiponovedad
- 	FROM novedad as u
- 	WHERE id=#{idNov};
- </select>
-  <select parameterType="map" id="getNovedades" resultMap="NovedadResult">
- 	SELECT
- 	a.id,
- 	a.fecha,
- 	a.carnet,
- 	a.idlaboratorio,
- 	a.idequipo,
- 	a.descripcion,
- 	a.tiponovedad
- 	FROM novedad as a;
- </select>
+	<select parameterType="map" id="getNovedad" resultMap="NovedadResult">
+ 		SELECT
+ 		u.id,
+ 		u.fecha,
+ 		u.carnet,
+ 		u.idlaboratorio,
+ 		u.idequipo,
+ 		u.descripcion,
+ 		u.tiponovedad
+ 		FROM novedad as u
+ 		WHERE id=#{idNov};
+ 	</select>
+  	<select parameterType="map" id="getNovedades" resultMap="NovedadResult">
+ 		SELECT
+ 		a.id,
+ 		a.fecha,
+ 		a.carnet,
+ 		a.idlaboratorio,
+ 		a.idequipo,
+ 		a.descripcion,
+ 		a.tiponovedad
+ 		FROM novedad as a;
+ 	</select>
+ 	<insert parameterType = "map" id = "agregarNovedad">
+  		INSERT INTO novedad
+  		(fecha, carnet, idlaboratorio, idequipo, descripcion, tiponovedad)
+  		VALUES 
+  		(#{fecha}, #{carnet}, #{idlaboratorio}, #{idequipo}, #{descripcion}, #{tiponovedad});
+  	</insert>
+ 
 
 	<resultMap type='Novedad' id='NovedadResult'>
 	    <id property='id' column='id'/>

@@ -6,5 +6,5 @@ public interface ElementoDAO
 {
 	public Elemento getElemento(int id);
 	
-	public void agregarElemento(int id, String fabricante, int idequipo, boolean disponible, String nombre) throws PersistenceException;
+	public void agregarElemento(String nombre, String fabricante, boolean disponible) throws PersistenceException;
 }

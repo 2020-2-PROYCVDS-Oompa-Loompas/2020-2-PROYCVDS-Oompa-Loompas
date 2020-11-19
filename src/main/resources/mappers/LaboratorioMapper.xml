@@ -4,24 +4,50 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace = "edu.eci.cvds.persistencia.mybatisimpl.mappers.LaboratorioMapper">
-  	<select parameterType = "map" id = "getLaboratorio" resultMap = "LaboratorioResult">
+  	<select id = "getLaboratorio" parameterType = "map" resultMap = "LaboratorioResult">
   		SELECT
   		u.id,
   		u.nombre,
-  		u.capacidad
+  		u.capacidad,
+  		u.disponible
   		FROM laboratorio as u
   		WHERE u.id = #{id};
   	</select>
+  	<select id = "getLaboratorios" resultMap = "LaboratorioResult">
+  		SELECT
+  		u.id,
+  		u.nombre,
+  		u.capacidad,
+  		u.disponible
+  		FROM laboratorio as u;
+  	</select>
+  	<select id = "getLaboratoriosDisponibles" resultMap = "LaboratorioResult">
+  		SELECT
+  		u.id,
+  		u.nombre,
+  		u.capacidad,
+  		u.disponible
+  		FROM laboratorio as u
+  		WHERE u.disponible = True;
+  	</select>
+  	<select id = "getEquiposLaboratorio" resultMap = "LaboratorioResult">
+		SELECT
+		equipo.id,
+		equipo.nombre
+		FROM laboratorio, equipos, equipo
+		WHERE laboratorio.id = #{id} AND #{id} = equipos.idlaboratorio and equipos.idequipo = equipo.id;
+  	</select>
   	<insert parameterType = "map" id = "agregarLaboratorio">
   		INSERT INTO laboratorio
-  		(id, nombre, capacidad)
+  		(nombre, capacidad, disponible)
   		VALUES
-  		(#{id}, #{nombre}, #{capacidad});
+  		(#{nombre}, #{capacidad}, #{disponible});
   	</insert>
   	
   	<resultMap type = 'Laboratorio' id = 'LaboratorioResult'>
   		<id property = 'id' column = 'id' />
   		<result property = "nombre" column = "nombre" />
   		<result property = "capacidad" column = "capacidad" />
+  		<result property = "disponible" column = "disponible" />
   	</resultMap>
   </mapper>

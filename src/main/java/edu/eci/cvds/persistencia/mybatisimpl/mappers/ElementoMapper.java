@@ -7,5 +7,5 @@ import edu.eci.cvds.entities.Elemento;
 public interface ElementoMapper 
 {
 	public Elemento getElemento(@Param("id") int id);
-	public void agregarElemento(@Param("id") int id, @Param("fabricante") String fabricante, @Param("idequipo") int idequipo, @Param("disponible") boolean disponible, @Param("nombre") String nombre);	
+	public void agregarElemento(@Param("nombre") String nombre, @Param("fabricante") String fabricante, @Param("disponible") boolean disponible);	
 }

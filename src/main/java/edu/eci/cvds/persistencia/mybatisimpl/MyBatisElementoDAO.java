@@ -19,19 +19,15 @@ public class MyBatisElementoDAO implements ElementoDAO
 	}
 	
 	@Override
-	public void agregarElemento(int id, String fabricante, int idequipo, boolean disponible, String nombre) throws PersistenceException
+	public void agregarElemento(String nombre, String fabricante, boolean disponible) throws PersistenceException
 	{
-		if(getElemento(id)!= null)
-		{
-			throw new PersistenceException("Ya existe un Elemento con esta id");
-		}
-		else if(!(nombre != "Torre" || nombre != "Pantalla" || nombre != "Mouse" || nombre != "Teclado"))
+		if(!(nombre != "Torre" || nombre != "Pantalla" || nombre != "Mouse" || nombre != "Teclado"))
 		{
 			throw new PersistenceException("Categoria Erronea");
 		}
 		else
 		{
-			mapper.agregarElemento(id, fabricante, idequipo, disponible, nombre);
+			mapper.agregarElemento(nombre, fabricante, disponible);
 		}
 		
 	}

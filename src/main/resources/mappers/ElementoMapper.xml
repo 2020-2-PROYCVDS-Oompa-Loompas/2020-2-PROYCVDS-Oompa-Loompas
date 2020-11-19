@@ -7,25 +7,23 @@
   	<select parameterType = "map" id = "getElemento" resultMap = "ElementoResult">
   		SELECT
   		u.id,
+  		u.nombre,
   		u.fabricante,
-  		u.idequipo,
   		u.disponible,
-  		u.nombre
   		FROM elemento as u
   		WHERE id = #{id};
   	</select>
   	<insert parameterType = "map" id = "agregarElemento">
   		INSERT INTO elemento
-  		(id, fabricante, idequipo, disponible, nombre)
+  		(nombre, fabricante, disponible)
   		VALUES 
-  		(#{id}, #{fabricante}, #{idequipo}, #{disponible}, #{nombre});
+  		(#{nombre}, #{fabricante}, #{disponible});
   	</insert>
   	
   	<resultMap type = 'Elemento' id = 'ElementoResult'>
   		<id property = 'id' column = 'id' />
-  		<result property = "fabricante" column = "fabricante" />
-  		<result property = "idequipo" column = "idequipo" />
+  		<result property = "nombre" column = "fabricante" />
+  		<result property = "fabricante" column = "idequipo" />
   		<result property = "disponible" column = "disponible" />
-  		<result property = "nombre" column = "nombre" />
   	</resultMap>
   </mapper>

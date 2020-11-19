@@ -4,12 +4,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.UsuarioMapper;
+import edu.eci.cvds.entities.TipoNovedad;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.ElementoMapper;
+import edu.eci.cvds.persistencia.mybatisimpl.mappers.EquipoMapper;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.LaboratorioMapper;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.NovedadMapper;
 import edu.eci.cvds.servicios.ServiciosECILabImpl;
@@ -51,6 +57,7 @@ public class App
         NovedadMapper nm = sqlss.getMapper(NovedadMapper.class);
         LaboratorioMapper lm = sqlss.getMapper(LaboratorioMapper.class);
         ElementoMapper em = sqlss.getMapper(ElementoMapper.class);
+        EquipoMapper eqm = sqlss.getMapper(EquipoMapper.class);
         //cm...
         System.out.println("Consulta Usuarios");
         System.out.println(cm.consultarUsuarios());
@@ -60,13 +67,36 @@ public class App
 		System.out.println(nm.getNovedades());
 		System.out.println("----------------------");
         System.out.println("----------------------");
-        //System.out.println("Insertar Laboratorio");
-		//lm.agregarLaboratorio(2, "Lab. Redes", 15);
-		//System.out.println("--Laboratorio agregado--");
-        System.out.println("Registrar Elemento");
-        em.agregarElemento(1, "HP", 0, true, "Teclado");
-        System.out.println("--Elemento Agregado--");
+		System.out.println("Consulta el laboratorio según su id");
+		System.out.println(lm.getLaboratorio(1));
+		System.out.println("----------------------");
         System.out.println("----------------------");
+		System.out.println("Consulta los laboratorios");
+		System.out.println(lm.getLaboratorios());
+		System.out.println("----------------------");
+        System.out.println("----------------------");
+        System.out.println("Consulta los laboratorios disponibles");
+		System.out.println(lm.getLaboratoriosDisponibles());
+		System.out.println("----------------------");
+        System.out.println("----------------------");
+        System.out.println("Consulta los equipos de un laboratorio");
+		System.out.println(lm.getEquiposLaboratorio(1));
+		System.out.println("----------------------");
+        System.out.println("----------------------");
+        //System.out.println("Registrar Laboratorio");
+        //lm.agregarLaboratorio("Seguridad", 10, true);
+		//System.out.println("--Laboratorio agregado--");
+        //System.out.println("----------------------");
+        //System.out.println("Registrar Equipo");
+        //eqm.agregarEquipo("Computador", true);
+        //System.out.println("--Equipo Agregado--");
+        //System.out.println("Registrar Novedad");
+        //LocalDate fecha = LocalDate.now();
+        //nm.agregarNovedad(fecha, 2123238, 1, 1, "Se realiza una consulta sobre el equipo y sus elementos", TipoNovedad.CONSULTAR);
+        //System.out.println("--Novedad Agregada--");
+
+        
+        
        
 
         sqlss.commit();

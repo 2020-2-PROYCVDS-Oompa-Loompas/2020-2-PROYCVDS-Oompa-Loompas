@@ -1,7 +1,10 @@
 package edu.eci.cvds.persistencia.mybatisimpl;
 
+import java.util.List;
+
 import com.google.inject.Inject;
 
+import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.persistencia.LaboratorioDAO;
 import edu.eci.cvds.persistencia.PersistenceException;
@@ -17,20 +20,35 @@ public class MyBatisLaboratorioDAO implements LaboratorioDAO
 	{
 		return mapper.getLaboratorio(id);
 	}
+	
 	@Override
-	public void agregarLaboratorio(int id, String nombre, int capacidad) throws PersistenceException
+	public List<Laboratorio> getLaboratorios()
 	{
-		if(getLaboratorio(id) != null)
-		{
-			throw new PersistenceException ("Este laboratorio ya esta registrado");
-		}
-		else if(nombre == null || nombre == "")
+		return mapper.getLaboratorios();
+	}
+	
+	@Override
+	public List<Laboratorio> getLaboratoriosDisponibles()
+	{
+		return mapper.getLaboratoriosDisponibles();
+	}
+	
+	@Override
+	public List<Equipo> getEquiposLaboratorio(int id)
+	{
+		return mapper.getEquiposLaboratorio(id);
+	}
+	
+	@Override
+	public void agregarLaboratorio(String nombre, int capacidad, boolean disponible) throws PersistenceException
+	{
+		if(nombre == null || nombre == "")
 		{
 			throw new PersistenceException ("El nombre del laboratorio no debe estar vacio");
 		}
 		else
 		{
-			mapper.agregarLaboratorio(id, nombre, capacidad);
+			mapper.agregarLaboratorio(nombre, capacidad, disponible);
 		}
 	}
 }
