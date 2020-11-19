@@ -30,7 +30,15 @@ Esta aplicación tiene como objetivo poder brindar un servicio de información y
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/23d335c474ce4317ad35b19cb90a1f35)](https://app.codacy.com/gh/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/dashboard)
 
-## Funcionalidad y/o manual de usuario
+## Información de la base de datos 🛠️
+
+* Anfitrión = ec2-23-20-70-32.compute-1.amazonaws.com
+* Base de datos = decigqpg9tb8ia
+* Usuario = qcwmpnwwywpfsk
+* Puerto = 5432
+* Contraseña = c463dede95cbc843ce3298e4af86da6d9286578e8f0a07f93e52967845948c30 
+
+## Funcionalidad y/o manual de usuario 🖇️
 
 Como pagina inicial tendremos el login para iniciar sesión, donde cada usuario ingresara con su usuario y contraseña ya registrado en la base de datos. Dependiendo su rol la página web lo redirigirá a una página web que le ofrecerá ciertas funcionalidades.
 A demás se podrá registrar un nuevo usuario
@@ -38,7 +46,7 @@ A demás se podrá registrar un nuevo usuario
 ![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/pagina.PNG)
 
 
-## Descripción de Sprints
+## Descripción de Sprints 🛠️
 
 ![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/graficaTaiga.PNG)
 
