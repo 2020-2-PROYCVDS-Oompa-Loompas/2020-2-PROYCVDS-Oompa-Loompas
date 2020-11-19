@@ -38,6 +38,10 @@ Esta aplicación tiene como objetivo poder brindar un servicio de información y
 * Puerto = 5432
 * Contraseña = c463dede95cbc843ce3298e4af86da6d9286578e8f0a07f93e52967845948c30 
 
+## Diagrama de clases
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/diagramaDeClases.PNG)
+
 ## Funcionalidad y/o manual de usuario 🖇️
 
 Como pagina inicial tendremos el login para iniciar sesión, donde cada usuario ingresara con su usuario y contraseña ya registrado en la base de datos. Dependiendo su rol la página web lo redirigirá a una página web que le ofrecerá ciertas funcionalidades.
