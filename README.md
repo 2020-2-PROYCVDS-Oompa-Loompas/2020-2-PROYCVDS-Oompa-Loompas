@@ -27,9 +27,8 @@ Esta aplicación tiene como objetivo poder brindar un servicio de información y
 [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://app.circleci.com/pipelines/github/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas)
 
 ## Codacy 🔧
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/9106912acf4e42f38eef7f27eb0c8522)](https://www.codacy.com/manual/2020-2-PROYCVDS-Oompa-Loompas
-/2020-2-PROYCVDS-Oompa-Loompas?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2020-2-PROYCVDS-Oompa-Loompas
-/2020-2-PROYCVDS-Oompa-Loompas&amp;utm_campaign=Badge_Grade)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/23d335c474ce4317ad35b19cb90a1f35)](https://app.codacy.com/gh/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/dashboard)
 
 ## Funcionalidad y/o manual de usuario
 
@@ -37,3 +36,10 @@ Como pagina inicial tendremos el login para iniciar sesión, donde cada usuario 
 A demás se podrá registrar un nuevo usuario
 
 ![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/pagina.PNG)
+
+
+## Descripción de Sprints
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/graficaTaiga.PNG)
+
+Para el primer Sprint nuestro mayor problema fue que no sabíamos manejar la herramienta de Taiga. No entendiamos como era el funcionamiento y como debíamos distrubuir sus tareas, por ende la gráfica que se muestra es incorrecta, ya que no poniamos las tareas en progreso y tampoco las cerrabamos.
