@@ -47,6 +47,7 @@ A demás se podrá registrar un nuevo usuario
 
 
 ## Descripción de Sprints 🛠️
+### Sprint 1
 
 ![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/graficaTaiga.PNG)
 
