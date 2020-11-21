@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Usuario implements Serializable
 {
-	private int carnet;
+	private String carnet;
 	private String nombre;
 	private String correo;
 	private String contrasena;
@@ -21,7 +21,7 @@ public class Usuario implements Serializable
 	/**
 	 * @return the carnet
 	 */
-	public int getCarnet() {
+	public String getCarnet() {
 		return carnet;
 	}
 
@@ -29,7 +29,7 @@ public class Usuario implements Serializable
 	/**
 	 * @param carnet the carnet to set
 	 */
-	public void setCarnet(int carnet) {
+	public void setCarnet(String carnet) {
 		this.carnet = carnet;
 	}
 

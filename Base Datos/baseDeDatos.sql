@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS Rol(tipo VARCHAR(14) PRIMARY KEY);
 
-CREATE TABLE IF NOT EXISTS Usuario(carnet BIGINT PRIMARY KEY, nombre VARCHAR(50) NOT NULL, correo VARCHAR(50), contrasena VARCHAR(80) NOT NULL, estado VARCHAR(15) NOT NULL, rol VARCHAR(14) REFERENCES Rol(tipo));
+CREATE TABLE IF NOT EXISTS Usuario(carnet VARCHAR(30) PRIMARY KEY, nombre VARCHAR(50) NOT NULL, correo VARCHAR(50), contrasena VARCHAR(80) NOT NULL, estado VARCHAR(15) NOT NULL, rol VARCHAR(14) REFERENCES Rol(tipo));
 
 CREATE TABLE IF NOT EXISTS TipoNovedad(tipo VARCHAR(14) PRIMARY KEY);
 
@@ -14,7 +14,7 @@ ALTER TABLE Equipos ADD CONSTRAINT PK_Equipos PRIMARY KEY (idlaboratorio, idEqui
 alter table Equipos add constraint FK_equipos_Lab foreign key (idlaboratorio) REFERENCES Laboratorio(id);
 alter table Equipos add constraint FK_equipos_equi foreign key (idEquipo) REFERENCES Equipo(id);
 
-CREATE TABLE IF NOT EXISTS Novedad(id SERIAL PRIMARY KEY, fecha DATE, carnet BIGINT references Usuario(carnet), idLaboratorio INT references Laboratorio(id), idEquipo INT references Equipo(id), descripcion VARCHAr(100), tiponovedad VARCHAR(15) REFERENCES TipoNovedad(tipo));
+CREATE TABLE IF NOT EXISTS Novedad(id SERIAL PRIMARY KEY, fecha DATE, carnet VARCHAR(30) references Usuario(carnet), idLaboratorio INT references Laboratorio(id), idEquipo INT references Equipo(id), descripcion VARCHAr(100), tiponovedad VARCHAR(15) REFERENCES TipoNovedad(tipo));
 
 CREATE TABLE IF NOT EXISTS Elemento(id SERIAL PRIMARY KEY, nombre VARCHAR(100), fabricante VARCHAR(15), disponible BOOLEAN);
 
@@ -24,11 +24,11 @@ insert into TipoNovedad(tipo) values ('REGISTRAR');
 insert into TipoNovedad(tipo) values ('CONSULTAR');
 
 insert into Rol(tipo) values ('ESTUDIANTE');               
-insert into Rol(tipo) values ('ADMITRISTATIVO');
+insert into Rol(tipo) values ('ADMINISTRATIVO');
 
-insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values (2123238, 'Carlos', 'carlos.amorocho@mail.escuelaing.edu.co', 'carlitos', 'Activo', 'ADMITRISTATIVO');
-insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values (2154957, 'Daniela', 'angie.ruiz@mail.escuelaing.edu.co', 'snowball', 'Activo', 'ESTUDIANTE');
-insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values (1234567, 'prueba', 'prueba@pruebita.com', 'prueba', 'Activo', 'ADMITRISTATIVO');
+insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values ('2123238', 'Carlos', 'carlos.amorocho@mail.escuelaing.edu.co', 'carlitos', 'Activo', 'ADMINISTRATIVO');
+insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values ('2154957', 'Daniela', 'angie.ruiz@mail.escuelaing.edu.co', 'snowball', 'Activo', 'ESTUDIANTE');
+insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values ('1234567', 'prueba', 'prueba@pruebita.com', 'prueba', 'Activo', 'ADMINISTRATIVO');
 
 insert into Laboratorio(nombre, capacidad, disponible) values ('Ing. Software', 20, True);
 insert into Laboratorio(nombre, capacidad, disponible) values ('Lab. Redes', 15, True);
@@ -88,4 +88,5 @@ FROM laboratorio, equipo;
 select * from laboratorio;
 select * from equipo;
 select * from equipos;
+
 

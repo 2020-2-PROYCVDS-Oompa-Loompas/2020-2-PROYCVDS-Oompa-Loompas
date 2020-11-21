@@ -67,7 +67,7 @@ public class InicioSesion extends BaseRegistroLabBean
 		{
 			if(SecurityUtils.getSubject().getPrincipal() == null)
 			{
-				FacesContext.getCurrentInstance().getExternalContext().redirect("usuarioAdministrador.xhtml");
+				FacesContext.getCurrentInstance().getExternalContext().redirect("inicio.xhtml");
 			}
 		} catch(IOException e)
 		{
@@ -98,7 +98,7 @@ public class InicioSesion extends BaseRegistroLabBean
 			UsernamePasswordToken token = new UsernamePasswordToken(correo, hexadecimal);
 			token.setRememberMe(true);
 			usuarioActual.login(token);
-			FacesContext.getCurrentInstance().getExternalContext().redirect("usuarioAdministrador.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("inicio.xhtml");
 			
 			if(usuario == null)
 			{

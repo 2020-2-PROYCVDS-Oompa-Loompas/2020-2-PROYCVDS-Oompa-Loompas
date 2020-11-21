@@ -1,169 +1,116 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.eci.cvds.beans;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import edu.eci.cvds.entities.Usuario;
-
-import javax.ejb.Stateless;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIComponent;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.inject.Named;
 import java.io.IOException;
-import java.io.Serializable;
-import java.util.List;
-import java.util.logging.Level;
+
 import javax.faces.bean.ManagedBean;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.crypto.hash.Sha256Hash;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
+import com.google.inject.Inject;
+
+import edu.eci.cvds.security.ExceptionLogin;
+import edu.eci.cvds.security.Logger;
 
 
-
-@Named
-@Stateless
 @SessionScoped
 @ManagedBean(name = "shiroBean", eager = true)
-public class ShiroBean implements Serializable {
-	
-	
+public class ShiroBean extends BasePageBean{
 
-    private static final Logger log = LoggerFactory.getLogger(ShiroBean.class);
-	private String username;
+    private static final long serialVersionUID = -5223360388656378877L;
+    /*
+     * @Inject private UserService service;
+     */
+    @Inject
+    private Logger logger;
+    private String email;
     private String password;
-    private Boolean rememberMe = false;
-    private String redirectUrl = "/faces/inicio.xhtml";
-    static Subject subject;
+    private Boolean remember;
+    private String message;
 
-    /**
-     * Try and authenticate the user
-     */
-    public void doLogin() {
-    	//System.out.println("Entra1");
-    	
-    	/*if (getUsername()=="") {
-    		setUsername(null);}*/
-        
-        //System.out.println("Entra2");
-    	subject = SecurityUtils.getSubject();
-    	if (getUsername()=="") {
-    		setUsername(null);}
-        UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), new Sha256Hash(getPassword()).toHex());
-		
-        try {
-        	System.out.println("Entra a try");
-        	subject.login(token);
-        	
-        	
-        	System.out.println(getUsername());
-        	System.out.println(getPassword());
-        	//ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-        	//context.redirect(context.getRequestContextPath()+"/inicio.xhtml");
-        	//FacesContext.getCurrentInstance().getExternalContext().redirect("/faces/inicio.xhtml");
-        	//Subject currentUser = SecurityUtils.getSubject();
-			//String hex = new Sha256Hash(password).toHex();
-			//System.out.println(hex);
-			//UsernamePasswordToken token = new UsernamePasswordToken(getUsername(), hex);
-			//token.setRememberMe(true);
-			//currentUser.login(token);
-			System.out.println("pruebaRol");
-			System.out.println(subject.hasRole(""));
-			System.out.println(subject.hasRole("ESTUDIANTE"));
-
-		   
-        
-            if (subject.hasRole("ESTUDIANTE")) {
-            	System.out.println("Entra a rol");
-            	ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
-            	context.redirect(context.getRequestContextPath()+"/inicio.xhtml");
-			} 
-            
-			
-			
-        }
-        catch (NullPointerException e) {
-            System.err.println("Null Pointer");
-        }
-		catch (UnknownAccountException ex) {
-			FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login", "Usuario desconocido."));
-           
-        } 
-		catch (IncorrectCredentialsException ex) {
-			FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login", "Contraseña incorrecta."));
-        } 
-		catch (LockedAccountException ex) {
-			FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login", "Cuenta bloqueada."));
-        } 
-		catch (AuthenticationException | IOException ex) {
-			FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login", "Todos los campos son obligatorios."));
-        } 
-    }
-
-    public void doLogOut() {
-
-        SecurityUtils.getSubject().logout();
-        try {
-            FacesContext.getCurrentInstance().getExternalContext().redirect(redirectUrl);
-        } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(ShiroBean.class.getName()).log(Level.SEVERE, null, ex);
+    public void login() throws IOException, ExceptionLogin{
+        System.out.println("Hola entre en el login");
+        boolean isLogger = logger.isLogged();
+        if(!isLogger){
+            System.out.println("Hola entre 2");
+            logger.login(email, password, false);
+            redirectHomeUser();
+        } else{
+            existingSession();
         }
     }
 
-    /**
-     * Adds a new SEVERITY_ERROR FacesMessage for the ui
-     *
-     * @param message Error Message
-     */
-    private void facesError(String message) {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, message, null));
+    public void redirectHomeUser() throws IOException{
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        if(logger.isAdmin()){
+            System.out.println("Entre a admin");
+            HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+            session.setAttribute("email", email);
+            facesContext.getExternalContext().redirect("../admin/admin.xhtml");
+        }
+        if(logger.isUser()){
+            HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+            session.setAttribute("email", email);
+            facesContext.getExternalContext().redirect("../public/user.xhtml");
+        }
     }
 
-    public String getUsername() {
-        return username;
+    public void existingSession() throws IOException{
+        this.message = "Another user with those credentials already exists";
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        facesContext.getExternalContext().redirect("");
     }
 
-    public void setUsername(String login) {
-        this.username = login;
+    public void register() throws IOException{
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        facesContext.getExternalContext().redirect("../Register.xhtml");
     }
 
-    public String getPassword() {
+    public void logout() throws IOException{
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        facesContext.getExternalContext().redirect("../Login.xhtml");
+        logger.logout();
+    }
+
+    public void comeBack() throws IOException{
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        if(logger.isAdmin()){
+            facesContext.getExternalContext().redirect("../admin/admin.xhtml");
+        }
+        if(logger.isUser()){
+            facesContext.getExternalContext().redirect("../public/user.xhtml");
+        }
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public boolean getRemember(){
+        return remember;
+    }
+
+    public void setRemember(boolean remember){
+        this.remember = remember;
+    }
+
+    public String getPassword(){
         return password;
     }
 
-    public void setPassword(String senha) {
-        this.password = senha;
+    public void setPassword(String password){
+        this.password = password;
     }
 
-    public Boolean getRememberMe() {
-        return rememberMe;
+    public String getMessage(){
+        return message;
     }
 
-    public void setRememberMe(Boolean lembrar) {
-        this.rememberMe = lembrar;
-    }
-
-    public String getRedirectUrl() {
-        return redirectUrl;
-    }
-
-    public void setRedirectUrl(String redirectUrl) {
-        this.redirectUrl = redirectUrl;
+    public void setMessage(String message){
+        this.message = message;
     }
 }
