@@ -34,6 +34,8 @@ public class ShiroBean extends BasePageBean{
 
     public void login() throws IOException, ExceptionLogin{
         System.out.println("Hola entre en el login");
+        System.out.println(email);
+        System.out.println(password);
         boolean isLogger = logger.isLogged();
         if(!isLogger){
             System.out.println("Hola entre 2");

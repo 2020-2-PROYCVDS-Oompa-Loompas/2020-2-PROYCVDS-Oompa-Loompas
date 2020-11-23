@@ -23,8 +23,8 @@
 					<img class="avatar" src= "img/logov2.png" alt="Logo de login"/>
 					<h2 style="color: white">Iniciar Sesión</h2>
 					<h:form action="#">
-						<p:inputText placeholder="Carnét" id="carnet" value="#{shiroBean.email}"></p:inputText>
-						<p:inputText placeholder="Contraseña" id="password" ></p:inputText>
+						<p:inputText placeholder="Carnét" type="text" id="carnet" value="#{shiroBean.email}"></p:inputText>
+						<p:inputText placeholder="Contraseña" type="password" id="password" value="#{shiroBean.password}"></p:inputText>
 						<p:commandButton value="Iniciar sesión" class="btn btn-rose btn-simple btn-wd btn-lg" action="#{shiroBean.login()}"/>
 						
 					</h:form>
