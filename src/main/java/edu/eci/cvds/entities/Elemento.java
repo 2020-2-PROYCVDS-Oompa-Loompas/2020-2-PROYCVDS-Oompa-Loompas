@@ -8,6 +8,7 @@ public class Elemento {
 	private int Capacidad;
 	private int idequipo;
 	private boolean disponible;
+	private boolean funcionamiento;
 	
 	public Elemento() {	}
 
@@ -87,10 +88,20 @@ public class Elemento {
 		return disponible;
 	}
 	
+	public void setFuncionamiento(boolean funcionamiento)
+	{
+		this.funcionamiento = funcionamiento;
+	}
+	
+	public boolean getFuncionamiento()
+	{
+		return funcionamiento;
+	}
+	
 	@Override
     public String toString() 
 	{
-        return "Elemento {id: " + id + ", categoria: " + categoria + " , fabricante: " + fabricante + ", disponible: " + disponible + ", idequipo: " + idequipo + "}\n";
+        return "Elemento {id: " + id + ", categoria: " + categoria + " , fabricante: " + fabricante + ", disponible: " + disponible + ", funcionamiento: " + funcionamiento + ", idequipo: " + idequipo + "}\n";
     }
 
 }

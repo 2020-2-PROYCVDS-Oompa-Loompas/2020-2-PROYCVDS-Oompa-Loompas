@@ -95,6 +95,14 @@ public class App
         System.out.println(em.getElementosDisponible());
         System.out.println("----------------------");
         System.out.println("----------------------");
+        System.out.println("Dar de baja a un elemento");
+        em.bajarElemento(9);
+        System.out.println("----------------------");
+        System.out.println("----------------------");
+        System.out.println("Consultar los elementos");
+        System.out.println(em.getElementos());
+        System.out.println("----------------------");
+        System.out.println("----------------------");
         System.out.println("Consultar los elementos por categoria");
         System.out.println(em.getElementosPorCategoria("Torre"));
         System.out.println("----------------------");

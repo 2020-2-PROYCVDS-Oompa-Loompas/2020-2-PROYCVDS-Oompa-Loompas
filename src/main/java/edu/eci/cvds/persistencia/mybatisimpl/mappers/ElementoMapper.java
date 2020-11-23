@@ -31,4 +31,6 @@ public interface ElementoMapper
 	public List<Elemento> getElementosPorFabricante(@Param("fabricante") String fabricante);
 	
 	public void asociarElemento(@Param("id") int id);
+	
+	public void bajarElemento(@Param("id") int id);
 }

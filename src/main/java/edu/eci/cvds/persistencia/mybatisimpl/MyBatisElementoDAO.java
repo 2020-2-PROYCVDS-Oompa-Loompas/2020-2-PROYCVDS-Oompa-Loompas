@@ -94,5 +94,22 @@ public class MyBatisElementoDAO implements ElementoDAO
 		{
 			throw new PersistenceException("No puedes asociar un elemento no disponible");
 		}
+		else
+		{
+			mapper.asociarElemento(id);
+		}
+	}
+	
+	@Override
+	public void bajarElemento(int id) throws PersistenceException
+	{
+		if(!getElemento(id).getDisponible())
+		{
+			throw new PersistenceException("No puedes dar de baja a un elemento asociado con un equipo");
+		}
+		else
+		{
+			mapper.bajarElemento(id);
+		}
 	}
 }

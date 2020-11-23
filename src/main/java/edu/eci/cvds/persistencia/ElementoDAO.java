@@ -29,4 +29,6 @@ public interface ElementoDAO
 	public List<Elemento> getElementosPorFabricante(String fabricante);
 	
 	public void asociarElemento(int id) throws PersistenceException;
+	
+	public void bajarElemento(int id) throws PersistenceException;
 }

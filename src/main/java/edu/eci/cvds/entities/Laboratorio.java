@@ -95,5 +95,4 @@ public class Laboratorio {
 	{
         return "Laboratorio {id: " + id + ", nombre: " + nombre + " , capacidad: " + capacidad + ", disponible: " + disponible +", fechacreacion: " + fechacreacion + ", fechacierre: " + fechacierre + "}\n";
     }
-
 }
