@@ -1,8 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html	xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
-		xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
+<html   xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">>
 		
 		<h:head>
 			<title>Labinfo</title>
@@ -20,7 +23,10 @@
 					<img class="avatar" src= "img/logov2.png" alt="Logo de login"/>
 					<h2 style="color: white">Iniciar Sesión</h2>
 					<h:form action="#">
-						<p:inputText placeholder="Usuario" id="registoUsuario"></p:inputText>
+						<p:inputText placeholder="Carnét" id="carnet" value="#{shiroBean.email}"></p:inputText>
+						<p:inputText placeholder="Contraseña" id="password" ></p:inputText>
+						<p:commandButton value="Iniciar sesión" class="btn btn-rose btn-simple btn-wd btn-lg" action="#{shiroBean.login()}"/>
+						
 					</h:form>
 				</div>
 				

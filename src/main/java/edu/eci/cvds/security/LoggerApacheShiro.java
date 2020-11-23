@@ -7,7 +7,6 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.Sha512Hash;
 import org.apache.shiro.subject.Subject;
-import edu.eci.cvds.security.*;
 
 
 public class LoggerApacheShiro implements Logger {
@@ -17,7 +16,7 @@ public class LoggerApacheShiro implements Logger {
         try {
             System.out.println("Hola entre 3");
             Subject subject = SecurityUtils.getSubject();
-            UsernamePasswordToken token = new UsernamePasswordToken(email,new Sha512Hash(password).toHex(), remember);
+            UsernamePasswordToken token = new UsernamePasswordToken(email,password, remember);
             subject.getSession().setAttribute("correo", email);
             subject.login(token);
         } catch (UnknownAccountException e) {
@@ -40,12 +39,12 @@ public class LoggerApacheShiro implements Logger {
 
     @Override
     public boolean isAdmin() {
-        return SecurityUtils.getSubject().hasRole("");
+        return SecurityUtils.getSubject().hasRole("ADMINISTRATIVO");
     }
 
     @Override
     public boolean isUser() {
-        return SecurityUtils.getSubject().hasRole("user");
+        return SecurityUtils.getSubject().hasRole("ESTUDIANTE");
     }
     
 }

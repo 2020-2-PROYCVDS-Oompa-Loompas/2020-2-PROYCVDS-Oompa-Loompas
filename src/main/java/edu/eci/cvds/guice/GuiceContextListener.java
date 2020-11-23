@@ -8,6 +8,8 @@ import org.mybatis.guice.datasource.helper.JdbcHelper;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
+import edu.eci.cvds.beans.BasePageBean;
+import edu.eci.cvds.beans.ShiroBean;
 import edu.eci.cvds.persistencia.ElementoDAO;
 import edu.eci.cvds.persistencia.EquipoDAO;
 import edu.eci.cvds.persistencia.LaboratorioDAO;
@@ -18,6 +20,8 @@ import edu.eci.cvds.persistencia.mybatisimpl.MyBatisEquipoDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisLaboratorioDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisNovedadDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisUsuarioDAO;
+import edu.eci.cvds.security.Logger;
+import edu.eci.cvds.security.LoggerApacheShiro;
 
 
 
@@ -45,6 +49,8 @@ public class GuiceContextListener implements ServletContextListener {
                 bind(LaboratorioDAO.class).to(MyBatisLaboratorioDAO.class);
                 bind(EquipoDAO.class).to(MyBatisEquipoDAO.class);
                 bind(ElementoDAO.class).to(MyBatisElementoDAO.class);
+                bind(BasePageBean.class).to(ShiroBean.class);
+                bind(Logger.class).to(LoggerApacheShiro.class);
                 
                 
 			}

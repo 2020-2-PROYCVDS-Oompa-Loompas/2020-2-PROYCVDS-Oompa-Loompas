@@ -1,6 +1,5 @@
 package edu.eci.cvds.security;
 
-import edu.eci.cvds.security.ExceptionLogin;
 
 public interface Logger {
     
