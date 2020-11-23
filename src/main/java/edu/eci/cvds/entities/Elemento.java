@@ -4,8 +4,10 @@ public class Elemento {
 	
 	private int id;
 	private String fabricante;
+	private String categoria;
 	private int Capacidad;
-	private int idEquipo;
+	private int idequipo;
+	private boolean disponible;
 	
 	public Elemento() {	}
 
@@ -55,15 +57,40 @@ public class Elemento {
 	 * @return the idEquipo
 	 */
 	public int getIdEquipo() {
-		return idEquipo;
+		return idequipo;
 	}
 
 	/**
 	 * @param idEquipo the idEquipo to set
 	 */
 	public void setIdEquipo(int idEquipo) {
-		this.idEquipo = idEquipo;
+		this.idequipo = idEquipo;
 	}
 	
+	public void setCategoria(String categoria)
+	{
+		this.categoria = categoria;
+	}
 	
+	public String getCategoria()
+	{
+		return categoria;
+	}
+	
+	public void setDisponible(boolean disponible)
+	{
+		this.disponible = disponible;
+	}
+	
+	public boolean getDisponible()
+	{
+		return disponible;
+	}
+	
+	@Override
+    public String toString() 
+	{
+        return "Elemento {id: " + id + ", categoria: " + categoria + " , fabricante: " + fabricante + ", disponible: " + disponible + ", idequipo: " + idequipo + "}\n";
+    }
+
 }

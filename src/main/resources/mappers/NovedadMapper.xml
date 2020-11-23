@@ -10,8 +10,10 @@
  		u.id,
  		u.fecha,
  		u.carnet,
+ 		u.usuario,
  		u.idlaboratorio,
  		u.idequipo,
+ 		u.idelemento,
  		u.descripcion,
  		u.tiponovedad
  		FROM novedad as u
@@ -22,17 +24,32 @@
  		a.id,
  		a.fecha,
  		a.carnet,
+ 		a.usuario,
  		a.idlaboratorio,
  		a.idequipo,
+ 		a.idelemento,
  		a.descripcion,
  		a.tiponovedad
- 		FROM novedad as a;
+ 		FROM novedad as a
+ 		ORDER BY a.fecha DESC;
+ 	</select>
+ 	<select parameterType = "map" id = "getNovedadPorEquipo" resultMap = "NovedadResult">
+ 		SELECT
+ 		*
+ 		FROM novedad
+ 		WHERE idequipo = #{idequipo};
+ 	</select>
+ 	<select parameterType = "map" id = "getNovedadPorElemento" resultMap = "NovedadResult">
+ 		SELECT
+ 		*
+ 		FROM novedad
+ 		WHERE idelemento = #{idelemento};
  	</select>
  	<insert parameterType = "map" id = "agregarNovedad">
   		INSERT INTO novedad
-  		(fecha, carnet, idlaboratorio, idequipo, descripcion, tiponovedad)
+  		(fecha, carnet, usuario, idlaboratorio, idequipo, idelemento, descripcion, tiponovedad)
   		VALUES 
-  		(#{fecha}, #{carnet}, #{idlaboratorio}, #{idequipo}, #{descripcion}, #{tiponovedad});
+  		(#{fecha}, #{carnet}, #{usuario}, #{idlaboratorio}, #{idequipo}, #{idelemento}, #{descripcion}, #{tiponovedad});
   	</insert>
  
 
@@ -40,8 +57,10 @@
 	    <id property='id' column='id'/>
 	    <result property="fecha" column="fecha"></result>
 	    <result property="carnet" column="carnet"></result>
+	    <result property="usuario" column="usuario"></result>
 	    <result property="idlaboratorio" column="idlaboratorio"></result>
 		<result property="idequipo" column="idequipo"></result>
+		<result property="idelemento" column="idelemento"></result>
 		<result property="descripcion" column="descripcion"></result>
 		<result property="tiponovedad" column="tiponovedad"></result>
 	</resultMap>

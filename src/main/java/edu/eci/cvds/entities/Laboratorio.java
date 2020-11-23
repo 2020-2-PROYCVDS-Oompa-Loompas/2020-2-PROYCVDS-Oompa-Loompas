@@ -1,11 +1,15 @@
 package edu.eci.cvds.entities;
 
+import java.time.LocalDate;
+
 public class Laboratorio {
 	
 	private int id;
 	private String nombre;
 	private int capacidad;
 	private boolean disponible;
+	private LocalDate fechacierre;
+	private LocalDate fechacreacion;
 	
 	public Laboratorio() {}
 
@@ -61,10 +65,35 @@ public class Laboratorio {
 		return disponible;
 	}
 	
+	public LocalDate getFechaCreacion() {
+		return fechacreacion;
+	}
+
+	/**
+	 * @param fecha the fecha to set
+	 */
+	public void setFechaCreacion(LocalDate fechacreacion) {
+		this.fechacreacion = fechacreacion;
+	}
+	
+	/**
+	 * @return the fecha
+	 */
+	public LocalDate getFechaCierre() {
+		return fechacierre;
+	}
+
+	/**
+	 * @param fecha the fecha to set
+	 */
+	public void setFechaCierre(LocalDate fechacierre) {
+		this.fechacierre = fechacierre;
+	}
+	
 	@Override
     public String toString() 
 	{
-        return "Laboratorio {id: " + id + ", nombre: " + nombre + " , capacidad: " + capacidad + ", disponible: " + disponible +"}\n";
+        return "Laboratorio {id: " + id + ", nombre: " + nombre + " , capacidad: " + capacidad + ", disponible: " + disponible +", fechacreacion: " + fechacreacion + ", fechacierre: " + fechacierre + "}\n";
     }
 
 }

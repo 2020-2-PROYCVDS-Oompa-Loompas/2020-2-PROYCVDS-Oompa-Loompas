@@ -33,6 +33,32 @@ public class MyBatisNovedadDAO implements NovedadDAO
 	}
 	
 	@Override
+	public List<Novedad> getNovedadPorEquipo(int idequipo) throws PersistenceException 
+	{
+		try{
+			return mapper.getNovedadPorEquipo(idequipo);
+			}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			throw new PersistenceException("Error al consultar la novedad:",e);
+			}
+	}
+	
+	@Override
+	public List<Novedad> getNovedadPorElemento(int idelemento) throws PersistenceException 
+	{
+		try{
+			return mapper.getNovedadPorElemento(idelemento);
+			}
+		catch(Exception e)
+		{
+			System.out.println(e);
+			throw new PersistenceException("Error al consultar la novedad:",e);
+			}
+	}
+	
+	@Override
 	public List<Novedad> getNovedades() throws PersistenceException
 	{
 		try {
@@ -44,7 +70,7 @@ public class MyBatisNovedadDAO implements NovedadDAO
 		}
 	}
 	
-	public void agregarNovedad(@Param("fecha") LocalDate fecha, @Param("carnet") int carnet, @Param("idlaboratorio") int idlaboratorio, @Param("idequipo") int idequipo, @Param("descripcion") String descripcion, @Param("tiponovedad") TipoNovedad tiponovedad) throws PersistenceException
+	public void agregarNovedad(@Param("fecha") LocalDate fecha, @Param("carnet") int carnet, @Param("idlaboratorio") int idlaboratorio, @Param("idequipo") int idequipo, @Param("idelemento") int idelemento, @Param("descripcion") String descripcion, @Param("tiponovedad") TipoNovedad tiponovedad) throws PersistenceException
 	{
 		if(descripcion == "")
 		{
@@ -52,7 +78,7 @@ public class MyBatisNovedadDAO implements NovedadDAO
 		}
 		else
 		{
-			mapper.agregarNovedad(fecha, carnet, idlaboratorio, idequipo, descripcion, tiponovedad);
+			mapper.agregarNovedad(fecha, carnet, idlaboratorio, idequipo, idelemento, descripcion, tiponovedad);
 		}
 	}
 }

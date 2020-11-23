@@ -12,7 +12,11 @@ public interface NovedadDAO
 {
 	public Novedad getNovedad(int id)throws PersistenceException;
 	
+	public List<Novedad> getNovedadPorEquipo(int idequipo)throws PersistenceException;
+	
+	public List<Novedad> getNovedadPorElemento(int idelemento)throws PersistenceException;
+	
 	public List<Novedad> getNovedades() throws PersistenceException;
 	
-	public void agregarNovedad(LocalDate fecha, int carnet, int idlaboratorio, int idequipo, String descripcion, TipoNovedad tiponovedad) throws PersistenceException;
+	public void agregarNovedad(LocalDate fecha, int carnet, int idlaboratorio, int idequipo, int idelemento, String descripcion, TipoNovedad tiponovedad) throws PersistenceException;
 }

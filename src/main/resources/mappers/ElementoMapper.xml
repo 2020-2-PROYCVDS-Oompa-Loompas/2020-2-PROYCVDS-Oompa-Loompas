@@ -7,23 +7,82 @@
   	<select parameterType = "map" id = "getElemento" resultMap = "ElementoResult">
   		SELECT
   		u.id,
-  		u.nombre,
+  		u.categoria,
   		u.fabricante,
   		u.disponible,
+  		u.idequipo
   		FROM elemento as u
   		WHERE id = #{id};
   	</select>
+  	<select parameterType = "map" id = "getElementos" resultMap = "ElementoResult">
+  		SELECT
+  		*
+  		FROM elemento;
+  	</select>
+  	<select parameterType = "map" id = "getElementosDisponible" resultMap = "ElementoResult">
+  		SELECT
+  		*
+  		FROM elemento
+  		WHERE disponible = True;
+  	</select>
+  	<select parameterType = "map" id = "getElementosPorCategoria" resultMap = "ElementoResult">
+  		SELECT
+  		*
+  		FROM elemento
+  		WHERE disponible = True AND categoria = #{categoria};
+  	</select>
+  	<select parameterType = "map" id = "getElementosPorFabricante" resultMap = "ElementoResult">
+  		SELECT
+  		*
+  		FROM elemento
+  		WHERE disponible = True AND fabricante = #{fabricante};
+  	</select>
+  	<select parameterType = "map" id = "getElementoOrdenadoPorId" resultMap = "ElementoResult">
+  		SELECT
+  		*
+  		FROM elemento
+  		ORDER BY id ASC;
+  	</select>
+  	<select parameterType = "map" id = "getElementoOrdenadoPorCategoria" resultMap = "ElementoResult">
+  		SELECT
+  		*
+  		FROM elemento
+  		ORDER BY categoria ASC;
+  	</select>
+  	<select parameterType = "map" id = "getElementoOrdenadoPorFabricante" resultMap = "ElementoResult">
+  		SELECT
+  		*
+  		FROM elemento
+  		ORDER BY fabricante ASC;
+  	</select>
+  	<select parameterType = "map" id = "getElementoOrdenadoPorDisponible" resultMap = "ElementoResult">
+  		SELECT
+  		*
+  		FROM elemento
+  		ORDER BY disponible ASC;
+  	</select>
+  	<select parameterType = "map" id = "getElementoOrdenadoPorIdEquipo" resultMap = "ElementoResult">
+  		SELECT
+  		*
+  		FROM elemento
+  		ORDER BY idequipo ASC;
+  	</select>
+  	<update parameterType = "map" id = "asociarElemento">
+  		UPDATE elemento SET disponible = False, idequipo = #{idequipo}
+  		WHERE id = #{id} AND disponible = True;
+  	</update>
   	<insert parameterType = "map" id = "agregarElemento">
   		INSERT INTO elemento
-  		(nombre, fabricante, disponible)
+  		(categoria, fabricante, disponible, idequipo)
   		VALUES 
-  		(#{nombre}, #{fabricante}, #{disponible});
+  		(#{nombre}, #{fabricante}, #{disponible}, #{idequipo});
   	</insert>
   	
   	<resultMap type = 'Elemento' id = 'ElementoResult'>
   		<id property = 'id' column = 'id' />
-  		<result property = "nombre" column = "fabricante" />
-  		<result property = "fabricante" column = "idequipo" />
+  		<result property = "categoria" column = "categoria" />
+  		<result property = "fabricante" column = "fabricante" />
   		<result property = "disponible" column = "disponible" />
+  		<result property = "idequipo" column = "idequipo" />
   	</resultMap>
   </mapper>

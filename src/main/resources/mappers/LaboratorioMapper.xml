@@ -9,7 +9,9 @@
   		u.id,
   		u.nombre,
   		u.capacidad,
-  		u.disponible
+  		u.disponible,
+  		u.fechacreacion,
+  		u.fechacierre
   		FROM laboratorio as u
   		WHERE u.id = #{id};
   	</select>
@@ -26,7 +28,9 @@
   		u.id,
   		u.nombre,
   		u.capacidad,
-  		u.disponible
+  		u.disponible,
+  		u.fechacreacion,
+  		u.fechacierre
   		FROM laboratorio as u
   		WHERE u.disponible = True;
   	</select>
@@ -34,14 +38,19 @@
 		SELECT
 		equipo.id,
 		equipo.nombre
-		FROM laboratorio, equipos, equipo
-		WHERE laboratorio.id = #{id} AND #{id} = equipos.idlaboratorio and equipos.idequipo = equipo.id;
+		FROM laboratorio, equipo
+		WHERE laboratorio.id = #{id} AND #{id} = equipo.idlaboratorio;
   	</select>
+  	<update parameterType = "map" id = "asociarEquipo">
+  		UPDATE
+  		laboratorio SET capacidad = capacidad - 1
+  		WHERE id = #{id};
+  	</update>
   	<insert parameterType = "map" id = "agregarLaboratorio">
   		INSERT INTO laboratorio
-  		(nombre, capacidad, disponible)
+  		(nombre, capacidad, disponible, fechacreacion, fechacierre)
   		VALUES
-  		(#{nombre}, #{capacidad}, #{disponible});
+  		(#{nombre}, #{capacidad}, #{disponible}, #{fechacreacion}, #{fechacierre});
   	</insert>
   	
   	<resultMap type = 'Laboratorio' id = 'LaboratorioResult'>
@@ -49,5 +58,7 @@
   		<result property = "nombre" column = "nombre" />
   		<result property = "capacidad" column = "capacidad" />
   		<result property = "disponible" column = "disponible" />
+  		<result property = "fechacreacion" column = "fechacreacion" />
+  		<result property = "fechacierre" column = "fechacierre" />
   	</resultMap>
   </mapper>

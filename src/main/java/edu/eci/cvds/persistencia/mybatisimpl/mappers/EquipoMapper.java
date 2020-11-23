@@ -1,5 +1,7 @@
 package edu.eci.cvds.persistencia.mybatisimpl.mappers;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import edu.eci.cvds.entities.Equipo;
@@ -8,5 +10,9 @@ public interface EquipoMapper
 {
 	public Equipo getEquipo(@Param("id") int id);
 	
-	public void agregarEquipo(@Param("nombre") String nombre, @Param("disponible") boolean disponible);
+	public void agregarEquipo(@Param("nombre") String nombre, @Param("disponible") boolean disponible, @Param("idlaboratorio") int idlaboratorio);
+	
+	public List<Equipo> getEquiposDisponibles();
+	
+	public void asociarEquipo(@Param("id") int id);
 }

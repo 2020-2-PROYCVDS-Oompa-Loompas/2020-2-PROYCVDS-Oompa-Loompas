@@ -10,8 +10,10 @@ public class Novedad implements Serializable
 	private int id;
 	private LocalDate fecha;
 	private int carnet;
+	private String usuario;
 	private int idlaboratorio;
 	private int idequipo;
+	private int idelemento;
 	private String descripcion;
 	private String tiponovedad;
 	
@@ -59,6 +61,16 @@ public class Novedad implements Serializable
 		this.carnet = carnet;
 	}
 
+	public void setUsuario(String usuario)
+	{
+		this.usuario = usuario;
+	}
+	
+	public String getUsuario()
+	{
+		return usuario;
+	}
+	
 	/**
 	 * @return the idLaboratorio
 	 */
@@ -85,6 +97,14 @@ public class Novedad implements Serializable
 	 */
 	public void setIdEquipo(int idEquipo) {
 		this.idequipo = idEquipo;
+	}
+	
+	public int getIdElemento() {
+		return idelemento;
+	}
+
+	public void setIdElemento(int idelemento) {
+		this.idelemento = idelemento;
 	}
 
 	/**
@@ -122,6 +142,6 @@ public class Novedad implements Serializable
 	
 	@Override
     public String toString() {
-        return "Novedad {id: " + id + ", fecha: " + fecha + " ,carnet: " + carnet + ", idlaboratorio: " + idlaboratorio + ", idequipo : " + idequipo + ", descripcion: " + descripcion  + ", tipo novedad: " + tiponovedad + "}\n";
+        return "Novedad {id: " + id + ", fecha: " + fecha + " ,carnet: " + carnet + ", idlaboratorio: " + idlaboratorio + ", idequipo : " + idequipo + ", idelemento: " + idelemento + ", descripcion: " + descripcion  + ", tipo novedad: " + tiponovedad + "}\n";
     }
 }
