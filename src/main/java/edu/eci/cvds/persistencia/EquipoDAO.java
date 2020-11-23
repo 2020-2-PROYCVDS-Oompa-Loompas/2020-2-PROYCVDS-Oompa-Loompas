@@ -8,9 +8,11 @@ public interface EquipoDAO
 {
 	public Equipo getEquipo(int id);
 	
-	public void agregarEquipo(String nombre, boolean disponible, int idlaboratorio) throws PersistenceException;
+	public void agregarEquipo(String nombre, boolean disponible, boolean funcionamiento, int idlaboratorio) throws PersistenceException;
 	
 	public List<Equipo> getEquiposDisponibles();
 	
 	public void asociarEquipo(int id) throws PersistenceException;
+	
+	public void bajarEquipo(int id);
 }

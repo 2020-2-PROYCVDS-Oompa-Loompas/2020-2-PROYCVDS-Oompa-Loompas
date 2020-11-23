@@ -9,7 +9,6 @@
   		u.id,
   		u.nombre,
   		u.capacidad,
-  		u.disponible,
   		u.fechacreacion,
   		u.fechacierre
   		FROM laboratorio as u
@@ -20,7 +19,8 @@
   		u.id,
   		u.nombre,
   		u.capacidad,
-  		u.disponible
+  		u.fechacreacion,
+  		u.fechacierre
   		FROM laboratorio as u;
   	</select>
   	<select id = "getLaboratoriosDisponibles" resultMap = "LaboratorioResult">
@@ -28,11 +28,10 @@
   		u.id,
   		u.nombre,
   		u.capacidad,
-  		u.disponible,
   		u.fechacreacion,
   		u.fechacierre
   		FROM laboratorio as u
-  		WHERE u.disponible = True;
+  		WHERE u.fechacierre = null;
   	</select>
   	<select id = "getEquiposLaboratorio" resultMap = "LaboratorioResult">
 		SELECT
@@ -46,18 +45,21 @@
   		laboratorio SET capacidad = capacidad - 1
   		WHERE id = #{id};
   	</update>
+  	<update parameterType = "map" id = "cerrarLaboratorio">
+  		UPDATE laboratorio SET fechacierre = #{fechacierre}
+  		WHERE id = #{id};
+  	</update>
   	<insert parameterType = "map" id = "agregarLaboratorio">
   		INSERT INTO laboratorio
-  		(nombre, capacidad, disponible, fechacreacion, fechacierre)
+  		(nombre, capacidad, fechacreacion, fechacierre)
   		VALUES
-  		(#{nombre}, #{capacidad}, #{disponible}, #{fechacreacion}, #{fechacierre});
+  		(#{nombre}, #{capacidad}, #{fechacreacion}, #{fechacierre});
   	</insert>
   	
   	<resultMap type = 'Laboratorio' id = 'LaboratorioResult'>
   		<id property = 'id' column = 'id' />
   		<result property = "nombre" column = "nombre" />
   		<result property = "capacidad" column = "capacidad" />
-  		<result property = "disponible" column = "disponible" />
   		<result property = "fechacreacion" column = "fechacreacion" />
   		<result property = "fechacierre" column = "fechacierre" />
   	</resultMap>

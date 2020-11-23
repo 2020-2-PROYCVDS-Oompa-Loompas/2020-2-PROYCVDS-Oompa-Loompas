@@ -73,7 +73,7 @@
   	</update>
   	<update parameterType = "map" id = "bajarElemento">
   		UPDATE elemento SET funcionamiento = False, disponible = False
-  		WHERE id = #{id} AND disponible = True;
+  		WHERE id = #{id};
   	</update>
   	<insert parameterType = "map" id = "agregarElemento">
   		INSERT INTO elemento

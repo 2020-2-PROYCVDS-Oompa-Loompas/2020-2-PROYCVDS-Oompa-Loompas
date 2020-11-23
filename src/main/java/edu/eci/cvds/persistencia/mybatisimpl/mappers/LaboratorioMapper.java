@@ -12,7 +12,7 @@ public interface LaboratorioMapper
 {
 	public Laboratorio getLaboratorio(@Param("id") int id);
 	
-	public void agregarLaboratorio(@Param("nombre") String nombre, @Param("capacidad") int capacidad, @Param("disponible") boolean disponible, @Param("fechacreacion") LocalDate fechacreacion, @Param("fechacierre") LocalDate fechacierre);
+	public void agregarLaboratorio(@Param("nombre") String nombre, @Param("capacidad") int capacidad, @Param("fechacreacion") LocalDate fechacreacion, @Param("fechacierre") LocalDate fechacierre);
 	
 	public List<Laboratorio> getLaboratorios();
 	
@@ -21,4 +21,6 @@ public interface LaboratorioMapper
 	public List<Equipo> getEquiposLaboratorio(@Param("id") int id);
 	
 	public void asociarEquipo(@Param("id") int id);
+	
+	public void cerrarLaboratorio(@Param("id") int id, @Param("fechacierre") LocalDate fechacierre);
 }

@@ -103,7 +103,7 @@ public class MyBatisElementoDAO implements ElementoDAO
 	@Override
 	public void bajarElemento(int id) throws PersistenceException
 	{
-		if(!getElemento(id).getDisponible())
+		if(getElemento(id).getIdEquipo() != 0)
 		{
 			throw new PersistenceException("No puedes dar de baja a un elemento asociado con un equipo");
 		}

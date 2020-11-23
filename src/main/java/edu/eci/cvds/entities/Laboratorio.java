@@ -7,7 +7,6 @@ public class Laboratorio {
 	private int id;
 	private String nombre;
 	private int capacidad;
-	private boolean disponible;
 	private LocalDate fechacierre;
 	private LocalDate fechacreacion;
 	
@@ -55,16 +54,6 @@ public class Laboratorio {
 		this.capacidad = capacidad;
 	}
 	
-	public void setDisponible(boolean disponible)
-	{
-		this.disponible = disponible;
-	}
-	
-	public boolean getDisponible()
-	{
-		return disponible;
-	}
-	
 	public LocalDate getFechaCreacion() {
 		return fechacreacion;
 	}
@@ -93,6 +82,6 @@ public class Laboratorio {
 	@Override
     public String toString() 
 	{
-        return "Laboratorio {id: " + id + ", nombre: " + nombre + " , capacidad: " + capacidad + ", disponible: " + disponible +", fechacreacion: " + fechacreacion + ", fechacierre: " + fechacierre + "}\n";
+        return "Laboratorio {id: " + id + ", nombre: " + nombre + " , capacidad: " + capacidad + ", fechacreacion: " + fechacreacion + ", fechacierre: " + fechacierre + "}\n";
     }
 }

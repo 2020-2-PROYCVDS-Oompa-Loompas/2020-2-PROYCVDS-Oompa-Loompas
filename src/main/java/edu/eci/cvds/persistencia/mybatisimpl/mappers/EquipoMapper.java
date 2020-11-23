@@ -10,9 +10,11 @@ public interface EquipoMapper
 {
 	public Equipo getEquipo(@Param("id") int id);
 	
-	public void agregarEquipo(@Param("nombre") String nombre, @Param("disponible") boolean disponible, @Param("idlaboratorio") int idlaboratorio);
+	public void agregarEquipo(@Param("nombre") String nombre, @Param("disponible") boolean disponible, @Param("funcionamiento") boolean funcionamiento, @Param("idlaboratorio") int idlaboratorio);
 	
 	public List<Equipo> getEquiposDisponibles();
 	
 	public void asociarEquipo(@Param("id") int id);
+	
+	public void bajarEquipo(@Param("id") int id);
 }

@@ -5,6 +5,7 @@ public class Equipo {
 	private int id;
 	private String nombre;
 	private boolean disponible;
+	private boolean funcionamiento;
 	private int idlaboratorio;
 	
 	public Equipo() {}
@@ -46,6 +47,16 @@ public class Equipo {
 	{
 		return disponible;
 	}
+
+	public void setFuncionamiento(boolean funcionamiento)
+	{
+		this.funcionamiento = funcionamiento;
+	}
+	
+	public boolean getFuncionamiento()
+	{
+		return funcionamiento;
+	}
 	
 	public void setIdLaboratorio(int id)
 	{
@@ -59,6 +70,6 @@ public class Equipo {
 	
 	@Override
     public String toString() {
-        return "Equipo {id: " + id + ", nombre: " + nombre + " , disponible: " + disponible +", idlaboratorio: " + idlaboratorio + "}\n";
+        return "Equipo {id: " + id + ", nombre: " + nombre + " , disponible: " + disponible +", funcionamiento: " + funcionamiento + ", idlaboratorio: " + idlaboratorio + "}\n";
     }
 }

@@ -10,6 +10,7 @@
   		u.id,
   		u.nombre,
   		u.disponible,
+  		u.funcionamiento,
   		u.idlaboratorio
   		FROM equipo as u
   		WHERE id = #{id};
@@ -24,18 +25,23 @@
   		UPDATE equipo SET disponible = False, idlaboratorio = #{idlaboratorio}
   		WHERE id = #{id} AND disponible = True;
   	</update>
+  	<update id = "bajarEquipo" parameterType = "map">
+  		UPDATE equipo SET disponible = False, funcionamiento = False, idlaboratorio = null
+  		WHERE id = #{id};
+  	</update>
   	
   	<insert parameterType = "map" id = "agregarEquipo">
   		INSERT INTO equipo
-  		(nombre, disponible, idlaboratorio)
+  		(nombre, disponible, funcionamiento, idlaboratorio)
   		VALUES
-  		(#{nombre}, #{disponible}, #{idlaboratorio});
+  		(#{nombre}, #{disponible}, #{funcionamiento}, #{idlaboratorio});
   	</insert>
   	
   	<resultMap type = 'Equipo' id = 'EquipoResult'>
   		<id property = 'id' column = 'id' />
   		<result property = "nombre" column = "nombre" />
   		<result property = "disponible" column = "disponible" />
+  		<result property = "funcionamiento" column = "funcionamiento" />
   		<result property = "idlaboratorio" column = "idlaboratorio" />
   	</resultMap>
   
