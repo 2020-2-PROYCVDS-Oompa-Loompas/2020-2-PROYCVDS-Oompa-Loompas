@@ -1,10 +1,23 @@
-﻿/*
+/*
 	template: Lawyer&Attorney
 	author:   Luka Cvrk (www.solucija.com)
 */
 
 * { margin: 0; padding: 0; }
 body { font: .74em Tahoma, Verdana, Sans-Serif, Arial; background: url(../img/body.gif) repeat; color: #000000; }
+.col .botonEnviar{
+	
+    width: 100px;
+    height: 30px;
+    
+}
+
+.col .botonBorrar{
+	
+    width: 100px;
+    height: 30px;
+    
+}
 h1 { font: normal 3.4em "Trebuchet MS", Helvetica, Arial; }
 h2 { font: normal 1.8em "Trebuchet MS", Helvetica, Arial; color: #fff; margin: 0 0 15px; }
 h3 { font: normal 1.4em "Trebuchet MS", Helvetica, Arial; margin: 0 0 20px; }

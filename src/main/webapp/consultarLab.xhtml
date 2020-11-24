@@ -5,39 +5,59 @@
 		xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 		
 		 <h:head>
-            <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+			<meta http-equiv="content-type" content="text/html;charset=utf-8" />
             <link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
             <link href="css/es.css" rel="stylesheet"/>
             <title>OmpaLoompa</title>
-        </h:head>
-        <body>
-            <div id="wrapper">
+			<style>
+			table, th, td {
+			  border: 1px solid black;
+			  border-collapse: collapse;
+			  background: white;
+			}
+			th, td {
+			  padding: 5px;
+			}
+			th {
+			  text-align: left;
+			}
+			
+			</style>
+		</h:head>
+		<body>
+		
+			<div id="wrapper">
                 <div id="header">
-                    <div id="logo">
-                        <h1><a>Ompa<span>Loompa</span></a></h1>
-						<h:form action="#">
-							<p:commandButton  actionListener="#{shiroBean.logout}" value="Cerrar Sesion" />
-						</h:form>
-                    </div>
+                    
                     <div class="clr"></div>
                 </div>
                 <div class="content">
                     <ul id="menu">
-                        <li><a class="current">Mi perfil</a></li>
+                        <li><a href="admin.xhtml">Mi perfil</a></li>
                         <li><a href="registrarLaboratorio.xhtml">Registrar Laboratorio</a></li>
-                        <li><a href="consultarLab.xhtml">Consultar Laboratorios</a></li>
+                        <li><a class="current">Consultar Laboratorios</a></li>
                         <li><a href="consultarEquipo.xhtml">Consultar Equipos</a></li>
-                    </ul>
-                    <div id="pitch">
-                    </div>
-                    <div class="col">
-                        <h2>Bienvenid@! administrador:</h2>
-						<h:form action="#">
-							<h:outputText value="#{shiroBean.email}" style="color:#ffffff"/>
-						</h:form>
-                    </div>
+                    </ul>                    
                 </div>
+				
+				<h2>Laboratorios : </h2>
+
+				<table style="width:100%">
+				  <tr>
+					<th>Nombre</th>
+					<th>Capacidad</th> 
+					<th>Fecha de creación</th>
+					<th>Fecha de cierre</th>
+				  </tr>
+				  <tr>
+					
+				  </tr>
+				  
+				</table>
                
             </div>
-        </body>
+			
+			
+
+		</body>
 </html>

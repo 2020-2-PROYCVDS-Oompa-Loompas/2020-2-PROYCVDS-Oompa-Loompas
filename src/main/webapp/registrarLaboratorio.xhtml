@@ -13,28 +13,23 @@
         <body>
             <div id="wrapper">
                 <div id="header">
-                    <div id="logo">
-                        <h1><a>Ompa<span>Loompa</span></a></h1>
-						<h:form action="#">
-							<p:commandButton  actionListener="#{shiroBean.logout}" value="Cerrar Sesion" />
-						</h:form>
-                    </div>
+                    
                     <div class="clr"></div>
                 </div>
                 <div class="content">
                     <ul id="menu">
-                        <li><a class="current">Mi perfil</a></li>
-                        <li><a href="registrarLaboratorio.xhtml">Registrar Laboratorio</a></li>
+                        <li><a href="admin.xhtml">Mi perfil</a></li>
+                        <li><a class="current">Registrar Laboratorio</a></li>
                         <li><a href="consultarLab.xhtml">Consultar Laboratorios</a></li>
                         <li><a href="consultarEquipo.xhtml">Consultar Equipos</a></li>
                     </ul>
-                    <div id="pitch">
-                    </div>
                     <div class="col">
-                        <h2>Bienvenid@! administrador:</h2>
-						<h:form action="#">
-							<h:outputText value="#{shiroBean.email}" style="color:#ffffff"/>
-						</h:form>
+                        <form action="ejemplo.php" method="get">
+						<p><h2>Nombre: <input type="text" name="nombre" size="40"></input></h2></p>
+						<p><h2>Fecha de cierre: <input type="date" name="fecha"></input></h2></p>
+						<p><h2>Capacidad: <input type="number" name="capacidad"></input></h2></p>  
+						<p>     <input  class="botonEnviar" type="submit" value="Enviar" style=""></input> <input class="botonBorrar" type="reset" value="Borrar"></input>   </p> 
+						</form>
                     </div>
                 </div>
                
