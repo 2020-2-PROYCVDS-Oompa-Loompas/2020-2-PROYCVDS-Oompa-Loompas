@@ -1,8 +1,9 @@
-package edu.eci.cvds.servicios;
+package edu.eci.cvds.servicios.impl;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import edu.eci.cvds.persistencia.LaboratorioDAO;
 import edu.eci.cvds.persistencia.NovedadDAO;
 import edu.eci.cvds.persistencia.PersistenceException;
 import edu.eci.cvds.persistencia.UsuarioDAO;
@@ -26,7 +27,10 @@ public  class ServiciosECILabImpl implements ServiciosLab
 {
 	@Inject
 	private UsuarioDAO usuarioDAO;
+	@Inject
 	private NovedadDAO novedadDAO;
+	@Inject
+	private LaboratorioDAO laboratorioDAO;
 	
 	@Override
 	   public Usuario consultarUsuarioLog(int carnet, String contrasena) throws PersistenceException{

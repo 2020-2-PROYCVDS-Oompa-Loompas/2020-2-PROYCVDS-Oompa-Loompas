@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 public class Laboratorio {
 	
-	private int id;
 	private String nombre;
 	private int capacidad;
 	private LocalDate fechacierre;
@@ -12,19 +11,7 @@ public class Laboratorio {
 	
 	public Laboratorio() {}
 
-	/**
-	 * @return the id
-	 */
-	public int getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 
 	/**
 	 * @return the nombre
@@ -82,6 +69,6 @@ public class Laboratorio {
 	@Override
     public String toString() 
 	{
-        return "Laboratorio {id: " + id + ", nombre: " + nombre + " , capacidad: " + capacidad + ", fechacreacion: " + fechacreacion + ", fechacierre: " + fechacierre + "}\n";
+        return "Laboratorio { nombre: " + nombre + " , capacidad: " + capacidad + ", fechacreacion: " + fechacreacion + ", fechacierre: " + fechacierre + "}\n";
     }
 }

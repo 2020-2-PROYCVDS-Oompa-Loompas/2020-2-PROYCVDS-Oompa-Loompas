@@ -13,7 +13,7 @@ import edu.eci.cvds.persistencia.mybatisimpl.MyBatisEquipoDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisLaboratorioDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisNovedadDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisUsuarioDAO;
-import edu.eci.cvds.servicios.ServiciosECILabImpl;
+import edu.eci.cvds.servicios.impl.ServiciosECILabImpl;
 
 import org.mybatis.guice.XMLMyBatisModule;
 

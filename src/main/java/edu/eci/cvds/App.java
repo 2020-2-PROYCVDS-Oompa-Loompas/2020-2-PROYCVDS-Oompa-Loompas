@@ -18,9 +18,9 @@ import edu.eci.cvds.persistencia.mybatisimpl.mappers.ElementoMapper;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.EquipoMapper;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.LaboratorioMapper;
 import edu.eci.cvds.persistencia.mybatisimpl.mappers.NovedadMapper;
-import edu.eci.cvds.servicios.ServiciosECILabImpl;
 import edu.eci.cvds.servicios.ServiciosLab;
 import edu.eci.cvds.servicios.ServiciosLabFactory;
+import edu.eci.cvds.servicios.impl.ServiciosECILabImpl;
 
 
 public class App 
