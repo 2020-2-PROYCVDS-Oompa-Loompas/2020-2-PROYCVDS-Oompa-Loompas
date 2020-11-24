@@ -1,11 +1,15 @@
 package edu.eci.cvds.beans;
 
 import java.io.IOException;
+import java.util.logging.Level;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+
+import org.apache.shiro.SecurityUtils;
+
 import javax.ejb.Stateless;
 import javax.inject.Named;
 
@@ -31,6 +35,7 @@ public class ShiroBean extends BasePageBean{
     private String password;
     private Boolean remember;
     private String message;
+    private String redirectUrl = "/faces/paginaWeb.xhtml";
 
     public void login() throws IOException, ExceptionLogin{
         System.out.println("Hola entre en el login");
@@ -52,12 +57,12 @@ public class ShiroBean extends BasePageBean{
             System.out.println("Entre a admin");
             HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
             session.setAttribute("email", email);
-            facesContext.getExternalContext().redirect("../inicio.xhtml");
+            facesContext.getExternalContext().redirect("../admin.xhtml");
         }
         if(logger.isUser()){
             HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
             session.setAttribute("email", email);
-            facesContext.getExternalContext().redirect("../inicio.xhtml");
+            facesContext.getExternalContext().redirect("../usuario.xhtml");
         }
     }
 
@@ -69,18 +74,21 @@ public class ShiroBean extends BasePageBean{
     
 
     public void logout() throws IOException{
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        facesContext.getExternalContext().redirect("../paginaWeb.xhtml");
-        logger.logout();
+        SecurityUtils.getSubject().logout();         
+        try {             
+        	FacesContext.getCurrentInstance().getExternalContext().redirect(redirectUrl);         
+        	} catch (IOException ex) 
+        {             
+        		java.util.logging.Logger.getLogger(ShiroBean.class.getName()).log(Level.SEVERE, null, ex);         }
     }
 
     public void comeBack() throws IOException{
         FacesContext facesContext = FacesContext.getCurrentInstance();
         if(logger.isAdmin()){
-            facesContext.getExternalContext().redirect("../inicio.xhtml");
+            facesContext.getExternalContext().redirect("../admin.xhtml");
         }
         if(logger.isUser()){
-            facesContext.getExternalContext().redirect("../inicio.xhtml");
+            facesContext.getExternalContext().redirect("../usuario.xhtml");
         }
     }
 
