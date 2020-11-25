@@ -451,7 +451,8 @@ public class ServiciosBean extends BasePageBean
 		List<Usuario> usuarios = null;
 		
 		try
-		{
+		{	
+			System.out.println("Entra a consular ");
 			usuarios = servicioUsuario.consultarUsuarios();
 		} catch(ExcepcionServiciosLab e)
 		{

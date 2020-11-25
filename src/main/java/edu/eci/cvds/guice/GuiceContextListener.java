@@ -9,6 +9,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import edu.eci.cvds.beans.BasePageBean;
+import edu.eci.cvds.beans.ServiciosBean;
 import edu.eci.cvds.beans.ShiroBean;
 import edu.eci.cvds.persistencia.ElementoDAO;
 import edu.eci.cvds.persistencia.EquipoDAO;

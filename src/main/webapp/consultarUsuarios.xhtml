@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+		
+	<h:head>
+	
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
+        <link href="css/es.css" rel="stylesheet"/>
+        <title>OmpaLoompa</title>
+    </h:head>
+	<h:body>
+		<div id="wrapper">
+			<div id="header">   
+				<div class="clr"></div>
+            </div>
+            <div class="content">
+				<ul id="menu">
+					<li><a href="admin.xhtml">Mi perfil</a></li>
+                    <li><a href="registrarLaboratorio.xhtml">Registrar Laboratorio</a></li>
+                    <li><a href="consultarLab.xhtml">Consultar Laboratorios</a></li>
+                    <li><a href="consultarEquipo.xhtml">Consultar Equipos</a></li>
+					<li><a class="current">Consultar Usuarios</a></li>
+                </ul>
+				
+					
+                
+            </div>
+        </div>
+		<div>
+			<h:form>
+				<p:dataTable id="singleDT" var="usuario" value="#{serviciosBean.consultarUsuarios()}"
+				 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+				 rows="10">
+					<f:facet name="header">
+						Usuarios registrados:
+					</f:facet>
+					<p:column headerText="Carnet">
+						<h:outputText value="#{usuario.carnet}" />
+					</p:column>
+
+					<p:column headerText="Nombre">
+						<h:outputText value="#{usuario.nombre}" />
+					</p:column>
+
+					<p:column headerText="Correo">
+						<h:outputText value="#{usuario.correo}" />
+					</p:column>
+
+					<p:column headerText="Contraseña">
+						<h:outputText value="#{usuario.contrasena}" />
+					</p:column>
+
+					<p:column headerText="Estado">
+						<h:outputText value="#{usuario.estado}" />
+					</p:column>
+					
+					<p:column headerText="Rol">
+						<h:outputText value="#{usuario.rol}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		
+		</div>
+		
+		
+    </h:body>
+</html>
+
+
+
+
+

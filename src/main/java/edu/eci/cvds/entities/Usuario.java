@@ -15,13 +15,16 @@ public class Usuario implements Serializable
 	/**
 	* Constructor del usuario en el sistema
 	*/
-	public Usuario(){}
-
+	public Usuario(){
+		
+	}
+		
 
 	/**
 	 * @return the carnet
 	 */
 	public String getCarnet() {
+		
 		return carnet;
 	}
 

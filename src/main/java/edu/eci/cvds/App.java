@@ -81,8 +81,7 @@ public class App
         System.out.println(lm.getLaboratorioPorNombre("Ing. Software"));
 		System.out.println("----------------------");
         System.out.println("----------------------");
-		System.out.println("Consulta los laboratorios");
-		System.out.println(lm.getLaboratorios());
+		
 		System.out.println("----------------------");
         System.out.println("----------------------");
         System.out.println("Consulta los laboratorios disponibles");
