@@ -1,16 +1,15 @@
 package edu.eci.cvds.beans;
 
-import java.time.LocalDate;
-import java.util.List;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
 import com.google.inject.Inject;
-
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
@@ -41,8 +40,7 @@ public class ServiciosBean extends BasePageBean
 	private ServiciosEquipo servicioEquipo;
 	@Inject
 	private ServiciosElemento servicioElemento;
-	
-	
+    
 	public List<Laboratorio> getLaboratorios()
 	{
 		List<Laboratorio> laboratorios = null;
@@ -114,7 +112,7 @@ public class ServiciosBean extends BasePageBean
 		}
 	}
 	
-	public void cerrarLaboratorio(String nombre, LocalDate fechacierre)
+	public void cerrarLaboratorio(String nombre, Date fechacierre)
 	{
 		try
 		{
@@ -406,7 +404,7 @@ public class ServiciosBean extends BasePageBean
 		return novedades;
 	}
 	   
-	public void agregarNovedad(LocalDate fecha, int carnet, int idlaboratorio, int idequipo, int idelemento, String descripcion, TipoNovedad tiponovedad) throws ExcepcionServiciosLab, PersistenceException
+	public void agregarNovedad(Date fecha, int carnet, int idlaboratorio, int idequipo, int idelemento, String descripcion, TipoNovedad tiponovedad) throws ExcepcionServiciosLab, PersistenceException
 	{
 		try
 		{

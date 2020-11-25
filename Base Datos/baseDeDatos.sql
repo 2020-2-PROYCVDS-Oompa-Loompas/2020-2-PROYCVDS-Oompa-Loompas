@@ -1,24 +1,23 @@
 CREATE TABLE IF NOT EXISTS Rol(tipo VARCHAR(14) PRIMARY KEY);
 
-CREATE TABLE IF NOT EXISTS Usuario(carnet VARCHAR(30) PRIMARY KEY, nombre VARCHAR(50) NOT NULL, correo VARCHAR(50), contrasena VARCHAR(80) NOT NULL, estado VARCHAR(15) NOT NULL, rol VARCHAR(14) REFERENCES Rol(tipo));
+CREATE TABLE IF NOT EXISTS Usuario(carnet VARCHAR(50) PRIMARY KEY, nombre VARCHAR(50) NOT NULL, correo VARCHAR(50), contrasena VARCHAR(80) NOT NULL, estado VARCHAR(15) NOT NULL, rol VARCHAR(14) REFERENCES Rol(tipo));
 
 CREATE TABLE IF NOT EXISTS TipoNovedad(tipo VARCHAR(14) PRIMARY KEY);
 
-CREATE TABLE IF NOT EXISTS Laboratorio(id SERIAL PRIMARY KEY, nombre VARCHAR(15), capacidad BIGINT, disponible BOOLEAN);
+CREATE TABLE IF NOT EXISTS Laboratorio(id SERIAL PRIMARY KEY, nombre VARCHAR(15), capacidad BIGINT, fechacreacion DATE, fechacierre DATE);
 
-CREATE TABLE IF NOT EXISTS Equipo(id SERIAL PRIMARY KEY, nombre VARCHAR(15), disponible BOOLEAN);
+CREATE TABLE IF NOT EXISTS Equipo(id SERIAL PRIMARY KEY, nombre VARCHAR(15), disponible BOOLEAN, funcionamiento BOOLEAN, idlaboratorio INT references Laboratorio (id));
 
-CREATE TABLE IF NOT EXISTS Equipos(idlaboratorio INT not NULL, idEquipo INT not null);
+--CREATE TABLE IF NOT EXISTS Equipos(idlaboratorio INT not NULL, idEquipo INT not null);
 
-ALTER TABLE Equipos ADD CONSTRAINT PK_Equipos PRIMARY KEY (idlaboratorio, idEquipo);
-alter table Equipos add constraint FK_equipos_Lab foreign key (idlaboratorio) REFERENCES Laboratorio(id);
-alter table Equipos add constraint FK_equipos_equi foreign key (idEquipo) REFERENCES Equipo(id);
+--ALTER TABLE Equipos ADD CONSTRAINT PK_Equipos PRIMARY KEY (idlaboratorio, idEquipo);
+--alter table Equipos add constraint FK_equipos_Lab foreign key (idlaboratorio) REFERENCES Laboratorio(id);
+--alter table Equipos add constraint FK_equipos_equi foreign key (idEquipo) REFERENCES Equipo(id);
 
-CREATE TABLE IF NOT EXISTS Novedad(id SERIAL PRIMARY KEY, fecha DATE, carnet VARCHAR(30) references Usuario(carnet), idLaboratorio INT references Laboratorio(id), idEquipo INT references Equipo(id), descripcion VARCHAr(100), tiponovedad VARCHAR(15) REFERENCES TipoNovedad(tipo));
+CREATE TABLE IF NOT EXISTS Elemento(id SERIAL PRIMARY KEY, categoria VARCHAR(100), fabricante VARCHAR(15), disponible BOOLEAN, funcionamiento BOOLEAN, idequipo INT references Equipo (id));
 
-CREATE TABLE IF NOT EXISTS Elemento(id SERIAL PRIMARY KEY, nombre VARCHAR(100), fabricante VARCHAR(15), disponible BOOLEAN);
-
-CREATE TABLE IF NOT EXISTS Elementos (id SERIAL PRIMARY KEY, idequipo INT REFERENCES Equipo (id), idelemento INT REFERENCES Elemento (id));
+CREATE TABLE IF NOT EXISTS Novedad(id SERIAL PRIMARY KEY, fecha DATE, carnet VARCHAR(50) references Usuario(carnet), usuario VARCHAR(50), idLaboratorio INT references Laboratorio(id), idEquipo INT references Equipo(id), idelemento INT references Elemento(id), descripcion VARCHAr(100), tiponovedad VARCHAR(15) REFERENCES TipoNovedad(tipo));
+--CREATE TABLE IF NOT EXISTS Elementos (id SERIAL PRIMARY KEY, idequipo INT REFERENCES Equipo (id), idelemento INT REFERENCES Elemento (id));
 
 insert into TipoNovedad(tipo) values ('REGISTRAR');
 insert into TipoNovedad(tipo) values ('CONSULTAR');
@@ -30,40 +29,35 @@ insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values ('21
 insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values ('2154957', 'Daniela', 'angie.ruiz@mail.escuelaing.edu.co', 'snowball', 'Activo', 'ESTUDIANTE');
 insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values ('1234567', 'prueba', 'prueba@pruebita.com', 'prueba', 'Activo', 'ADMINISTRATIVO');
 
-insert into Laboratorio(nombre, capacidad, disponible) values ('Ing. Software', 20, True);
-insert into Laboratorio(nombre, capacidad, disponible) values ('Lab. Redes', 15, True);
-insert into Laboratorio(nombre, capacidad, disponible) values ('Lab. Ingenio', 20, False);
+insert into Laboratorio(nombre, capacidad, fechacreacion, fechacierre) values ('Ing. Software', 20, '1996-05-25', null);
+insert into Laboratorio(nombre, capacidad, fechacreacion, fechacierre) values ('Lab. Redes', 15, '1996-07-25', null);
+insert into Laboratorio(nombre, capacidad, fechacreacion, fechacierre) values ('Lab. Ingenio', 20, '1996-05-25', '2018-05-25');
 
-insert into Equipo(nombre, disponible) values ('Computador', False);
-insert into Equipo(nombre, disponible) values ('Portatil', False);
-insert into Equipo(nombre, disponible) values ('Computador', True);
+insert into Equipo(nombre, disponible, funcionamiento, idlaboratorio) values ('Computador 1', false, true, 1);
+insert into Equipo(nombre, disponible, funcionamiento, idlaboratorio) values ('Computador 2', false, true, 2);
+insert into Equipo(nombre, disponible, funcionamiento, idlaboratorio) values ('Computador 3', true, true, null);
 
-insert into Novedad(fecha, carnet, idlaboratorio, idequipo, descripcion, tiponovedad) values ('2020-05-25', 2123238, 1, 1, 'Se registro el equipo al lab', 'REGISTRAR');
-insert into Novedad(fecha, carnet, idlaboratorio, idequipo, descripcion, tiponovedad) values ('2020-06-25', 2154957, 2, 2, 'Se registro el equipo al lab', 'CONSULTAR');
-insert into Novedad(fecha, carnet, idlaboratorio, idequipo, descripcion, tiponovedad) values ('2020-07-25', 1234567, 3, 1, 'Se registro el equipo al lab', 'REGISTRAR');
+insert into Novedad(fecha, carnet, usuario, idlaboratorio, idequipo, idelemento, descripcion, tiponovedad) values ('2020-05-25', '2123238', 'Carlos', 1, 1, null, 'Se registro el equipo al lab', 'REGISTRAR');
+insert into Novedad(fecha, carnet, usuario, idlaboratorio, idequipo, idelemento,  descripcion, tiponovedad) values ('2020-06-25', '2154957', 'Daniela', 2, 2, null, 'Se registro el equipo al lab', 'CONSULTAR');
+insert into Novedad(fecha, carnet, usuario, idlaboratorio, idequipo, idelemento,  descripcion, tiponovedad) values ('2020-07-25', '1234567', 'prueba', 3, 1, null, 'Se registro el equipo al lab', 'REGISTRAR');
 
-insert into Elemento(nombre, fabricante, disponible) values ('Torre', 'HP', True);
-insert into Elemento(nombre, fabricante, disponible) values ('Pantalla', 'HP', True);
-insert into Elemento(nombre, fabricante, disponible) values ('Mouse', 'HP', True);
-insert into Elemento(nombre, fabricante, disponible) values ('Teclado', 'HP', True);
+insert into Elemento(categoria, fabricante, disponible, funcionamiento, idequipo) values ('Torre', 'HP', false, true, 1);
+insert into Elemento(categoria, fabricante, disponible, funcionamiento, idequipo) values ('Pantalla', 'HP', false, true, 1);
+insert into Elemento(categoria, fabricante, disponible, funcionamiento, idequipo) values ('Mouse', 'HP', false, true, 1);
+insert into Elemento(categoria, fabricante, disponible, funcionamiento, idequipo) values ('Teclado', 'HP', false, true, 1);
+insert into Elemento(categoria, fabricante, disponible, funcionamiento, idequipo) values ('Torre', 'Microsoft', false, true, 2);
+insert into Elemento(categoria, fabricante, disponible, funcionamiento, idequipo) values ('Pantalla', 'Microsoft', false, true, 2);
+insert into Elemento(categoria, fabricante, disponible, funcionamiento, idequipo) values ('Mouse', 'Microsoft', false, true, 2);
+insert into Elemento(categoria, fabricante, disponible, funcionamiento, idequipo) values ('Teclado', 'Microsoft', false, true, 2);
+insert into Elemento(categoria, fabricante, disponible, funcionamiento, idequipo) values ('Teclado', 'Genius', true, true, null);
 
-insert into Equipos(idlaboratorio, idequipo) values (1, 1);
-insert into Equipos(idlaboratorio, idequipo) values (2, 2);
+--insert into Equipos(idlaboratorio, idequipo) values (1, 1);
+--insert into Equipos(idlaboratorio, idequipo) values (2, 2);
 
-insert into Elementos(idequipo, idelemento) values (1, 1);
-insert into Elementos(idequipo, idelemento) values (1, 2);
-insert into Elementos(idequipo, idelemento) values (2, 1);
-insert into Elementos(idequipo, idelemento) values (2, 3);
-
-drop table Elemento cascade;
-drop table Equipo cascade;
-drop table Elementos cascade;
-drop table Equipos cascade;
-drop table Laboratorio cascade;
-drop table Rol cascade;
-drop table Usuario cascade;
-drop table TipoNovedad cascade;
-drop table Novedad cascade;
+--insert into Elementos(idequipo, idelemento) values (1, 1);
+--insert into Elementos(idequipo, idelemento) values (1, 2);
+--insert into Elementos(idequipo, idelemento) values (2, 1);
+--insert into Elementos(idequipo, idelemento) values (2, 3);
 
 -- Consultas 
 
@@ -87,6 +81,95 @@ FROM laboratorio, equipo;
 
 select * from laboratorio;
 select * from equipo;
-select * from equipos;
+select * from elemento;
 
+-- Asociar un equipo ------------------------
+  		UPDATE equipo SET disponible = False, idlaboratorio = 1
+  		WHERE id = 3 AND disponible = True;
 
+ -- Elemento disponible ---------------------
+   		SELECT
+  		*
+  		FROM elemento
+  		WHERE disponible = True;
+
+--- Asociar elemento ------------------------
+select * from elemento;
+
+   		UPDATE elemento SET disponible = False, idequipo = #{idequipo}
+  		WHERE id = #{id} AND disponible = True;
+  	
+--- Equipos del lab --------------------------
+		SELECT
+		equipo.id,
+		equipo.nombre
+		FROM laboratorio, equipo
+		WHERE laboratorio.id = 1 AND 1 = equipo.idlaboratorio;
+
+--- Reporte de novedades ----------------------
+		SELECT
+ 		a.id,
+ 		a.fecha,
+ 		a.carnet,
+ 		a.usuario,
+ 		a.idlaboratorio,
+ 		a.idequipo,
+ 		a.descripcion,
+ 		a.tiponovedad
+ 		FROM novedad as a
+ 		order by a.fecha DESC;
+
+--- Bajar Elemento ----------------------------------
+  		UPDATE elemento SET funcionamiento = false, disponible = false
+  		WHERE id = 9 AND disponible = True;
+  	select * from elemento;
+
+--- Bajar equipo -----------------------------------
+  		UPDATE equipo SET disponible = False, funcionamiento = False, idlaboratorio = null
+  		WHERE id = 2;
+  	select * from equipo;
+  
+--- Cerrar laboratorio --------------------------------
+  		UPDATE laboratorio SET fechacierre = '1996-05-26'
+  		WHERE id = 1;
+  	select * from laboratorio;
+  
+--- obtener lab disponibles ---------------------------
+  		SELECT
+  		id,
+  		nombre,
+  		capacidad,
+  		fechacreacion,
+  		fechacierre
+  		FROM laboratorio
+  		where fechacierre = null ;
+
+--- consultar lab por nombre --------------------------
+  		SELECT
+  		*
+  		FROM laboratorio
+  		WHERE nombre = 'Ing. Software';
+
+----------------------------------------------------
+  	
+drop table Elemento cascade;
+drop table Equipo cascade;
+drop table Laboratorio cascade;
+drop table Rol cascade;
+drop table Usuario cascade;
+drop table TipoNovedad cascade;
+drop table Novedad cascade;
+
+--- Disparadores ---------------------------------------
+CREATE OR REPLACE FUNCTION funcionFecha() RETURNS trigger AS
+$$
+BEGIN
+	NEW.fechacreacion:= current_date;
+	RETURN NEW;
+END;
+$$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER tb_fecha_inicio
+BEFORE INSERT ON public.laboratorio 
+FOR EACH ROW
+EXECUTE PROCEDURE funcionFecha();

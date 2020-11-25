@@ -1,12 +1,8 @@
 package edu.eci.cvds.persistencia.mybatisimpl;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
-
 import com.google.inject.Inject;
 import edu.eci.cvds.persistencia.PersistenceException;
 import edu.eci.cvds.persistencia.NovedadDAO;
@@ -70,7 +66,7 @@ public class MyBatisNovedadDAO implements NovedadDAO
 		}
 	}
 	
-	public void agregarNovedad(@Param("fecha") LocalDate fecha, @Param("carnet") int carnet, @Param("idlaboratorio") int idlaboratorio, @Param("idequipo") int idequipo, @Param("idelemento") int idelemento, @Param("descripcion") String descripcion, @Param("tiponovedad") TipoNovedad tiponovedad) throws PersistenceException
+	public void agregarNovedad(@Param("fecha") Date fecha, @Param("carnet") int carnet, @Param("idlaboratorio") int idlaboratorio, @Param("idequipo") int idequipo, @Param("idelemento") int idelemento, @Param("descripcion") String descripcion, @Param("tiponovedad") TipoNovedad tiponovedad) throws PersistenceException
 	{
 		if(descripcion == "")
 		{

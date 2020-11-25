@@ -2,13 +2,12 @@ package edu.eci.cvds.entities;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 
 public class Novedad implements Serializable
 {	
 	private int id;
-	private LocalDate fecha;
+	private Date fecha;
 	private int carnet;
 	private String usuario;
 	private int idlaboratorio;
@@ -36,14 +35,14 @@ public class Novedad implements Serializable
 	/**
 	 * @return the fecha
 	 */
-	public LocalDate getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
 	/**
 	 * @param fecha the fecha to set
 	 */
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

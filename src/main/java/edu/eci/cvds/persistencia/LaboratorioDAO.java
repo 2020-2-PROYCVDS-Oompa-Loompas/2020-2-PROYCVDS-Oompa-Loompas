@@ -1,8 +1,7 @@
 package edu.eci.cvds.persistencia;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
-
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 
@@ -10,7 +9,7 @@ public interface LaboratorioDAO
 {	
 	public Laboratorio getLaboratorioPorNombre(String nombre);
 	
-	public void agregarLaboratorio(String nombre, int capacidad, LocalDate fechacreacion, LocalDate fechacierre) throws PersistenceException;
+	public void agregarLaboratorio(String nombre, int capacidad, Date fechacreacion, Date fechacierre) throws PersistenceException;
 	
 	public List<Laboratorio> getLaboratorios();
 	
@@ -20,5 +19,5 @@ public interface LaboratorioDAO
 	
 	public void asociarEquipo(String nombre) throws PersistenceException;
 	
-	public void cerrarLaboratorio(String nombre, LocalDate fechacierre);
+	public void cerrarLaboratorio(String nombre, Date fechacierre);
 }

@@ -13,42 +13,44 @@
     </h:head>
 	<body>
 		<div id="wrapper">
-			<div id="header">   
+			<div id="header">  
+				<div id="logo">
+					<h1><a>Ompa<span>Loompa</span></a></h1>
+					<h:form action="#">
+						<p:commandButton  actionListener="#{shiroBean.logout}" value="Cerrar Sesion" />
+					</h:form>
+				</div> 
 				<div class="clr"></div>
             </div>
             <div class="content">
 				<ul id="menu">
-					<li><a href="admin.xhtml">Mi perfil</a></li>
+					<li><a href="admin.xhtml">Perfil</a></li>
                     <li><a href="registrarLaboratorio.xhtml">Registrar Laboratorio</a></li>
-                    <li><a class="current">Consultar Laboratorios</a></li>
-                    <li><a href="consultarEquipo.xhtml">Consultar Equipos</a></li>
-					<li><a href="consultarUsuarios.xhtml">Consultar Usuarios</a></li>
+                    <li><a class="current">Ver Laboratorios</a></li>
+                    <li><a href="consultarEquipo.xhtml">Ver Equipos</a></li>
+					<li><a href="consultarUsuarios.xhtml">Ver Usuarios</a></li>
                 </ul>
 				<div class="col">
 					<h:form>
-						<p:dataTable var="laboratorio" value="#{ServiciosBean.getLaboratorios()}" class="tabla"
-						paginator="true" paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-						rows="10" selectionMode="single">
+						<p:dataTable id = "singleDT" var="laboratorio" value="#{serviciosBean.getLaboratorios()}"
+						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+						rows="10">
 							<f:facet name="header">Laboratorios:</f:facet>
-							<p:column headerText="Id" filterBy="#{laboratorio.id}">
-								<h:outputText value="#{usuario.getId()}"/>
-							</p:column>
 				
-							<p:column headerText="Nombre" filterBy="#{laboratorio.nombre}" sortBy="#{laboratorio.nombre}">
+							<p:column headerText="Nombre">
 								<h:outputText value="#{laboratorio.nombre}" />
 							</p:column>
 				 
-							<p:column headerText="Capacidad" filterBy="#{laboratorio.capacidad}" sortBy="#{laboratorio.capacidad}">
+							<p:column headerText="Capacidad">
 								<h:outputText value="#{laboratorio.capacidad}"/>
 							</p:column>
-				 
-							<p:column headerText="Fecha de Creación" filterBy="#{laboratorio.fechadecreacion}" >
-								<h:outputText value="#{laboratorio.fechadecreacion}" />
+							<p:column headerText = "Fecha de Creación">
+								<h:outputText value = "#{laboratorio.getFechaCreacionString()}"/>
 							</p:column>
-					
-							<p:column headerText="Fecha de Cierre" filterBy="#{laboratorio.fechadecierre}" >
-								<h:outputText value="#{laboratorio.fechadecierre}" />
+							<p:column headerText = "Fecha de Cierre">
+								<h:outputText value = "#{laboratorio.getFechaCierreString()}"/>
 							</p:column>
+
 						</p:dataTable>  
 				    </h:form>
                 </div>

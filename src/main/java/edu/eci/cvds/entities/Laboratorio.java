@@ -1,17 +1,27 @@
 package edu.eci.cvds.entities;
 
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Laboratorio {
 	
+	private int id;
 	private String nombre;
 	private int capacidad;
-	private LocalDate fechacierre;
-	private LocalDate fechacreacion;
+	private Date fechacierre;
+	private Date fechacreacion;
 	
 	public Laboratorio() {}
 
+	public void setId(int id)
+	{
+		this.id = id;
+	}
 	
+	public int getId()
+	{
+		return id;
+	}
 
 	/**
 	 * @return the nombre
@@ -41,28 +51,46 @@ public class Laboratorio {
 		this.capacidad = capacidad;
 	}
 	
-	public LocalDate getFechaCreacion() {
+	public Date getFechaCreacion() {
 		return fechacreacion;
 	}
 
 	/**
 	 * @param fecha the fecha to set
 	 */
-	public void setFechaCreacion(LocalDate fechacreacion) {
+	public void setFechaCreacion(Date fechacreacion) {
 		this.fechacreacion = fechacreacion;
 	}
 	
 	/**
 	 * @return the fecha
 	 */
-	public LocalDate getFechaCierre() {
+	public Date getFechaCierre() {
 		return fechacierre;
+	}
+	
+	public String getFechaCreacionString() {
+		SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
+        return dt1.format(this.fechacreacion);
+	}
+	
+	public String getFechaCierreString() {
+		String fechaNoDefinida = "Fecha no definida";
+		if(fechacierre != null)
+		{
+			SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
+			return dt1.format(this.fechacierre);
+		}
+		else
+		{
+			return fechaNoDefinida;
+		}
 	}
 
 	/**
 	 * @param fecha the fecha to set
 	 */
-	public void setFechaCierre(LocalDate fechacierre) {
+	public void setFechaCierre(Date fechacierre) {
 		this.fechacierre = fechacierre;
 	}
 	

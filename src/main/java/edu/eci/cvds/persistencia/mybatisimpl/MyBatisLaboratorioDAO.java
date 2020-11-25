@@ -1,10 +1,8 @@
 package edu.eci.cvds.persistencia.mybatisimpl;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
-
 import com.google.inject.Inject;
-
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.persistencia.LaboratorioDAO;
@@ -41,7 +39,7 @@ public class MyBatisLaboratorioDAO implements LaboratorioDAO
 	}
 	
 	@Override
-	public void agregarLaboratorio(String nombre, int capacidad, LocalDate fechacreacion, LocalDate fechacierre) throws PersistenceException
+	public void agregarLaboratorio(String nombre, int capacidad, Date fechacreacion, Date fechacierre) throws PersistenceException
 	{
 		if(nombre == null || nombre == "")
 		{
@@ -69,7 +67,7 @@ public class MyBatisLaboratorioDAO implements LaboratorioDAO
 	}
 	
 	@Override
-	public void cerrarLaboratorio(String nombre, LocalDate fechacierre)
+	public void cerrarLaboratorio(String nombre, Date fechacierre)
 	{
 		mapper.cerrarLaboratorio(nombre, fechacierre);
 	}

@@ -1,6 +1,6 @@
 package edu.eci.cvds.servicios.impl;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -30,7 +30,7 @@ public class ServiciosECINovedadImpl implements ServiciosNovedad
 	}
 
 	@Override
-	public void agregarNovedad(LocalDate fecha, int carnet, int idlaboratorio, int idequipo, int idelemento, String descripcion, TipoNovedad tiponovedad) throws ExcepcionServiciosLab, PersistenceException 
+	public void agregarNovedad(Date fecha, int carnet, int idlaboratorio, int idequipo, int idelemento, String descripcion, TipoNovedad tiponovedad) throws ExcepcionServiciosLab, PersistenceException 
 	{
 		novedadDAO.agregarNovedad(fecha, carnet, idlaboratorio, idequipo, idelemento, descripcion, tiponovedad);
 	}

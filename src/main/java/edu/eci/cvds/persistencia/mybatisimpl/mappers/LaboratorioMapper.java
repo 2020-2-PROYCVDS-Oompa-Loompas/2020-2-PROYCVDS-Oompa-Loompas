@@ -1,10 +1,8 @@
 package edu.eci.cvds.persistencia.mybatisimpl.mappers;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
-
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 
@@ -12,7 +10,7 @@ public interface LaboratorioMapper
 {	
 	public Laboratorio getLaboratorioPorNombre(@Param("nombre") String nombre);
 	
-	public void agregarLaboratorio(@Param("nombre") String nombre, @Param("capacidad") int capacidad, @Param("fechacreacion") LocalDate fechacreacion, @Param("fechacierre") LocalDate fechacierre);
+	public void agregarLaboratorio(@Param("nombre") String nombre, @Param("capacidad") int capacidad, @Param("fechacreacion") Date fechacreacion, @Param("fechacierre") Date fechacierre);
 	
 	public List<Laboratorio> getLaboratorios();
 	
@@ -22,5 +20,5 @@ public interface LaboratorioMapper
 	
 	public void asociarEquipo(@Param("nombre") String nombre);
 	
-	public void cerrarLaboratorio(@Param("nombre") String nombre, @Param("fechacierre") LocalDate fechacierre);
+	public void cerrarLaboratorio(@Param("nombre") String nombre, @Param("fechacierre") Date fechacierre);
 }

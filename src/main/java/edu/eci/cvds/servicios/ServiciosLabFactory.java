@@ -13,7 +13,11 @@ import edu.eci.cvds.persistencia.mybatisimpl.MyBatisEquipoDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisLaboratorioDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisNovedadDAO;
 import edu.eci.cvds.persistencia.mybatisimpl.MyBatisUsuarioDAO;
+import edu.eci.cvds.servicios.impl.ServiciosECIElementoImpl;
+import edu.eci.cvds.servicios.impl.ServiciosECIEquipoImpl;
 import edu.eci.cvds.servicios.impl.ServiciosECILabImpl;
+import edu.eci.cvds.servicios.impl.ServiciosECINovedadImpl;
+import edu.eci.cvds.servicios.impl.ServiciosECIUserImpl;
 
 import org.mybatis.guice.XMLMyBatisModule;
 
@@ -38,9 +42,13 @@ public class ServiciosLabFactory {
                 bind(UsuarioDAO.class).to(MyBatisUsuarioDAO.class);
                 bind(NovedadDAO.class).to(MyBatisNovedadDAO.class);
                 bind(LaboratorioDAO.class).to(MyBatisLaboratorioDAO.class);
-                bind(EquipoDAO.class).to(MyBatisEquipoDAO.class);
                 bind(ElementoDAO.class).to(MyBatisElementoDAO.class);
-                
+                bind(EquipoDAO.class).to(MyBatisEquipoDAO.class);
+                bind(ServiciosUsuario.class).to(ServiciosECIUserImpl.class);
+                bind(ServiciosNovedad.class).to(ServiciosECINovedadImpl.class);
+                bind(ServiciosLab.class).to(ServiciosECILabImpl.class);
+                bind(ServiciosEquipo.class).to(ServiciosECIEquipoImpl.class);
+                bind(ServiciosElemento.class).to(ServiciosECIElementoImpl.class);
                 
 
             }
