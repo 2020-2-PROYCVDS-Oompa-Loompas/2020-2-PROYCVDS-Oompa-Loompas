@@ -4,60 +4,54 @@
 <html	xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
 		xmlns:f="http://java.sun.com/jsf/core" xmlns:p="http://primefaces.org/ui">
 		
-		 <h:head>
-			<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-            <link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
-            <link href="css/es.css" rel="stylesheet"/>
-            <title>OmpaLoompa</title>
-			<style>
-			table, th, td {
-			  border: 1px solid black;
-			  border-collapse: collapse;
-			  background: white;
-			}
-			th, td {
-			  padding: 5px;
-			}
-			th {
-			  text-align: left;
-			}
-			
-			</style>
-		</h:head>
-		<body>
-		
-			<div id="wrapper">
-                <div id="header">
-                    
-                    <div class="clr"></div>
-                </div>
-                <div class="content">
-                    <ul id="menu">
-                        <li><a href="admin.xhtml">Mi perfil</a></li>
-                        <li><a href="registrarLaboratorio.xhtml">Registrar Laboratorio</a></li>
-                        <li><a class="current">Consultar Laboratorios</a></li>
-                        <li><a href="consultarEquipo.xhtml">Consultar Equipos</a></li>
-                    </ul>                    
-                </div>
-				
-				<h2>Laboratorios : </h2>
-
-				<table style="width:100%">
-				  <tr>
-					<th>Nombre</th>
-					<th>Capacidad</th> 
-					<th>Fecha de creación</th>
-					<th>Fecha de cierre</th>
-				  </tr>
-				  <tr>
-					
-				  </tr>
-				  
-				</table>
-               
+	<h:head>
+	
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
+        <link href="css/es.css" rel="stylesheet"/>
+        <title>OmpaLoompa</title>
+    </h:head>
+	<body>
+		<div id="wrapper">
+			<div id="header">   
+				<div class="clr"></div>
             </div>
-			
-			
-
-		</body>
+            <div class="content">
+				<ul id="menu">
+					<li><a href="admin.xhtml">Mi perfil</a></li>
+                    <li><a href="registrarLaboratorio.xhtml">Registrar Laboratorio</a></li>
+                    <li><a class="current">Consultar Laboratorios</a></li>
+                    <li><a href="consultarEquipo.xhtml">Consultar Equipos</a></li>
+                </ul>
+				<div class="col">
+					<h:form>
+						<p:dataTable var="laboratorio" value="#{ServiciosBean.getLaboratorios()}" class="tabla"
+						paginator="true" paginatorPosition = "bottom" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+						rows="10" selectionMode="single">
+							<f:facet name="header">Laboratorios:</f:facet>
+							<p:column headerText="Id" filterBy="#{laboratorio.id}">
+								<h:outputText value="#{usuario.getId()}"/>
+							</p:column>
+				
+							<p:column headerText="Nombre" filterBy="#{laboratorio.nombre}" sortBy="#{laboratorio.nombre}">
+								<h:outputText value="#{laboratorio.nombre}" />
+							</p:column>
+				 
+							<p:column headerText="Capacidad" filterBy="#{laboratorio.capacidad}" sortBy="#{laboratorio.capacidad}">
+								<h:outputText value="#{laboratorio.capacidad}"/>
+							</p:column>
+				 
+							<p:column headerText="Fecha de Creación" filterBy="#{laboratorio.fechadecreacion}" >
+								<h:outputText value="#{laboratorio.fechadecreacion}" />
+							</p:column>
+					
+							<p:column headerText="Fecha de Cierre" filterBy="#{laboratorio.fechadecierre}" >
+								<h:outputText value="#{laboratorio.fechadecierre}" />
+							</p:column>
+						</p:dataTable>  
+				    </h:form>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

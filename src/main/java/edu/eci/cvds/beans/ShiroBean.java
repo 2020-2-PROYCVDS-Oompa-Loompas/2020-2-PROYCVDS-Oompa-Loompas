@@ -74,12 +74,16 @@ public class ShiroBean extends BasePageBean{
     
 
     public void logout() throws IOException{
-        SecurityUtils.getSubject().logout();         
+        /*SecurityUtils.getSubject().logout();         
         try {             
         	FacesContext.getCurrentInstance().getExternalContext().redirect(redirectUrl);         
         	} catch (IOException ex) 
         {             
         		java.util.logging.Logger.getLogger(ShiroBean.class.getName()).log(Level.SEVERE, null, ex);         }
+        		*/
+    	FacesContext facesContext = FacesContext.getCurrentInstance();
+        facesContext.getExternalContext().redirect("../paginaWeb.xhtml");
+        logger.logout();
     }
 
     public void comeBack() throws IOException{
