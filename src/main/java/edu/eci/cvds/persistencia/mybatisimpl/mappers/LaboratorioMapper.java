@@ -9,8 +9,8 @@ import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 
 public interface LaboratorioMapper 
-{
-	public Laboratorio getLaboratorio(@Param("id") int id);
+{	
+	public Laboratorio getLaboratorioPorNombre(@Param("nombre") String nombre);
 	
 	public void agregarLaboratorio(@Param("nombre") String nombre, @Param("capacidad") int capacidad, @Param("fechacreacion") LocalDate fechacreacion, @Param("fechacierre") LocalDate fechacierre);
 	
@@ -18,9 +18,9 @@ public interface LaboratorioMapper
 	
 	public List<Laboratorio> getLaboratoriosDisponibles();
 	
-	public List<Equipo> getEquiposLaboratorio(@Param("id") int id);
+	public List<Equipo> getEquiposLaboratorio(@Param("nombre") String nombre);
 	
-	public void asociarEquipo(@Param("id") int id);
+	public void asociarEquipo(@Param("nombre") String nombre);
 	
-	public void cerrarLaboratorio(@Param("id") int id, @Param("fechacierre") LocalDate fechacierre);
+	public void cerrarLaboratorio(@Param("nombre") String nombre, @Param("fechacierre") LocalDate fechacierre);
 }

@@ -75,8 +75,10 @@ public class App
 		System.out.println(nm.getNovedadPorElemento(1));
 		System.out.println("----------------------");
         System.out.println("----------------------");
-		System.out.println("Consulta el laboratorio según su id");
-		System.out.println(lm.getLaboratorio(1));
+		//System.out.println("Consulta el laboratorio según su id");
+		//System.out.println(lm.getLaboratorio(1));
+        System.out.println("Consulta el laboratorio según su nombre");
+        System.out.println(lm.getLaboratorioPorNombre("Ing. Software"));
 		System.out.println("----------------------");
         System.out.println("----------------------");
 		System.out.println("Consulta los laboratorios");
@@ -88,7 +90,7 @@ public class App
 		System.out.println("----------------------");
         System.out.println("----------------------");
         System.out.println("Consulta los equipos de un laboratorio");
-		System.out.println(lm.getEquiposLaboratorio(1));
+		System.out.println(lm.getEquiposLaboratorio("Ing. Software"));
 		System.out.println("----------------------");
         System.out.println("----------------------");
         System.out.println("Consultar los elementos disponibles");

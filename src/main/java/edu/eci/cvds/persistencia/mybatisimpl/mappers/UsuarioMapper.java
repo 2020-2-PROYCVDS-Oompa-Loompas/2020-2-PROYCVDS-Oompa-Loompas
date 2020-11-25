@@ -9,7 +9,4 @@ import org.apache.ibatis.annotations.Param;
 public interface UsuarioMapper 
 {    
 	public List<Usuario> consultarUsuarios();
-	
-	public Usuario consultarUsuarioLog(@Param("carneT") int carnet,  @Param("contrasenA") String contrasena);
-	
 }

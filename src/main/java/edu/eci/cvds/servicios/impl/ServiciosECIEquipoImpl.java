@@ -1,0 +1,58 @@
+package edu.eci.cvds.servicios.impl;
+
+import java.util.List;
+
+import com.google.inject.Inject;
+
+import edu.eci.cvds.entities.Equipo;
+import edu.eci.cvds.persistencia.EquipoDAO;
+import edu.eci.cvds.persistencia.PersistenceException;
+import edu.eci.cvds.servicios.ServiciosEquipo;
+
+public class ServiciosECIEquipoImpl implements ServiciosEquipo
+{
+	@Inject
+	private EquipoDAO equipoDAO;
+	
+	@Override
+	public Equipo getEquipo(int id) 
+	{
+		return equipoDAO.getEquipo(id);
+	}
+	
+	@Override
+	public List<Equipo> getEquiposDisponibles() 
+	{
+		return equipoDAO.getEquiposDisponibles();
+	}
+
+	@Override
+	public void agregarEquipo(String nombre, boolean disponible, boolean funcionamiento, int idlaboratorio) throws PersistenceException
+	{
+		try 
+		{
+			equipoDAO.agregarEquipo(nombre, disponible, funcionamiento, idlaboratorio);
+		} catch (PersistenceException e) 
+		{
+			throw new PersistenceException("Error al agregar el equipo");
+		}
+	}
+	
+	@Override
+	public void asociarEquipoAlLab(int id) throws PersistenceException
+	{
+		try 
+		{
+			equipoDAO.asociarEquipo(id);
+		} catch (PersistenceException e)
+		{
+			throw new PersistenceException("Error, no se pudo asociar el equipo");
+		}
+	}
+	
+	@Override
+	public void bajarEquipo(int id)
+	{
+		equipoDAO.bajarEquipo(id);
+	}
+}

@@ -25,16 +25,4 @@
 		u.rol
 		FROM usuario as u;
 	</select>
-	
-	<select id="consultarUsuarioLog" resultMap="UsuarioResult">
-		SELECT
-		u.nombre,
-		u.carnet,
-		u.correo,
-		u.contrasena,
-		u.estado,
-		u.rol
-		FROM usuario as u 
-		WHERE u.carnet = #{carneT} and u.contrasena = #{contrasenA};
-	</select>
 </mapper>

@@ -17,9 +17,9 @@ public class MyBatisLaboratorioDAO implements LaboratorioDAO
 	private LaboratorioMapper mapper;
 	
 	@Override
-	public Laboratorio getLaboratorio(int id)
+	public Laboratorio getLaboratorioPorNombre(String nombre)
 	{
-		return mapper.getLaboratorio(id);
+		return mapper.getLaboratorioPorNombre(nombre);
 	}
 	
 	@Override
@@ -35,9 +35,9 @@ public class MyBatisLaboratorioDAO implements LaboratorioDAO
 	}
 	
 	@Override
-	public List<Equipo> getEquiposLaboratorio(int id)
+	public List<Equipo> getEquiposLaboratorio(String nombre)
 	{
-		return mapper.getEquiposLaboratorio(id);
+		return mapper.getEquiposLaboratorio(nombre);
 	}
 	
 	@Override
@@ -54,9 +54,9 @@ public class MyBatisLaboratorioDAO implements LaboratorioDAO
 	}
 	
 	@Override
-	public void asociarEquipo(int id) throws PersistenceException
+	public void asociarEquipo(String nombre) throws PersistenceException
 	{
-		Laboratorio e = getLaboratorio(id);
+		Laboratorio e = getLaboratorioPorNombre(nombre);
 		
 		if(e == null)
 		{
@@ -64,13 +64,13 @@ public class MyBatisLaboratorioDAO implements LaboratorioDAO
 		}
 		else
 		{
-			mapper.asociarEquipo(id);
+			mapper.asociarEquipo(nombre);
 		}
 	}
 	
 	@Override
-	public void cerrarLaboratorio(int id, LocalDate fechacierre)
+	public void cerrarLaboratorio(String nombre, LocalDate fechacierre)
 	{
-		mapper.cerrarLaboratorio(id, fechacierre);
+		mapper.cerrarLaboratorio(nombre, fechacierre);
 	}
 }

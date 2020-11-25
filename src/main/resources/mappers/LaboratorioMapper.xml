@@ -3,16 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace = "edu.eci.cvds.persistencia.mybatisimpl.mappers.LaboratorioMapper">
-  	<select id = "getLaboratorio" parameterType = "map" resultMap = "LaboratorioResult">
+  	<select id = "getLaboratorioPorNombre" parameterType = "map" resultMap = "LaboratorioResult">
   		SELECT
-  		u.id,
-  		u.nombre,
-  		u.capacidad,
-  		u.fechacreacion,
-  		u.fechacierre
-  		FROM laboratorio as u
-  		WHERE u.id = #{id};
+  		*
+  		FROM laboratorio
+  		WHERE nombre = #{nombre};
   	</select>
   	<select id = "getLaboratorios" resultMap = "LaboratorioResult">
   		SELECT
@@ -38,16 +33,16 @@
 		equipo.id,
 		equipo.nombre
 		FROM laboratorio, equipo
-		WHERE laboratorio.id = #{id} AND #{id} = equipo.idlaboratorio;
+		WHERE laboratorio.nombre = #{nombre} AND laboratorio.id = equipo.idlaboratorio;
   	</select>
   	<update parameterType = "map" id = "asociarEquipo">
   		UPDATE
   		laboratorio SET capacidad = capacidad - 1
-  		WHERE id = #{id};
+  		WHERE nombre = #{nombre};
   	</update>
   	<update parameterType = "map" id = "cerrarLaboratorio">
   		UPDATE laboratorio SET fechacierre = #{fechacierre}
-  		WHERE id = #{id};
+  		WHERE nombre = #{nombre};
   	</update>
   	<insert parameterType = "map" id = "agregarLaboratorio">
   		INSERT INTO laboratorio

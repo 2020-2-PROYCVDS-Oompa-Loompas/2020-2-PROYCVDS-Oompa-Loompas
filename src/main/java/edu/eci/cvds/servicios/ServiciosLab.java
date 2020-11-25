@@ -12,37 +12,19 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
-public interface ServiciosLab {
-
-   public abstract Usuario consultarUsuarioLog(int carnet, String contrasena) throws PersistenceException;
-
-   public abstract List<Usuario> consultarUsuarios() throws PersistenceException;
+public interface ServiciosLab 
+{      
+   public Laboratorio getLaboratorioPorNombre(String nombre) throws ExcepcionServiciosLab;
    
-   public abstract Novedad getNovedad(int id);	
+   public void agregarLaboratorio(String nombre, int capacidad, LocalDate fechacreacion, LocalDate fechacierre) throws ExcepcionServiciosLab, PersistenceException;
    
-   public abstract List<Novedad> getNovedades();
+   public List<Laboratorio> getLaboratorios() throws ExcepcionServiciosLab;
    
-   public abstract void agregarNovedad(LocalDate fecha, int carnet, int idlaboratorio, int idequipo, String descripcion, TipoNovedad tiponovedad);
+   public List<Laboratorio> getLaboratoriosDisponibles() throws ExcepcionServiciosLab;
    
-   public abstract Laboratorio getLaboratorio(int id);
+   public List<Equipo> getEquiposLaboratorio(String nombre) throws ExcepcionServiciosLab;
    
-   public abstract void agregarLaboratorio(String nombre, int capacidad, boolean disponible);
+   public void asociarEquipo(String nombre) throws ExcepcionServiciosLab, PersistenceException;
    
-   public abstract List<Laboratorio> getLaboratorios();
-   
-   public abstract List<Laboratorio> getLaboratoriosDisponibles();
-   
-   public abstract List<Equipo> getEquiposLaboratorio(int id);
-   
-   public abstract Equipo getEquipo(int id);
-   
-   public abstract void agregarEquipo(String nombre, boolean disponible);
-   
-   public abstract Elemento getElemento(int id);
-   
-   public abstract void agregarElemento(String nombre, String fabricante, boolean disponible);
-
-   
+   public void cerrarLaboratorio(String nombre, LocalDate fechacierre) throws ExcepcionServiciosLab;
 }

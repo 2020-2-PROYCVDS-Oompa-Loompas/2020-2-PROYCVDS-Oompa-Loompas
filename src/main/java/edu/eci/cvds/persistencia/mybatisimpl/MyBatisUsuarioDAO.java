@@ -26,23 +26,5 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
          }	
         
    
-    }
-	
-	@Override
-    public Usuario obtenerUsuarioLog(int carnet, String contrasena) throws PersistenceException {
-        try{
-             return usuarioMapper.consultarUsuarioLog(carnet,contrasena);
-         }
-         catch(org.apache.ibatis.exceptions.PersistenceException e){
-             throw new PersistenceException("Error al consultar las credenciales del usuario:",e);
-         }	
-        
-    }
-	
-	
-	
-
-
-	
-		
+    }		
 }
