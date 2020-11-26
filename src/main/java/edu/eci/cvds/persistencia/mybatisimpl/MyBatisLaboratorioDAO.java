@@ -39,7 +39,7 @@ public class MyBatisLaboratorioDAO implements LaboratorioDAO
 	}
 	
 	@Override
-	public void agregarLaboratorio(String nombre, int capacidad, Date fechacreacion, Date fechacierre) throws PersistenceException
+	public void agregarLaboratorio(String nombre, int capacidad) throws PersistenceException
 	{
 		if(nombre == null || nombre == "")
 		{
@@ -47,7 +47,7 @@ public class MyBatisLaboratorioDAO implements LaboratorioDAO
 		}
 		else
 		{
-			mapper.agregarLaboratorio(nombre, capacidad, fechacreacion, fechacierre);
+			mapper.agregarLaboratorio(nombre, capacidad, (Date) null, (Date) null);
 		}
 	}
 	

@@ -9,20 +9,6 @@
             <link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
             <link href="css/es.css" rel="stylesheet"/>
             <title>OmpaLoompa</title>
-			<style>
-			table, th, td {
-			  border: 1px solid black;
-			  border-collapse: collapse;
-			  background: white;
-			}
-			th, td {
-			  padding: 5px;
-			}
-			th {
-			  text-align: left;
-			}
-			
-			</style>
 		</h:head>
 		<body>
 		
@@ -43,25 +29,32 @@
                         <li><a href="consultarLab.xhtml">Ver Laboratorios</a></li>
                         <li><a class="current">Ver Equipos</a></li>
 						<li><a href="consultarUsuarios.xhtml">Ver Usuarios</a></li>
-                    </ul>                    
-                </div>
+                    </ul> 
+                    <div class="col">
+											<h:form>
+						<p:dataTable id = "singleDT" var="equipo" value="#{serviciosBean.getEquipos()}"
+						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+						rows="10">
+							<f:facet name="header">Equipos:</f:facet>
 				
-				<h2>Equipos : </h2>
+							<p:column headerText="Nombre">
+								<h:outputText value="#{equipo.nombre}" />
+							</p:column>
+				 
+							<p:column headerText="Disponible">
+								<h:outputText value="#{equipo.disponible}"/>
+							</p:column>
+							<p:column headerText = "En funcionamiento">
+								<h:outputText value = "#{equipo.funcionamiento}"/>
+							</p:column>
+		      				<p:column headerText = "Id del laboratorio asociado">
+								<h:outputText value = "#{equipo.laboratorio}"/>
+							</p:column>
 
-				<table style="width:100%">
-				  <tr>
-					<th>Nombre</th>
-					<th>Disponible</th> 
-				  </tr>
-				  <tr>
-					
-				  </tr>
-				  
-				</table>
-               
+						</p:dataTable>  
+				    </h:form>
+                	</div>                   
+                </div>
             </div>
-			
-			
-
 		</body>
 </html>

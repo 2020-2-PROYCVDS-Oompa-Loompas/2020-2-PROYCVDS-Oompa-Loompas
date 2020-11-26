@@ -8,6 +8,8 @@ import edu.eci.cvds.persistencia.PersistenceException;
 public interface ServiciosEquipo 
 {
 	public Equipo getEquipo(int id) throws ExcepcionServiciosLab;
+	
+	public List<Equipo> getEquipos() throws ExcepcionServiciosLab;
 	   
 	public void agregarEquipo(String nombre, boolean disponible, boolean funcionamiento, int idlaboratorio) throws ExcepcionServiciosLab, PersistenceException;
 	   

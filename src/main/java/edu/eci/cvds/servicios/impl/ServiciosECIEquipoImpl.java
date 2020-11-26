@@ -21,6 +21,12 @@ public class ServiciosECIEquipoImpl implements ServiciosEquipo
 	}
 	
 	@Override
+	public List<Equipo> getEquipos()
+	{
+		return equipoDAO.getEquipos();
+	}
+	
+	@Override
 	public List<Equipo> getEquiposDisponibles() 
 	{
 		return equipoDAO.getEquiposDisponibles();

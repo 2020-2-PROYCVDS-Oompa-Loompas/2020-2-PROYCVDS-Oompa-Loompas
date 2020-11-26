@@ -4,9 +4,9 @@ CREATE TABLE IF NOT EXISTS Usuario(carnet VARCHAR(50) PRIMARY KEY, nombre VARCHA
 
 CREATE TABLE IF NOT EXISTS TipoNovedad(tipo VARCHAR(14) PRIMARY KEY);
 
-CREATE TABLE IF NOT EXISTS Laboratorio(id SERIAL PRIMARY KEY, nombre VARCHAR(15), capacidad BIGINT, fechacreacion DATE, fechacierre DATE);
+CREATE TABLE IF NOT EXISTS Laboratorio(id SERIAL PRIMARY KEY, nombre VARCHAR(15) unique, capacidad BIGINT, fechacreacion DATE, fechacierre DATE);
 
-CREATE TABLE IF NOT EXISTS Equipo(id SERIAL PRIMARY KEY, nombre VARCHAR(15), disponible BOOLEAN, funcionamiento BOOLEAN, idlaboratorio INT references Laboratorio (id));
+CREATE TABLE IF NOT EXISTS Equipo(id SERIAL PRIMARY KEY, nombre VARCHAR(15), disponible BOOLEAN, funcionamiento BOOLEAN, laboratorio VARCHAR(15) references Laboratorio(nombre));
 
 --CREATE TABLE IF NOT EXISTS Equipos(idlaboratorio INT not NULL, idEquipo INT not null);
 
@@ -33,9 +33,9 @@ insert into Laboratorio(nombre, capacidad, fechacreacion, fechacierre) values ('
 insert into Laboratorio(nombre, capacidad, fechacreacion, fechacierre) values ('Lab. Redes', 15, '1996-07-25', null);
 insert into Laboratorio(nombre, capacidad, fechacreacion, fechacierre) values ('Lab. Ingenio', 20, '1996-05-25', '2018-05-25');
 
-insert into Equipo(nombre, disponible, funcionamiento, idlaboratorio) values ('Computador 1', false, true, 1);
-insert into Equipo(nombre, disponible, funcionamiento, idlaboratorio) values ('Computador 2', false, true, 2);
-insert into Equipo(nombre, disponible, funcionamiento, idlaboratorio) values ('Computador 3', true, true, null);
+insert into Equipo(nombre, disponible, funcionamiento, laboratorio) values ('Computador 1', false, true, 'Ing. Software');
+insert into Equipo(nombre, disponible, funcionamiento, laboratorio) values ('Computador 2', false, true, 'Lab. Redes');
+insert into Equipo(nombre, disponible, funcionamiento, laboratorio) values ('Computador 3', true, true, null);
 
 insert into Novedad(fecha, carnet, usuario, idlaboratorio, idequipo, idelemento, descripcion, tiponovedad) values ('2020-05-25', '2123238', 'Carlos', 1, 1, null, 'Se registro el equipo al lab', 'REGISTRAR');
 insert into Novedad(fecha, carnet, usuario, idlaboratorio, idequipo, idelemento,  descripcion, tiponovedad) values ('2020-06-25', '2154957', 'Daniela', 2, 2, null, 'Se registro el equipo al lab', 'CONSULTAR');
@@ -58,6 +58,20 @@ insert into Elemento(categoria, fabricante, disponible, funcionamiento, idequipo
 --insert into Elementos(idequipo, idelemento) values (1, 2);
 --insert into Elementos(idequipo, idelemento) values (2, 1);
 --insert into Elementos(idequipo, idelemento) values (2, 3);
+
+--- Disparadores ---------------------------------------
+CREATE OR REPLACE FUNCTION funcionFecha() RETURNS trigger AS
+$$
+BEGIN
+	NEW.fechacreacion:= current_date;
+	RETURN NEW;
+END;
+$$ LANGUAGE 'plpgsql';
+
+CREATE TRIGGER tb_fecha_inicio
+BEFORE INSERT ON public.laboratorio 
+FOR EACH ROW
+EXECUTE PROCEDURE funcionFecha();
 
 -- Consultas 
 
@@ -150,6 +164,15 @@ select * from elemento;
   		FROM laboratorio
   		WHERE nombre = 'Ing. Software';
 
+--- Obtener equipos disponibles -------------------------
+  		SELECT
+  		*
+  		FROM equipo
+  		WHERE disponible = True;
+  	
+--- Consulta del rol --------------------------------
+SELECT rol FROM usuario WHERE carnet = '2123238';
+
 ----------------------------------------------------
   	
 drop table Elemento cascade;
@@ -159,17 +182,3 @@ drop table Rol cascade;
 drop table Usuario cascade;
 drop table TipoNovedad cascade;
 drop table Novedad cascade;
-
---- Disparadores ---------------------------------------
-CREATE OR REPLACE FUNCTION funcionFecha() RETURNS trigger AS
-$$
-BEGIN
-	NEW.fechacreacion:= current_date;
-	RETURN NEW;
-END;
-$$ LANGUAGE 'plpgsql';
-
-CREATE TRIGGER tb_fecha_inicio
-BEFORE INSERT ON public.laboratorio 
-FOR EACH ROW
-EXECUTE PROCEDURE funcionFecha();

@@ -6,7 +6,7 @@ public class Equipo {
 	private String nombre;
 	private boolean disponible;
 	private boolean funcionamiento;
-	private int idlaboratorio;
+	private String laboratorio;
 	
 	public Equipo() {}
 
@@ -58,18 +58,18 @@ public class Equipo {
 		return funcionamiento;
 	}
 	
-	public void setIdLaboratorio(int id)
+	public void setLaboratorio(String id)
 	{
-		idlaboratorio = id;
+		laboratorio = id;
 	}
 	
-	public int getIdLaboratorio()
+	public String getLaboratorio()
 	{
-		return idlaboratorio;
+		return laboratorio;
 	}
 	
 	@Override
     public String toString() {
-        return "Equipo {id: " + id + ", nombre: " + nombre + " , disponible: " + disponible +", funcionamiento: " + funcionamiento + ", idlaboratorio: " + idlaboratorio + "}\n";
+        return "Equipo {id: " + id + ", nombre: " + nombre + " , disponible: " + disponible +", funcionamiento: " + funcionamiento + ", laboratorio: " + laboratorio + "}\n";
     }
 }

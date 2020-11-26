@@ -41,11 +41,39 @@
             <version>1.4.0</version>
         </dependency>
 		
+		<!--performance
+      https://mvnrepository.com/artifact/org.apache.shiro/shiro-ehcache -->
+      <dependency>
+          <groupId>org.apache.shiro</groupId>
+          <artifactId>shiro-ehcache</artifactId>
+          <version>1.7.0</version>
+      </dependency>
+      <!-- Logger -->
+		
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
             <version>1.2</version>
         </dependency>
+		
+		<dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+          <version>${logback.version}</version>
+          <scope>runtime</scope>
+      </dependency>
+		
+		<dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version>${slf4j.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>jcl-over-slf4j</artifactId>
+          <version>${slf4j.version}</version>
+      </dependency>
 		
         <dependency>
             <groupId>org.mybatis</groupId>

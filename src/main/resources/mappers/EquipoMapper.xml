@@ -11,9 +11,14 @@
   		u.nombre,
   		u.disponible,
   		u.funcionamiento,
-  		u.idlaboratorio
+  		u.laboratorio
   		FROM equipo as u
   		WHERE id = #{id};
+  	</select>
+  	<select id = "getEquipos" parameterType = "map" resultMap = "EquipoResult">
+  		SELECT
+  		*
+  		FROM equipo;
   	</select>
   	<select id = "getEquiposDisponibles" parameterType = "map" resultMap = "EquipoResult">
   		SELECT
@@ -32,7 +37,7 @@
   	
   	<insert parameterType = "map" id = "agregarEquipo">
   		INSERT INTO equipo
-  		(nombre, disponible, funcionamiento, idlaboratorio)
+  		(nombre, disponible, funcionamiento, laboratorio)
   		VALUES
   		(#{nombre}, #{disponible}, #{funcionamiento}, #{idlaboratorio});
   	</insert>
@@ -42,7 +47,7 @@
   		<result property = "nombre" column = "nombre" />
   		<result property = "disponible" column = "disponible" />
   		<result property = "funcionamiento" column = "funcionamiento" />
-  		<result property = "idlaboratorio" column = "idlaboratorio" />
+  		<result property = "laboratorio" column = "laboratorio" />
   	</resultMap>
   
   </mapper>

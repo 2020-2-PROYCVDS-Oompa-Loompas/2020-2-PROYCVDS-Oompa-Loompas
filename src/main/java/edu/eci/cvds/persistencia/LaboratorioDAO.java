@@ -9,7 +9,7 @@ public interface LaboratorioDAO
 {	
 	public Laboratorio getLaboratorioPorNombre(String nombre);
 	
-	public void agregarLaboratorio(String nombre, int capacidad, Date fechacreacion, Date fechacierre) throws PersistenceException;
+	public void agregarLaboratorio(String nombre, int capacidad) throws PersistenceException;
 	
 	public List<Laboratorio> getLaboratorios();
 	

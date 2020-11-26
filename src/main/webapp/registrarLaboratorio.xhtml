@@ -27,15 +27,18 @@
                         <li><a class="current">Registrar Laboratorio</a></li>
                         <li><a href="consultarLab.xhtml">Ver Laboratorios</a></li>
                         <li><a href="consultarEquipo.xhtml">Ver Equipos</a></li>
-						<li><a href="consultarUsuarios.xhtml">">Ver Usuarios</a></li>
+						<li><a href="consultarUsuarios.xhtml">Ver Usuarios</a></li>
                     </ul>
                     <div class="col">
-                        <form action="ejemplo.php" method="get">
-						<p><h2>Nombre: <input type="text" name="nombre" size="40"></input></h2></p>
-						<p><h2>Fecha de cierre: <input type="date" name="fecha"></input></h2></p>
-						<p><h2>Capacidad: <input type="number" name="capacidad"></input></h2></p>  
-						<p>     <input  class="botonEnviar" type="submit" value="Enviar" style=""></input> <input class="botonBorrar" type="reset" value="Borrar"></input>   </p> 
-						</form>
+                    	<h:form>
+    						<h:panelGrid columns="4" cellpadding="5">
+        						<h:outputLabel for="nombre" value="Nombre: " style="font-weight:bold" />
+        						<p:inputText id="nombre" binding="#{nombre}" placeholder="Ingresa el nombre del laboratorio"/>
+        						<h:outputLabel for="capacidad" value="Capacidad: " style="font-weight:bold" />
+        						<p:inputText id="capacidad" binding="#{capacidad}" placeholder="Ingresa la capacidad del laboratorio"/>
+        						<p:commandButton value="Crear" icon="pi pi-check" actionListener="#{serviciosBean.agregarLaboratorio(nombre.value, capacidad.value)}"/>
+    						</h:panelGrid>
+						</h:form>
                     </div>
                 </div>
                

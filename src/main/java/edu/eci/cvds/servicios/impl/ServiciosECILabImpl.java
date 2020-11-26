@@ -18,11 +18,11 @@ public  class ServiciosECILabImpl implements ServiciosLab
 	private LaboratorioDAO laboratorioDAO;
 
 	@Override
-	public void agregarLaboratorio(String nombre, int capacidad, Date fechacreacion, Date fechacierre) throws ExcepcionServiciosLab, PersistenceException
+	public void agregarLaboratorio(String nombre, int capacidad) throws ExcepcionServiciosLab, PersistenceException
 	{
 		try
 		{
-			laboratorioDAO.agregarLaboratorio(nombre, capacidad, fechacreacion, fechacierre);
+			laboratorioDAO.agregarLaboratorio(nombre, capacidad);
 		} catch(PersistenceException e)
 		{
 			throw new ExcepcionServiciosLab("Error al agregar el laboratorio");

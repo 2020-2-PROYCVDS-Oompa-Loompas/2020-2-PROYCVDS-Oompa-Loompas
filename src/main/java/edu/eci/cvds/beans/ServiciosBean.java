@@ -124,6 +124,18 @@ public class ServiciosBean extends BasePageBean
 		}
 	}
 	
+	public void agregarLaboratorio(String nombre, int capacidad) throws ExcepcionServiciosLab, PersistenceException 
+	{
+		try
+		{
+			serviciosLaboratorio.agregarLaboratorio(nombre, capacidad);
+		} catch(ExcepcionServiciosLab e)
+		{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Registrar laboratorio", "No se pudo registrar el laboratorio"));
+		}
+	}
+	
 	public Equipo getEquipo(int id)
 	{
 		Equipo equipo = null;
@@ -138,7 +150,22 @@ public class ServiciosBean extends BasePageBean
 		}
 		return equipo;
 	}
-	   
+	
+	public List<Equipo> getEquipos()
+	{
+		List<Equipo> equipos = null;
+		
+		try
+		{
+			equipos = servicioEquipo.getEquipos();
+		} catch(ExcepcionServiciosLab e)
+		{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Consultar equipos", "No se encuentran los equipos registrados."));
+		}
+		return equipos;
+	}
+	
 	public void agregarEquipo(String nombre, boolean disponible, boolean funcionamiento, int idlaboratorio) throws PersistenceException
 	{
 		try

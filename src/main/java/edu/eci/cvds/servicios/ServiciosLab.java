@@ -10,7 +10,7 @@ public interface ServiciosLab
 {      
    public Laboratorio getLaboratorioPorNombre(String nombre) throws ExcepcionServiciosLab;
    
-   public void agregarLaboratorio(String nombre, int capacidad, Date fechacreacion, Date fechacierre) throws ExcepcionServiciosLab, PersistenceException;
+   public void agregarLaboratorio(String nombre, int capacidad) throws ExcepcionServiciosLab, PersistenceException;
    
    public List<Laboratorio> getLaboratorios() throws ExcepcionServiciosLab;
    
