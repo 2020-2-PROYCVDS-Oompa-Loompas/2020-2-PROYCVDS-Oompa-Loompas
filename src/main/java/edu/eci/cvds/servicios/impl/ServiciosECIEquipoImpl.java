@@ -45,11 +45,12 @@ public class ServiciosECIEquipoImpl implements ServiciosEquipo
 	}
 	
 	@Override
-	public void asociarEquipoAlLab(int id) throws PersistenceException
+	public void asociarEquipoAlLab(int idlaboratorio, int idequipo) throws PersistenceException
 	{
 		try 
 		{
-			equipoDAO.asociarEquipo(id);
+			System.out.println(idlaboratorio+" id laboratorio servicios");
+			equipoDAO.asociarEquipo(idlaboratorio, idequipo);
 		} catch (PersistenceException e)
 		{
 			throw new PersistenceException("Error, no se pudo asociar el equipo");

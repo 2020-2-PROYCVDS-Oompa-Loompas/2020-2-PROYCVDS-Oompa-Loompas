@@ -35,7 +35,7 @@
 		equipo.id,
 		equipo.nombre
 		FROM laboratorio, equipo
-		WHERE laboratorio.nombre = #{nombre} AND laboratorio.id = equipo.idlaboratorio;
+		WHERE laboratorio.nombre = #{nombre} AND laboratorio.nombre = equipo.laboratorio;
   	</select>
   	<update parameterType = "map" id = "asociarEquipo">
   		UPDATE

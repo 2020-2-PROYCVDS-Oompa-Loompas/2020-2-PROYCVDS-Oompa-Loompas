@@ -4,9 +4,9 @@ CREATE TABLE IF NOT EXISTS Usuario(carnet VARCHAR(50) PRIMARY KEY, nombre VARCHA
 
 CREATE TABLE IF NOT EXISTS TipoNovedad(tipo VARCHAR(14) PRIMARY KEY);
 
-CREATE TABLE IF NOT EXISTS Laboratorio(id SERIAL PRIMARY KEY, nombre VARCHAR(15), capacidad BIGINT, fechacreacion DATE, fechacierre DATE);
+CREATE TABLE IF NOT EXISTS Laboratorio(id SERIAL PRIMARY KEY, nombre VARCHAR(15) unique, capacidad BIGINT, fechacreacion DATE, fechacierre DATE);
 
-CREATE TABLE IF NOT EXISTS Equipo(id SERIAL PRIMARY KEY, nombre VARCHAR(15), disponible BOOLEAN, funcionamiento BOOLEAN, idlaboratorio INT references Laboratorio (id));
+CREATE TABLE IF NOT EXISTS Equipo(id SERIAL PRIMARY KEY, nombre VARCHAR(15), disponible BOOLEAN, funcionamiento BOOLEAN, laboratorio VARCHAR(15) references Laboratorio(nombre));
 
 --CREATE TABLE IF NOT EXISTS Equipos(idlaboratorio INT not NULL, idEquipo INT not null);
 

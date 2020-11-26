@@ -73,7 +73,7 @@ BEFORE INSERT ON public.laboratorio
 FOR EACH ROW
 EXECUTE PROCEDURE funcionFecha();
 
--- Consultas 
+-- Consultas --------------------------------------------
 
 -- Equipos de un laboratorio --
 SELECT
@@ -173,6 +173,15 @@ select * from elemento;
 --- Consulta del rol --------------------------------
 SELECT rol FROM usuario WHERE carnet = '2123238';
 
+--- Actualizar asociaciones ------------------------
+  		UPDATE equipo SET disponible = true, laboratorio = (select nombre from laboratorio where id = 1)
+  		WHERE id = 3;
+  	  		UPDATE equipo SET disponible = true, laboratorio = null
+  		WHERE id = 3;
+  	select * from laboratorio;
+  select * from equipo;
+ UPDATE equipo SET laboratorio = null
+  		WHERE id = 3;
 ----------------------------------------------------
   	
 drop table Elemento cascade;

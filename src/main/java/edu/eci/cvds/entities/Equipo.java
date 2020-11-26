@@ -8,7 +8,9 @@ public class Equipo {
 	private boolean funcionamiento;
 	private String laboratorio;
 	
-	public Equipo() {}
+	public Equipo() {
+		System.out.println("Creo el equipo");
+	}
 
 	/**
 	 * @return the id

@@ -30,30 +30,52 @@
                     <li><a href="consultarEquipo.xhtml">Ver Equipos</a></li>
 					<li><a href="consultarUsuarios.xhtml">Ver Usuarios</a></li>
                 </ul>
-				<div class="col">
-					<h:form>
-						<p:dataTable id = "singleDT" var="laboratorio" value="#{serviciosBean.getLaboratorios()}"
-						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-						rows="10">
-							<f:facet name="header">Laboratorios:</f:facet>
-				
-							<p:column headerText="Nombre">
-								<h:outputText value="#{laboratorio.nombre}" />
-							</p:column>
+                <div>
+                	<h:form>
+						<div class="col">
+								<p:dataTable id = "singleLaboratorio" var="laboratorio" value="#{serviciosBean.getLaboratorios()}"
+									paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+									rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarLaboratorio}" rowKey="#{laboratorio.id}">
+										<f:facet name="header">Laboratorios:</f:facet>
+										<p:column headerText="Nombre" filterBy="#{laboratorio.nombre}">
+											<h:outputText value="#{laboratorio.nombre}" />
+										</p:column>
 				 
-							<p:column headerText="Capacidad">
-								<h:outputText value="#{laboratorio.capacidad}"/>
-							</p:column>
-							<p:column headerText = "Fecha de Creación">
-								<h:outputText value = "#{laboratorio.getFechaCreacionString()}"/>
-							</p:column>
-							<p:column headerText = "Fecha de Cierre">
-								<h:outputText value = "#{laboratorio.getFechaCierreString()}"/>
-							</p:column>
+										<p:column headerText="Capacidad" >
+											<h:outputText value="#{laboratorio.capacidad}"/>
+										</p:column>
+										<p:column headerText = "Fecha de Creación">
+											<h:outputText value = "#{laboratorio.getFechaCreacionString()}"/>
+										</p:column>
+										<p:column headerText = "Fecha de Cierre">
+											<h:outputText value = "#{laboratorio.getFechaCierreString()}"/>
+										</p:column>
 
-						</p:dataTable>  
-				    </h:form>
-                </div>
+								</p:dataTable>
+						</div>
+						<div class="col">
+								<p:dataTable id = "singleEquipo" var="equipo" value="#{serviciosBean.getEquipos()}"
+									paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+									rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarEquipo}" rowKey="#{equipo.id}">
+										<f:facet name="header">Equipos:</f:facet>
+								
+										<p:column headerText="Nombre" filterBy="#{equipo.nombre}">
+											<h:outputText value="#{equipo.nombre}"/>
+										</p:column>
+										<p:column headerText="Disponible">
+											<h:outputText value="#{equipo.disponible}"/>
+										</p:column>
+										<p:column headerText = "En funcionamiento">
+											<h:outputText value = "#{equipo.funcionamiento}"/>
+										</p:column>
+		      							<p:column headerText = "Laboratorio asignado">
+											<h:outputText value = "#{equipo.laboratorio}"/>
+										</p:column>
+								</p:dataTable>
+						</div>
+                		<p:commandButton value="Asignar equipos" action = "#{serviciosBean.asociarEquipoAlLab(serviciosBean.seleccionarLaboratorio.id, serviciosBean.seleccionarEquipo.id)}"/>
+                	</h:form>
+                </div> 
             </div>
         </div>
     </body>

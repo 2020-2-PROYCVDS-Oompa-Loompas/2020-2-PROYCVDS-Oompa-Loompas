@@ -40,6 +40,9 @@ public class ServiciosBean extends BasePageBean
 	private ServiciosEquipo servicioEquipo;
 	@Inject
 	private ServiciosElemento servicioElemento;
+	
+	private Laboratorio seleccionarLaboratorio;
+	private Equipo seleccionarEquipo;
     
 	public List<Laboratorio> getLaboratorios()
 	{
@@ -136,6 +139,16 @@ public class ServiciosBean extends BasePageBean
 		}
 	}
 	
+	public void setSeleccionarLaboratorio(Laboratorio laboratorio){
+		System.out.println("Entro al set de laboratorio");
+		this.seleccionarLaboratorio = laboratorio;
+	}
+
+	public Laboratorio getSeleccionarLaboratorio(){
+		System.out.println("Entro al get de laboratorio");
+		return seleccionarLaboratorio;
+	}
+	
 	public Equipo getEquipo(int id)
 	{
 		Equipo equipo = null;
@@ -192,16 +205,19 @@ public class ServiciosBean extends BasePageBean
 		return equipos;
 	}
 		
-	public void asociarEquipoAlLab(int id) throws ExcepcionServiciosLab, PersistenceException
+	public void asociarEquipoAlLab(int idlaboratorio, int idequipo) throws ExcepcionServiciosLab, PersistenceException
 	{
 		try
 		{
-			servicioEquipo.asociarEquipoAlLab(id);
+			System.out.println(idlaboratorio+" id laboratorio beans");
+			System.out.println(idequipo+" id equipo beans");
+			servicioEquipo.asociarEquipoAlLab(idlaboratorio, idequipo);
 		} catch(ExcepcionServiciosLab e)
 		{
 			FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Asociar equipo", "No se pudo asociar el equipo al laboratorio"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Consultar equipos disponibles", "No se pudo consultar los equipos disponibles"));
 		}
+		
 	}
 		
 	public void bajarEquipo(int id)
@@ -214,6 +230,16 @@ public class ServiciosBean extends BasePageBean
 			FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Bajar equipo", "No se pudo dar de baja al equipo"));
 		}
+	}
+	
+	public void setSeleccionarEquipo(Equipo equipo){
+		System.out.println("Entro al set de equipo");
+		this.seleccionarEquipo = equipo;
+	}
+
+	public Equipo getSeleccionarEquipo(){
+		System.out.println("Entro al get de equipo");
+		return seleccionarEquipo;
 	}
 	
 	public Elemento getElemento(int id) throws ExcepcionServiciosLab

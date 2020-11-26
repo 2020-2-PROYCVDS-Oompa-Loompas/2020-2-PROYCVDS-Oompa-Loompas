@@ -15,7 +15,7 @@ public interface ServiciosEquipo
 	   
 	public List<Equipo> getEquiposDisponibles() throws ExcepcionServiciosLab;
 		
-	public void asociarEquipoAlLab(int id) throws ExcepcionServiciosLab, PersistenceException;
+	public void asociarEquipoAlLab(int idlaboratorio, int idequipo) throws ExcepcionServiciosLab, PersistenceException;
 		
 	public void bajarEquipo(int id) throws ExcepcionServiciosLab;
 }

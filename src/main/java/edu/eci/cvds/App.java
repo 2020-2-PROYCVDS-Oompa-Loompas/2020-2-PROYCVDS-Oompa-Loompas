@@ -81,8 +81,9 @@ public class App
         System.out.println(lm.getLaboratorioPorNombre("Ing. Software"));
 		System.out.println("----------------------");
         System.out.println("----------------------");
-		
-		System.out.println("----------------------");
+		System.out.println("Asociar equipo");
+		eqm.asociarEquipo(1, 3);
+		System.out.println("Se asocio el equipo");
         System.out.println("----------------------");
         System.out.println("Consulta los laboratorios disponibles");
 		System.out.println(lm.getLaboratoriosDisponibles());

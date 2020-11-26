@@ -14,7 +14,7 @@ public interface EquipoDAO
 	
 	public List<Equipo> getEquiposDisponibles();
 	
-	public void asociarEquipo(int id) throws PersistenceException;
+	public void asociarEquipo(int idlaboratorio, int idequipo) throws PersistenceException;
 	
 	public void bajarEquipo(int id);
 }

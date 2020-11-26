@@ -39,19 +39,20 @@ public class MyBatisEquipoDAO implements EquipoDAO
 	}
 	
 	@Override
-	public void asociarEquipo(int id) throws PersistenceException
+	public void asociarEquipo(int idlaboratorio, int idequipo) throws PersistenceException
 	{
-		if(!getEquipo(id).getDisponible())
+		if(!getEquipo(idequipo).getDisponible())
 		{
 			throw new PersistenceException("No puedes asociar equipos no disponibles");
 		}
-		else if(!getEquipo(id).getFuncionamiento())
+		else if(!getEquipo(idequipo).getFuncionamiento())
 		{
 			throw new PersistenceException("No puedes asociar elementos a equipos fuera de funcionamiento");
 		}
 		else
 		{
-			mapper.asociarEquipo(id);
+			System.out.println(idlaboratorio+" id laboratorio mybtis");
+			mapper.asociarEquipo(idlaboratorio, idequipo);
 		}
 	}
 	
