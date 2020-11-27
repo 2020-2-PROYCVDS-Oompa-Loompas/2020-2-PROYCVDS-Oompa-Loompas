@@ -59,6 +59,7 @@ public class App
         ElementoMapper em = sqlss.getMapper(ElementoMapper.class);
         EquipoMapper eqm = sqlss.getMapper(EquipoMapper.class);
         //cm...
+        /*
         System.out.println("Consulta Usuarios");
         System.out.println(cm.consultarUsuarios());
         System.out.println("----------------------");
@@ -146,9 +147,12 @@ public class App
         //System.out.println("--Novedad Agregada--");
 
         
-        
+        */
        
-
+        System.out.println("--Agregar Usuarios--");
+        cm.agregarUsuario("2141951", "Jose", "jose.castro-o@mail.escuelaing.edu.co", "jose123", "Activo", "ADMINISTRATIVO");
+        //System.out.println(cm.consultarUsuarios());
+        
         sqlss.commit();
         
         

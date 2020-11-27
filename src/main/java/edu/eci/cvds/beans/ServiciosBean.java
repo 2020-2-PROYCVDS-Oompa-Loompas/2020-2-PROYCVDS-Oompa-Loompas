@@ -44,6 +44,24 @@ public class ServiciosBean extends BasePageBean
 	private Laboratorio seleccionarLaboratorio;
 	private Equipo seleccionarEquipo;
     
+	
+	
+	public void agregarUsuario(String carnet, String nombre, String correo, String contrasena, String estado, String rol) throws PersistenceException
+	{
+		try
+		{
+			System.out.println("entra a agregar Usuario");
+			System.out.println("carnet "+ carnet);
+			System.out.println("nombre "+ nombre);
+			servicioUsuario.agregarUsuario(carnet, nombre, correo, contrasena, estado, rol);
+		} catch(ExcepcionServiciosLab e)
+		{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Agregar Usuario", "No se pudo agregar el usuario"));
+		}
+	}
+	
+	
 	public List<Laboratorio> getLaboratorios()
 	{
 		List<Laboratorio> laboratorios = null;

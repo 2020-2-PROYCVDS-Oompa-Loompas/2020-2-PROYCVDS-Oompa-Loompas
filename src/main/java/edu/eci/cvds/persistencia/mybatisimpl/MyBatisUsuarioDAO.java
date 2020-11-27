@@ -26,5 +26,19 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
          }	
         
    
-    }		
+    }
+
+
+
+	@Override
+	public void agregarUsuario(String carnet, String nombre, String correo, String contrasena, String estado, String rol) throws PersistenceException {
+		try{
+            usuarioMapper.agregarUsuario(carnet, nombre, correo, contrasena, estado, rol);
+        }
+        catch(Exception e){
+            System.out.println(e);
+            throw new PersistenceException("Error al agregar al usuario:",e);
+        }	
+		
+	}		
 }

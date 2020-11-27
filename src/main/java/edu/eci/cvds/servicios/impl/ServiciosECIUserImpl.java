@@ -19,4 +19,17 @@ public class ServiciosECIUserImpl implements ServiciosUsuario
 	public List<Usuario> consultarUsuarios() throws ExcepcionServiciosLab, PersistenceException{
 		   return usuarioDAO.obtenerUsuarios();
 	   }
+
+	@Override
+	public void agregarUsuario(String carnet, String nombre, String correo, String contrasena, String estado, String rol) throws ExcepcionServiciosLab, PersistenceException {
+				
+		try
+		{
+			usuarioDAO.agregarUsuario(carnet, nombre, correo, contrasena, estado, rol);
+		} catch(PersistenceException e)
+		{
+			throw new ExcepcionServiciosLab("Error al agregar el usuario");
+		}
+		
+	}
 }

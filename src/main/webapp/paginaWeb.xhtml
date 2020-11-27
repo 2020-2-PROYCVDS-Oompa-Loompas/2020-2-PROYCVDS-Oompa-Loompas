@@ -36,17 +36,21 @@
 						<span id="sg" style="color: white" onclick="mostrar()"> Volver</span>
 					</div>
 					<h2 style="color: white">Crea tu Cuenta</h2>
-					<form action="#">
-						<input type="text" placeholder="Usuario" id="registoUsuario"></input>
+					<h:form action="#">
+						<p:inputText id="carnet"  type="text" binding="#{carnet}" placeholder="Carnet"></p:inputText>
 						
-						<input type="password" placeholder="Contraseña" id="registoContra"></input>
+						<p:inputText id="nombre"  type="text" binding="#{nombre}" placeholder="Nombre"></p:inputText>
 						
-						<input type="email" placeholder="Correo Electrónico" id="correo"></input>
+						<p:inputText id="correo"  type="text" binding="#{correo}" placeholder="Correo"></p:inputText>
+		
+						<p:inputText id="contrasena" type="password" binding="#{contrasena}" placeholder="Contraseña"></p:inputText>
 						
-						<input type="text" placeholder="Teléfono"></input>
+						<p:inputText id="estado" type="text" binding="#{estado}" placeholder="Estado"></p:inputText>
 						
-						<input type="submit" value="Registrarse"  id="botonRegistro"></input>
-					</form>
+						<p:inputText id="rol" type="text" binding="#{rol}" placeholder="Rol"></p:inputText>
+													
+						<p:commandButton value="Registrarse" icon="pi pi-check" actionListener="#{serviciosBean.agregarUsuario(carnet.value, nombre.value,correo.value, contrasena.value,estado.value, rol.value)}"/>
+					</h:form>
 				</div>
 				
 
