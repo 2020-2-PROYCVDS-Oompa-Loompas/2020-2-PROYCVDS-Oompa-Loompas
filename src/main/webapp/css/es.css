@@ -25,6 +25,7 @@ body{
 	-o-background-size: cover;
 	background-size: cover;
 	
+	
     
 
 }
@@ -155,4 +156,61 @@ body{
 	display: block; 
 }
 
+.navegacion{
+	width: 550px;
+	margin: 30px auto;
+	background: #fff;
+}
+
+.navegacion ul{
+	list-style: none;
+	
+}
+
+.menu > li{
+	position: relative;
+	display: inline-block;
+	
+}
+
+.menu > li > a{
+	display: block;
+	padding: 15px 40px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	
+	
+	
+}
+
+.menu li a:hover{
+	color: #CE7D35;
+	transition: all .3s;
+}
+
+/* Sub menu */
+
+.submenu {
+	position: absolute;
+	background: #fff;
+	width: 120%;
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 1.5s;
+	
+}
+
+.submenu li a{
+	display: block;
+	padding: 15px;
+	font-family: 'Open sans';
+	text-decoration: none;
+	
+}
+
+
+.menu li:hover .submenu{
+	visibility: visible;
+	opacity: 1;
+}
 

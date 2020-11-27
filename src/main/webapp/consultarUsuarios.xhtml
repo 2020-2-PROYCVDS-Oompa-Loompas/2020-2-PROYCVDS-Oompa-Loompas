@@ -25,13 +25,22 @@
 				<div class="clr"></div>
             </div>
             <div class="content">
-				<ul id="menu">
-					<li><a href="admin.xhtml">Perfil</a></li>
-                    <li><a href="registrarLaboratorio.xhtml">Registrar Laboratorio</a></li>
-                    <li><a href="consultarLab.xhtml">Ver Laboratorios</a></li>
-                    <li><a href="consultarEquipo.xhtml">Ver Equipos</a></li>
-					<li><a class="current">Ver Usuarios</a></li>
-                </ul>
+				<header>
+						<nav class="navegacion">
+							<ul class="menu">
+								<li><a href="admin.xhtml">Perfil</a></li>
+								<li><a href="registrarLaboratorio.xhtml">Laboratorios</a></li>
+								<li><a href="admin.xhtml">Equipos</a>
+									<ul class="submenu">
+										<li><a href="consultarEquipo.xhtml">Ver Equipos</a></li>
+									</ul>
+								</li>
+								<li><a href="consultarUsuarios.xhtml">Usuarios</a></li>
+
+							</ul>
+						
+						</nav> 
+					</header>
 				
 					
                 
