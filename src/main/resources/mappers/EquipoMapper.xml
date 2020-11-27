@@ -30,6 +30,10 @@
   		FROM equipo
   		WHERE disponible = True;
   	</select>
+  	<update id = "eliminarAsociacion" parameterType = "map">
+  		UPDATE equipo SET disponible = true, laboratorio = null
+  		WHERE id = #{idequipo};
+  	</update>
   	<update id = "asociarEquipo" parameterType = "map">
   		UPDATE equipo SET disponible = false, laboratorio = (SELECT nombre FROM laboratorio WHERE id =#{id})
   		WHERE id = #{idequipo};

@@ -16,5 +16,10 @@ public interface NovedadDAO
 	
 	public List<Novedad> getNovedades() throws PersistenceException;
 	
-	public void agregarNovedad(Date fecha, int carnet, int idlaboratorio, int idequipo, int idelemento, String descripcion, TipoNovedad tiponovedad) throws PersistenceException;
+	public void agregarNovedad(Date fecha, String carnet, int idequipo, int idelemento, String descripcion, TipoNovedad tiponovedad) throws PersistenceException;
+	
+	public void agregarNovedadAsociacion(String carnet, int idequipo, String descripcion, TipoNovedad tipoNovedad) throws PersistenceException;
+
+	public void agregarNovedadAlRegistroLab(String carnet, int idequipo, String descripcion,
+			TipoNovedad registrar);
 }

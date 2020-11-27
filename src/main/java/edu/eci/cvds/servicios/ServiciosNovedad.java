@@ -12,7 +12,12 @@ public interface ServiciosNovedad
 	   
 	public List<Novedad> getNovedades() throws ExcepcionServiciosLab, PersistenceException;
 	   
-	public void agregarNovedad(Date fecha, int carnet, int idlaboratorio, int idequipo, int idelemento, String descripcion, TipoNovedad tiponovedad) throws ExcepcionServiciosLab, PersistenceException;
+	public void agregarNovedad(Date fecha, String carnet, int idlaboratorio, int idequipo, int idelemento, String descripcion, TipoNovedad tiponovedad) throws ExcepcionServiciosLab, PersistenceException;
+	
+	public void agregarNovedadAsociacion(String carnet, int idequipo, String descripcion, TipoNovedad tiponovedad) throws ExcepcionServiciosLab, PersistenceException;
+	
+	public void agregarNovedadAlRegistroLab(String carnet, int idequipo, String descripcion,
+			TipoNovedad registrar);
 	   
 	public List<Novedad> getNovedadPorEquipo(int idequipo)throws ExcepcionServiciosLab, PersistenceException;
 		

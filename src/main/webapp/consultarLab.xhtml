@@ -46,6 +46,9 @@
 					</header>
                 <div>
                 	<h:form>
+                		<p:messages id="messages" showDetail="true" closable="true" life="4000" style="width:630px;margin-top:20px;">
+							<p:autoUpdate />
+						</p:messages>
 						<div class="col">
 								<p:dataTable id = "singleLaboratorio" var="laboratorio" value="#{serviciosBean.getLaboratorios()}"
 									paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
@@ -87,7 +90,7 @@
 										</p:column>
 								</p:dataTable>
 						</div>
-                		<p:commandButton value="Asignar equipos" action = "#{serviciosBean.asociarEquipoAlLab(serviciosBean.seleccionarLaboratorio.id, serviciosBean.seleccionarEquipo.id)}"/>
+                		<p:commandButton value="Asignar equipos" action = "#{serviciosBean.asociarEquipoAlLab(serviciosBean.seleccionarLaboratorio.id, serviciosBean.seleccionarEquipo.id, shiroBean.email, equipo.disponible)}"/>
                 	</h:form>
                 </div> 
             </div>

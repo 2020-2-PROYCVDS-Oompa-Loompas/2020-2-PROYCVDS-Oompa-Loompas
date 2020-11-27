@@ -61,4 +61,9 @@ public class MyBatisEquipoDAO implements EquipoDAO
 	{
 		mapper.bajarEquipo(id);
 	}
+	
+	public void eliminarAsociacion(int idequipo)
+	{
+		mapper.eliminarAsociacion(idequipo);
+	}
 }

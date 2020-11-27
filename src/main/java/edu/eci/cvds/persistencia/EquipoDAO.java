@@ -17,4 +17,6 @@ public interface EquipoDAO
 	public void asociarEquipo(int idlaboratorio, int idequipo) throws PersistenceException;
 	
 	public void bajarEquipo(int id);
+	
+	public void eliminarAsociacion(int idequipo);
 }

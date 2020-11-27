@@ -12,7 +12,12 @@ public interface NovedadMapper
 	
 	public List<Novedad> getNovedades();
 	
-	public void agregarNovedad(@Param("fecha") Date fecha, @Param("carnet") int carnet, @Param("idlaboratorio") int idlaboratorio, @Param("idequipo") int idequipo, @Param("idelemento") int idelemento, @Param("descripcion") String descripcion, @Param("tiponovedad") TipoNovedad tiponovedad);
+	public void agregarNovedad(@Param("fecha") Date fecha, @Param("carnet") String carnet, @Param("idequipo") int idequipo, @Param("idelemento") int idelemento, @Param("descripcion") String descripcion, @Param("tiponovedad") TipoNovedad tiponovedad);
+	
+	public void agregarNovedadAsociacion(@Param("carnet") String carnet, @Param("idequipo") int idequipo, @Param("descripcion") String descripcion, @Param("tiponovedad") TipoNovedad tiponovedad);
+	
+	public void agregarNovedadAlRegistroLab(@Param("carnet") String carnet, @Param("idequipo") int idequipo, @Param("descripcion") String descripcion,
+			@Param("registrar") TipoNovedad registrar);
 	
 	public List<Novedad> getNovedadPorEquipo(@Param("idequipo") int id);	
 	

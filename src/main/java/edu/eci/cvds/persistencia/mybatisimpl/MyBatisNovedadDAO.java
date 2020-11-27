@@ -66,15 +66,35 @@ public class MyBatisNovedadDAO implements NovedadDAO
 		}
 	}
 	
-	public void agregarNovedad(@Param("fecha") Date fecha, @Param("carnet") int carnet, @Param("idlaboratorio") int idlaboratorio, @Param("idequipo") int idequipo, @Param("idelemento") int idelemento, @Param("descripcion") String descripcion, @Param("tiponovedad") TipoNovedad tiponovedad) throws PersistenceException
+	public void agregarNovedad(@Param("fecha") Date fecha, @Param("carnet") String carnet, @Param("idequipo") int idequipo, @Param("idelemento") int idelemento, @Param("descripcion") String descripcion, @Param("tiponovedad") TipoNovedad tiponovedad) throws PersistenceException
 	{
 		if(descripcion == "")
 		{
-			throw new PersistenceException("No se puede agregar la novedad sin justificación");
+			throw new PersistenceException("No se puede agregar la novedad sin justificacion");
 		}
 		else
 		{
-			mapper.agregarNovedad(fecha, carnet, idlaboratorio, idequipo, idelemento, descripcion, tiponovedad);
+			mapper.agregarNovedad(fecha, carnet, idequipo, idelemento, descripcion, tiponovedad);
 		}
+	}
+	
+	@Override
+	public void agregarNovedadAsociacion(@Param("carnet") String carnet, @Param("idequipo") int idequipo, @Param("descripcion") String descripcion, @Param("tiponovedad") TipoNovedad tiponovedad) throws PersistenceException
+	{
+		if(descripcion == "")
+		{
+			throw new PersistenceException("No se puede agregar la novedad sin justificacion");
+		}
+		else
+		{
+			mapper.agregarNovedadAsociacion(carnet, idequipo, descripcion, tiponovedad);
+		}
+	}
+	
+	@Override
+	public void agregarNovedadAlRegistroLab(@Param("carnet") String carnet, @Param("idequipo") int idequipo, @Param("descripcion") String descripcion,
+			@Param("registrar") TipoNovedad registrar)
+	{
+		mapper.agregarNovedadAlRegistroLab(carnet, idequipo, descripcion, registrar);
 	}
 }

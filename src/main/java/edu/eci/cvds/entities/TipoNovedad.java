@@ -2,6 +2,5 @@ package edu.eci.cvds.entities;
 
 public enum TipoNovedad {
 	
-	REGISTRAR,CONSULTAR, BAJAR;
-
+	REGISTRAR,CONSULTAR, DAR_DE_BAJA, ELIMINAR;
 }

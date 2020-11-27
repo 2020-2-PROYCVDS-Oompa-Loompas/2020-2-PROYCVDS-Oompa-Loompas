@@ -28,11 +28,11 @@ public class ServiciosECINovedadImpl implements ServiciosNovedad
 	{
 		return novedadDAO.getNovedades();
 	}
-
+	
 	@Override
-	public void agregarNovedad(Date fecha, int carnet, int idlaboratorio, int idequipo, int idelemento, String descripcion, TipoNovedad tiponovedad) throws ExcepcionServiciosLab, PersistenceException 
+	public void agregarNovedadAsociacion(String carnet, int idequipo, String descripcion, TipoNovedad tipoNovedad) throws PersistenceException
 	{
-		novedadDAO.agregarNovedad(fecha, carnet, idlaboratorio, idequipo, idelemento, descripcion, tiponovedad);
+		novedadDAO.agregarNovedadAsociacion(carnet, idequipo, descripcion, tipoNovedad);
 	}
 
 	@Override
@@ -45,5 +45,18 @@ public class ServiciosECINovedadImpl implements ServiciosNovedad
 	public List<Novedad> getNovedadPorElemento(int idelemento)throws ExcepcionServiciosLab, PersistenceException
 	{
 		return novedadDAO.getNovedadPorElemento(idelemento);
+	}
+
+	@Override
+	public void agregarNovedad(Date fecha, String carnet, int idlaboratorio, int idequipo, int idelemento,
+			String descripcion, TipoNovedad tiponovedad) throws ExcepcionServiciosLab, PersistenceException {
+		novedadDAO.agregarNovedad(fecha, carnet, idequipo, idelemento, descripcion, tiponovedad);
+		
+	}
+	
+	public void agregarNovedadAlRegistroLab(String carnet, int idequipo, String descripcion,
+			TipoNovedad registrar)
+	{
+		novedadDAO.agregarNovedadAlRegistroLab(carnet, idequipo, descripcion, registrar);
 	}
 }

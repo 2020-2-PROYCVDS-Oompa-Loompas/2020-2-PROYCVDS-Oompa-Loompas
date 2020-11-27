@@ -45,11 +45,16 @@
 						</nav> 
 					</header>
                     <div class="col">
-											<h:form>
+						<h:form>
+						<p:messages id="messages" showDetail="true" closable="true" life="4000" style="width:630px;margin-top:20px;">
+							<p:autoUpdate />
+						</p:messages>
 						<p:dataTable id = "singleDT" var="equipo" value="#{serviciosBean.getEquipos()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-						rows="10">
-							<f:facet name="header">Equipos:</f:facet>
+						rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarEquipo}" rowKey="#{equipo.id}">
+							<f:facet name="header">Equipos:
+								<p:commandButton value="Eliminar Asociación" action = "#{serviciosBean.eliminarAsociacionLaboratorio(serviciosBean.seleccionarEquipo.id, shiroBean.email)}"/>
+							</f:facet>
 				
 							<p:column headerText="Nombre">
 								<h:outputText value="#{equipo.nombre}" />

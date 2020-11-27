@@ -53,7 +53,7 @@ public class ServiciosECIEquipoImpl implements ServiciosEquipo
 			equipoDAO.asociarEquipo(idlaboratorio, idequipo);
 		} catch (PersistenceException e)
 		{
-			throw new PersistenceException("Error, no se pudo asociar el equipo");
+			throw new PersistenceException(e + " Error, no se pudo asociar el equipo");
 		}
 	}
 	
@@ -61,5 +61,11 @@ public class ServiciosECIEquipoImpl implements ServiciosEquipo
 	public void bajarEquipo(int id)
 	{
 		equipoDAO.bajarEquipo(id);
+	}
+	
+	@Override
+	public void eliminiarAsociacionLaboratorio(int idequipo)
+	{
+		equipoDAO.eliminarAsociacion(idequipo);
 	}
 }

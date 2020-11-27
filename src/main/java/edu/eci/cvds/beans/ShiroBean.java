@@ -32,6 +32,7 @@ public class ShiroBean extends BasePageBean{
     @Inject
     private Logger logger;
     private String email;
+    private String name;
     private String password;
     private Boolean remember;
     private String message;

@@ -25,11 +25,4 @@
 		u.rol
 		FROM usuario as u;
 	</select>
-	
-	<insert parameterType = "map" id = "agregarUsuario">
-	
-		INSERT INTO Usuario(carnet, nombre, correo, contrasena, estado, rol) 
-		VALUES(#{carnet}, #{nombre}, #{correo}, #{contrasena},#{estado},#{rol});
-  		
-  	</insert>
 </mapper>

@@ -18,4 +18,6 @@ public interface ServiciosEquipo
 	public void asociarEquipoAlLab(int idlaboratorio, int idequipo) throws ExcepcionServiciosLab, PersistenceException;
 		
 	public void bajarEquipo(int id) throws ExcepcionServiciosLab;
+
+	public void eliminiarAsociacionLaboratorio(int idequipo);
 }

@@ -10,8 +10,6 @@
  		u.id,
  		u.fecha,
  		u.carnet,
- 		u.usuario,
- 		u.idlaboratorio,
  		u.idequipo,
  		u.idelemento,
  		u.descripcion,
@@ -24,8 +22,6 @@
  		a.id,
  		a.fecha,
  		a.carnet,
- 		a.usuario,
- 		a.idlaboratorio,
  		a.idequipo,
  		a.idelemento,
  		a.descripcion,
@@ -45,11 +41,23 @@
  		FROM novedad
  		WHERE idelemento = #{idelemento};
  	</select>
+ 	<insert parameterType = "map" id = "agregarNovedadAlRegistroLab">
+ 		INSERT INTO novedad
+ 		(carnet, idequipo, descripcion, tiponovedad)
+ 		VALUES
+ 		(#{carnet}, #{idequipo}, #{descripcion}, #{registrar});
+ 	</insert>
+ 	<insert parameterType = "map" id = "agregarNovedadAsociacion">
+ 		INSERT INTO novedad
+ 		(carnet, idequipo, descripcion, tiponovedad)
+ 		VALUES
+ 		(#{carnet}, #{idequipo}, #{descripcion}, #{tiponovedad});
+ 	</insert>
  	<insert parameterType = "map" id = "agregarNovedad">
   		INSERT INTO novedad
-  		(fecha, carnet, usuario, idlaboratorio, idequipo, idelemento, descripcion, tiponovedad)
+  		(fecha, carnet, idequipo, idelemento, descripcion, tiponovedad)
   		VALUES 
-  		(#{fecha}, #{carnet}, #{usuario}, #{idlaboratorio}, #{idequipo}, #{idelemento}, #{descripcion}, #{tiponovedad});
+  		(null, #{carnet}, #{idequipo}, #{idelemento}, #{descripcion}, #{tiponovedad});
   	</insert>
  
 
@@ -57,8 +65,6 @@
 	    <id property='id' column='id'/>
 	    <result property="fecha" column="fecha"></result>
 	    <result property="carnet" column="carnet"></result>
-	    <result property="usuario" column="usuario"></result>
-	    <result property="idlaboratorio" column="idlaboratorio"></result>
 		<result property="idequipo" column="idequipo"></result>
 		<result property="idelemento" column="idelemento"></result>
 		<result property="descripcion" column="descripcion"></result>

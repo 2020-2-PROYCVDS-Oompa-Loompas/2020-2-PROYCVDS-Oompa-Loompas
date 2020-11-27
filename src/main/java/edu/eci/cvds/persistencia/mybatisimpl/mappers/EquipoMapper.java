@@ -19,4 +19,6 @@ public interface EquipoMapper
 	public void asociarEquipo(@Param("id") int idlaboratorio, @Param("idequipo") int idequipo);
 	
 	public void bajarEquipo(@Param("id") int id);
+	
+	public void eliminarAsociacion(@Param("idequipo") int idequipo);
 }

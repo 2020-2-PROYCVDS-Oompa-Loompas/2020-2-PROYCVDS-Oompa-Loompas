@@ -1,10 +1,9 @@
 package edu.eci.cvds.beans;
 
 
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -43,24 +42,6 @@ public class ServiciosBean extends BasePageBean
 	
 	private Laboratorio seleccionarLaboratorio;
 	private Equipo seleccionarEquipo;
-    
-	
-	
-	public void agregarUsuario(String carnet, String nombre, String correo, String contrasena, String estado, String rol) throws PersistenceException
-	{
-		try
-		{
-			System.out.println("entra a agregar Usuario");
-			System.out.println("carnet "+ carnet);
-			System.out.println("nombre "+ nombre);
-			servicioUsuario.agregarUsuario(carnet, nombre, correo, contrasena, estado, rol);
-		} catch(ExcepcionServiciosLab e)
-		{
-			FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Agregar Usuario", "No se pudo agregar el usuario"));
-		}
-	}
-	
 	
 	public List<Laboratorio> getLaboratorios()
 	{
@@ -150,6 +131,8 @@ public class ServiciosBean extends BasePageBean
 		try
 		{
 			serviciosLaboratorio.agregarLaboratorio(nombre, capacidad);
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registrar laboratorio", "Registro del laboratorio exitoso"));
 		} catch(ExcepcionServiciosLab e)
 		{
 			FacesContext context = FacesContext.getCurrentInstance();
@@ -223,21 +206,38 @@ public class ServiciosBean extends BasePageBean
 		return equipos;
 	}
 		
-	public void asociarEquipoAlLab(int idlaboratorio, int idequipo) throws ExcepcionServiciosLab, PersistenceException
+	public void asociarEquipoAlLab(int idlaboratorio, int idequipo, String carnet, boolean disponible) throws ExcepcionServiciosLab, PersistenceException
 	{
 		try
 		{
-			System.out.println(idlaboratorio+" id laboratorio beans");
-			System.out.println(idequipo+" id equipo beans");
-			servicioEquipo.asociarEquipoAlLab(idlaboratorio, idequipo);
+			if(disponible)
+			{
+				servicioEquipo.asociarEquipoAlLab(idlaboratorio, idequipo);
+				FacesContext context = FacesContext.getCurrentInstance();
+	            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Asignar equipo al laboratorio", "Asignacion del equipo exitosa"));
+			}
+			else
+			{
+	            String numero = Integer.toString(idequipo);
+	    		String descripcion = "Se debe eliminar la asociacion del equipo "+numero+".";
+				agregarNovedadAlRegistroLab(carnet, idequipo, descripcion, TipoNovedad.REGISTRAR);
+				FacesContext context = FacesContext.getCurrentInstance();
+	            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Novedad", "Se registro la novedad"));
+			}
 		} catch(ExcepcionServiciosLab e)
 		{
 			FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Consultar equipos disponibles", "No se pudo consultar los equipos disponibles"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Asignar equipo al laboratorio", "No se pudo asociar el equipo"));
 		}
 		
 	}
 		
+	private void agregarNovedadAlRegistroLab(String carnet, int idequipo, String descripcion,
+			TipoNovedad registrar) {
+		servicioNovedad.agregarNovedadAlRegistroLab(carnet, idequipo, descripcion, registrar);
+		
+	}
+
 	public void bajarEquipo(int id)
 	{
 		try
@@ -248,6 +248,14 @@ public class ServiciosBean extends BasePageBean
 			FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Bajar equipo", "No se pudo dar de baja al equipo"));
 		}
+	}
+	
+	public void eliminarAsociacionLaboratorio(int idequipo, String carnet) throws ExcepcionServiciosLab, PersistenceException
+	{
+		servicioEquipo.eliminiarAsociacionLaboratorio(idequipo);
+		FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminar asociacion del equipo", "Asociacion eliminada"));
+		eliminarAsociacionNovedad(idequipo, carnet);
 	}
 	
 	public void setSeleccionarEquipo(Equipo equipo){
@@ -475,7 +483,7 @@ public class ServiciosBean extends BasePageBean
 		return novedades;
 	}
 	   
-	public void agregarNovedad(Date fecha, int carnet, int idlaboratorio, int idequipo, int idelemento, String descripcion, TipoNovedad tiponovedad) throws ExcepcionServiciosLab, PersistenceException
+	public void agregarNovedad(Date fecha, String carnet, int idlaboratorio, int idequipo, int idelemento, String descripcion, TipoNovedad tiponovedad) throws ExcepcionServiciosLab, PersistenceException
 	{
 		try
 		{
@@ -484,6 +492,18 @@ public class ServiciosBean extends BasePageBean
 		{
 			FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Registrar novedad", "No se pudo registrar la novedad"));
+		}
+	}
+	
+	public void agregarNovedadAsociacion(String carnet, int idequipo, String descripcion, TipoNovedad tipoNovedad) throws PersistenceException
+	{
+		try
+		{
+			servicioNovedad.agregarNovedadAsociacion(carnet, idequipo, descripcion, tipoNovedad);
+		} catch(ExcepcionServiciosLab e)
+		{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Registrar novedad", "No se pudo agregar la novedad"));
 		}
 	}
 	   
@@ -513,6 +533,16 @@ public class ServiciosBean extends BasePageBean
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Consultar novedad por elemento", "No se pudo encontrar la novedad del elemento registrada"));
 		}
 		return novedades;
+	}
+	
+	@SuppressWarnings("null")
+	public void eliminarAsociacionNovedad(int idequipo, String carnet) throws ExcepcionServiciosLab, PersistenceException
+	{
+		String numero = Integer.toString(idequipo);
+		String descripcion = "Se elimino la asociacion del equipo "+numero+".";
+		agregarNovedadAsociacion(carnet, idequipo, descripcion, TipoNovedad.ELIMINAR);
+		FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Novedad", "Se registro la novedad"));
 	}
 	
 	public List<Usuario> consultarUsuarios() throws ExcepcionServiciosLab, PersistenceException
