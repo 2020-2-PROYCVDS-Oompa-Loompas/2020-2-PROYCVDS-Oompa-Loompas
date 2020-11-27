@@ -18,6 +18,8 @@ public interface ServiciosNovedad
 	
 	public void agregarNovedadAlRegistroLab(String carnet, int idequipo, String descripcion,
 			TipoNovedad registrar);
+			
+	public void agregarNovedadDeEquipo(String carnet, String descripcion, TipoNovedad registrar);
 	   
 	public List<Novedad> getNovedadPorEquipo(int idequipo)throws ExcepcionServiciosLab, PersistenceException;
 		

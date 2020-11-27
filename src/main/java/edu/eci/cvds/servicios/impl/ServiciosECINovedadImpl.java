@@ -59,4 +59,10 @@ public class ServiciosECINovedadImpl implements ServiciosNovedad
 	{
 		novedadDAO.agregarNovedadAlRegistroLab(carnet, idequipo, descripcion, registrar);
 	}
+	
+	@Override
+	public void agregarNovedadDeEquipo(String carnet, String descripcion, TipoNovedad registrar)
+	{
+		novedadDAO.agregarNovedadDeEquipo(carnet, descripcion, registrar);
+	}
 }

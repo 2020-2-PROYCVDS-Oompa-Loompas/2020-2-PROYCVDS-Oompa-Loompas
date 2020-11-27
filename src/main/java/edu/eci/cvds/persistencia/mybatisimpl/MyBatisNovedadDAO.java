@@ -97,4 +97,10 @@ public class MyBatisNovedadDAO implements NovedadDAO
 	{
 		mapper.agregarNovedadAlRegistroLab(carnet, idequipo, descripcion, registrar);
 	}
+	
+	@Override
+	public void agregarNovedadDeEquipo(String carnet, String descripcion, TipoNovedad registrar)
+	{
+		mapper.agregarNovedadDeEquipo(carnet, descripcion, registrar);
+	}
 }

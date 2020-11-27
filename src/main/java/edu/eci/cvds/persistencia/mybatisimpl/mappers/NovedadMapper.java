@@ -18,6 +18,8 @@ public interface NovedadMapper
 	
 	public void agregarNovedadAlRegistroLab(@Param("carnet") String carnet, @Param("idequipo") int idequipo, @Param("descripcion") String descripcion,
 			@Param("registrar") TipoNovedad registrar);
+			
+	public void agregarNovedadDeEquipo(@Param("carnet") String carnet, @Param("descripcion") String descripcion, @Param("tiponovedad") TipoNovedad registrar);
 	
 	public List<Novedad> getNovedadPorEquipo(@Param("idequipo") int id);	
 	

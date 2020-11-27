@@ -41,6 +41,12 @@
  		FROM novedad
  		WHERE idelemento = #{idelemento};
  	</select>
+	<insert parameterType = "map" id = "agregarNovedadDeEquipo">
+ 		INSERT INTO novedad
+ 		(carnet, descripcion, tiponovedad)
+ 		VALUES
+ 		(#{carnet}, #{descripcion}, #{tiponovedad});
+ 	</insert>
  	<insert parameterType = "map" id = "agregarNovedadAlRegistroLab">
  		INSERT INTO novedad
  		(carnet, idequipo, descripcion, tiponovedad)

@@ -185,6 +185,8 @@ public class ServiciosBean extends BasePageBean
 		try
 		{
 			servicioEquipo.agregarEquipo(nombre, disponible, funcionamiento, idlaboratorio);
+			String descripcion = "Se el equipo "+nombre+".";
+			//agregarNovedadDeEquipo(carnet, descripcion, TipoNovedad.REGISTRAR);
 		} catch(ExcepcionServiciosLab e)
 		{
 			FacesContext context = FacesContext.getCurrentInstance();

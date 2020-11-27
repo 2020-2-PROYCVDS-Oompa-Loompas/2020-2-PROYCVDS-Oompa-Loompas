@@ -90,7 +90,7 @@
 										</p:column>
 								</p:dataTable>
 						</div>
-                		<p:commandButton value="Asignar equipos" action = "#{serviciosBean.asociarEquipoAlLab(serviciosBean.seleccionarLaboratorio.id, serviciosBean.seleccionarEquipo.id, shiroBean.email, equipo.disponible)}"/>
+                		<p:commandButton value="Asignar equipos" action = "#{serviciosBean.asociarEquipoAlLab(serviciosBean.seleccionarLaboratorio.id, serviciosBean.seleccionarEquipo.id, shiroBean.email, serviciosBean.seleccionarEquipo.disponible)}"/>
                 	</h:form>
                 </div> 
             </div>
