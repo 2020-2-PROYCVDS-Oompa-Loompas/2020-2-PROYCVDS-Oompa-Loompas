@@ -104,7 +104,7 @@
                     <br></br>
 
                     <br></br>
-                    <p:commandButton value="Asociar elemento" action = "#{serviciosBean.asociarElemento(serviciosBean.seleccionarEquipo.nombre, serviciosBean.seleccionarElemento.id)}"></p:commandButton>
+                    <p:commandButton value="Asociar elemento" action = "#{serviciosBean.asociarElemento(serviciosBean.seleccionarEquipo.id,serviciosBean.seleccionarEquipo.nombre, serviciosBean.seleccionarElemento.id, shiroBean.email)}"></p:commandButton>
                 </h:form>
 
             </div>

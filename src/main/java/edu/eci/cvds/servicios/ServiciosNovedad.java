@@ -26,4 +26,7 @@ public interface ServiciosNovedad
 	public List<Novedad> getNovedadPorEquipo(int idequipo)throws ExcepcionServiciosLab, PersistenceException;
 		
 	public List<Novedad> getNovedadPorElemento(int idelemento)throws ExcepcionServiciosLab, PersistenceException;
+
+	public void agregarNovedadAlAsociarElemento(String carnet, int idEquipo, int idElemento, String descripcion,
+			TipoNovedad registrar);
 }

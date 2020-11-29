@@ -438,11 +438,14 @@ public class ServiciosBean extends BasePageBean
 		return elementos;
 	}
 		
-	public void asociarElemento(String nombre, int id) throws ExcepcionServiciosLab
+	public void asociarElemento(int idEquipo, String nombre, int elementoId, String carnet) throws ExcepcionServiciosLab
 	{
 		try
 		{
-			servicioElemento.asociarElemento(nombre, id);
+			String numero = Integer.toString(elementoId);
+			String descripcion = "Se registra la asociacion del elemento "+numero+".";
+			servicioElemento.asociarElemento(nombre, elementoId);
+			agregarNovedadAlAsociarElemento(carnet, idEquipo, elementoId,descripcion, TipoNovedad.REGISTRAR);
 			FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Asociar Elemento", "Asociación del elemento exitosa"));
 		} catch(ExcepcionServiciosLab e)
@@ -450,6 +453,12 @@ public class ServiciosBean extends BasePageBean
 			FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Asociar Elemento", "No se pudo asociar el elemento"));
 		}
+	}
+
+	private void agregarNovedadAlAsociarElemento(String carnet, int idEquipo, int idElemento, String descripcion,
+			TipoNovedad registrar) {
+		servicioNovedad.agregarNovedadAlAsociarElemento(carnet, idEquipo, idElemento,descripcion, registrar);
+		
 	}
 
 	public void bajarElemento(int id) throws ExcepcionServiciosLab, PersistenceException
