@@ -77,8 +77,8 @@
 						<p:dataTable id = "singleDT2" var="elemento" value="#{serviciosBean.getElementos()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 						rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarElemento}" rowKey="#{elemento.id}">
-							<f:facet name="header">Equipos:
-								<p:commandButton value="Eliminar Asociación"/>
+							<f:facet name="header">Elementos:
+								<p:commandButton value="Dar de baja a elementos"  action = "#{serviciosBean.bajarElemento(serviciosBean.seleccionarElemento.id)}"/>
 							</f:facet>
 				
 							<p:column headerText="Categoria">

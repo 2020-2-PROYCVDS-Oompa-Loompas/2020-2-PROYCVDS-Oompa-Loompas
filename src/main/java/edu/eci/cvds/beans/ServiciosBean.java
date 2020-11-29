@@ -465,6 +465,7 @@ public class ServiciosBean extends BasePageBean
 	{
 		try
 		{
+			System.out.println("El id es: "+id);
 			servicioElemento.bajarElemento(id);
 		} catch(ExcepcionServiciosLab e)
 		{
