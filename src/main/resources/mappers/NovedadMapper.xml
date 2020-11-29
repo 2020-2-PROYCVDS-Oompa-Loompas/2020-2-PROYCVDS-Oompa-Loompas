@@ -65,6 +65,14 @@
   		VALUES 
   		(null, #{carnet}, #{idequipo}, #{idelemento}, #{descripcion}, #{tiponovedad});
   	</insert>
+  	
+  	
+  	<insert parameterType = "map" id = "agregarNovedadElemento">
+ 		INSERT INTO novedad
+ 		(carnet, descripcion, tiponovedad)
+ 		VALUES
+ 		(#{carnet}, #{descripcion}, #{registrar});
+ 	</insert>
  
 
 	<resultMap type='Novedad' id='NovedadResult'>

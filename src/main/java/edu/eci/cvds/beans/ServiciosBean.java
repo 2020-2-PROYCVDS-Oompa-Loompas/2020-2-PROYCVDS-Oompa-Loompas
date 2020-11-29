@@ -292,6 +292,7 @@ public class ServiciosBean extends BasePageBean
 	{
 		try
 		{
+			
 			servicioElemento.agregarElemento(nombre, fabricante);
 			FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Agregar Novedad", "Novedad de registro agregada."));
