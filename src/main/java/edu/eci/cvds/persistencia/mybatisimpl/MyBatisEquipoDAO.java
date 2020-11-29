@@ -27,9 +27,9 @@ public class MyBatisEquipoDAO implements EquipoDAO
 	}
 	
 	@Override
-	public void agregarEquipo(String nombre, boolean disponible, boolean funcionamiento, int idlaboratorio) throws PersistenceException
+	public void agregarEquipo(String nombre) throws PersistenceException
 	{
-		mapper.agregarEquipo(nombre, disponible, funcionamiento, idlaboratorio);
+		mapper.agregarEquipo(nombre);
 	}
 	
 	@Override

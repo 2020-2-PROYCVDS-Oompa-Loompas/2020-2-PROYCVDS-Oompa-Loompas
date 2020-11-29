@@ -20,7 +20,7 @@ public interface ElementoDAO
 	
 	public List<Elemento> getElementoOrdenadoPorIdEquipo();
 	
-	public void agregarElemento(String nombre, String fabricante, boolean disponible, int idequipo) throws PersistenceException;
+	public void agregarElemento(String nombre, String fabricante) throws PersistenceException;
 	
 	public List<Elemento> getElementosDisponibles();
 	
@@ -28,7 +28,7 @@ public interface ElementoDAO
 	
 	public List<Elemento> getElementosPorFabricante(String fabricante);
 	
-	public void asociarElemento(int id) throws PersistenceException;
+	public void asociarElemento(String nombre, int id) throws PersistenceException;
 	
 	public void bajarElemento(int id) throws PersistenceException;
 }

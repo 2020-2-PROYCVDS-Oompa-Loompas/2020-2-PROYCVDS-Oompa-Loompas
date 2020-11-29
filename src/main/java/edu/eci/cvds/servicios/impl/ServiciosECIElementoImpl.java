@@ -22,9 +22,9 @@ public class ServiciosECIElementoImpl implements ServiciosElemento
 	}
 
 	@Override
-	public void agregarElemento(String nombre, String fabricante, boolean disponible, int idequipo) throws ExcepcionServiciosLab, PersistenceException 
+	public void agregarElemento(String nombre, String fabricante) throws ExcepcionServiciosLab, PersistenceException 
 	{
-		elementoDAO.agregarElemento(nombre, fabricante, disponible, idequipo);
+		elementoDAO.agregarElemento(nombre, fabricante);
 		
 	}
 
@@ -83,10 +83,10 @@ public class ServiciosECIElementoImpl implements ServiciosElemento
 	}
 
 	@Override
-	public void asociarElemento(int id) throws ExcepcionServiciosLab
+	public void asociarElemento(String nombre, int id) throws ExcepcionServiciosLab
 	{
 		try {
-			elementoDAO.asociarElemento(id);
+			elementoDAO.asociarElemento(nombre, id);
 		} catch (PersistenceException e) 
 		{
 			throw new ExcepcionServiciosLab("Errror, no se puede asociar el elemento.");

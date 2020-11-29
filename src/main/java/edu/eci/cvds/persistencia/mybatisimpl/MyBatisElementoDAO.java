@@ -57,7 +57,7 @@ public class MyBatisElementoDAO implements ElementoDAO
 	}
 	
 	@Override
-	public void agregarElemento(String nombre, String fabricante, boolean disponible, int idequipo) throws PersistenceException
+	public void agregarElemento(String nombre, String fabricante) throws PersistenceException
 	{
 		if(!(nombre != "Torre" || nombre != "Pantalla" || nombre != "Mouse" || nombre != "Teclado"))
 		{
@@ -65,7 +65,7 @@ public class MyBatisElementoDAO implements ElementoDAO
 		}
 		else
 		{
-			mapper.agregarElemento(nombre, fabricante, disponible, idequipo);
+			mapper.agregarElemento(nombre, fabricante);
 		}	
 	}
 	
@@ -88,7 +88,7 @@ public class MyBatisElementoDAO implements ElementoDAO
 	}
 	
 	@Override
-	public void asociarElemento(int id) throws PersistenceException
+	public void asociarElemento(String nombre, int id) throws PersistenceException
 	{
 		if(!getElemento(id).getDisponible())
 		{
@@ -96,14 +96,14 @@ public class MyBatisElementoDAO implements ElementoDAO
 		}
 		else
 		{
-			mapper.asociarElemento(id);
+			mapper.asociarElemento(nombre, id);
 		}
 	}
 	
 	@Override
 	public void bajarElemento(int id) throws PersistenceException
 	{
-		if(getElemento(id).getIdEquipo() != 0)
+		if(getElemento(id).getEquipo() != null)
 		{
 			throw new PersistenceException("No puedes dar de baja a un elemento asociado con un equipo");
 		}

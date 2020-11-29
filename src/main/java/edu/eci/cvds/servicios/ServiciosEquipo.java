@@ -11,7 +11,7 @@ public interface ServiciosEquipo
 	
 	public List<Equipo> getEquipos() throws ExcepcionServiciosLab;
 	   
-	public void agregarEquipo(String nombre, boolean disponible, boolean funcionamiento, int idlaboratorio) throws ExcepcionServiciosLab, PersistenceException;
+	public void agregarEquipo(String nombre) throws ExcepcionServiciosLab, PersistenceException;
 	   
 	public List<Equipo> getEquiposDisponibles() throws ExcepcionServiciosLab;
 		

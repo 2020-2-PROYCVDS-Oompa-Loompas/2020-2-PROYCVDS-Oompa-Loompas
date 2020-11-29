@@ -6,7 +6,7 @@ public class Elemento {
 	private String fabricante;
 	private String categoria;
 	private int Capacidad;
-	private int idequipo;
+	private String equipo;
 	private boolean disponible;
 	private boolean funcionamiento;
 	
@@ -57,15 +57,15 @@ public class Elemento {
 	/**
 	 * @return the idEquipo
 	 */
-	public int getIdEquipo() {
-		return idequipo;
+	public String getEquipo() {
+		return equipo;
 	}
 
 	/**
 	 * @param idEquipo the idEquipo to set
 	 */
-	public void setIdEquipo(int idEquipo) {
-		this.idequipo = idEquipo;
+	public void setEquipo(String Equipo) {
+		this.equipo = Equipo;
 	}
 	
 	public void setCategoria(String categoria)
@@ -101,7 +101,7 @@ public class Elemento {
 	@Override
     public String toString() 
 	{
-        return "Elemento {id: " + id + ", categoria: " + categoria + " , fabricante: " + fabricante + ", disponible: " + disponible + ", funcionamiento: " + funcionamiento + ", idequipo: " + idequipo + "}\n";
+        return "Elemento {id: " + id + ", categoria: " + categoria + " , fabricante: " + fabricante + ", disponible: " + disponible + ", funcionamiento: " + funcionamiento + ", equipo: " + equipo + "}\n";
     }
 
 }

@@ -34,7 +34,9 @@
 								</li>
 								<li><a href="admin.xhtml">Equipos</a>
 									<ul class="submenu">
-										<li><a href="consultarEquipo.xhtml">Ver Equipos</a></li>
+										<li><a href="registrarEquipo.xhtml">Registrar Equipos</a></li>
+                                		<li><a href="configurarEquipo.xhtml">Configurar Equipos</a></li>
+                                		<li><a href="registrarElemento.xhtml">Registrar Elemento</a></li>
 									</ul>
 								</li>
 								<li><a href="consultarUsuarios.xhtml">Usuarios</a></li>
@@ -45,12 +47,16 @@
 					</header>
                     <div class="col">
                     	<h:form>
-    						<h:panelGrid columns="4" cellpadding="5">
-        						<h:outputLabel for="nombre" value="Nombre: " style="font-weight:bold" />
+                    		<p:messages id="messages" showDetail="true" closable="true" life="4000" style="width:630px;margin-top:20px;">
+								<p:autoUpdate />
+							</p:messages>
+							<h2 style="color:ffffff">Registrar Laboratorio </h2>
+    						<h:panelGrid columns="5" cellpadding="5">
+        						<h:outputLabel for="nombre" value="Nombre: " style="font-weight:bold; color:white; font-size:20px;" />
         						<p:inputText id="nombre" binding="#{nombre}" placeholder="Ingresa el nombre del laboratorio"/>
-        						<h:outputLabel for="capacidad" value="Capacidad: " style="font-weight:bold" />
-        						<p:inputText id="capacidad" binding="#{capacidad}" placeholder="Ingresa la capacidad del laboratorio"/>
-        						<p:commandButton value="Crear" icon="pi pi-check" actionListener="#{serviciosBean.agregarLaboratorio(nombre.value, capacidad.value)}"/>
+        						<h:outputLabel for="capacidad" value="Capacidad: " style="font-weight:bold; color:white; font-size:20px;" />
+        						<p:inputText id="capacidad" binding="#{capacidad}" placeholder="Ingresa la capacidad del laboratorio" />
+        						<p:commandLink value="Crear" icon="pi pi-check" actionListener="#{serviciosBean.agregarLaboratorio(nombre.value, capacidad.value)}" style="background:#4169E1; color:white; padding:10px; margin-left:10px;"/>
     						</h:panelGrid>
 						</h:form>
                     </div>

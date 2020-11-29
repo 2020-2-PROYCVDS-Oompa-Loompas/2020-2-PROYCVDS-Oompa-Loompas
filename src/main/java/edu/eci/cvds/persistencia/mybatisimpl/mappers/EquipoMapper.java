@@ -12,7 +12,7 @@ public interface EquipoMapper
 	
 	public List<Equipo> getEquipos();
 	
-	public void agregarEquipo(@Param("nombre") String nombre, @Param("disponible") boolean disponible, @Param("funcionamiento") boolean funcionamiento, @Param("idlaboratorio") int idlaboratorio);
+	public void agregarEquipo(@Param("nombre") String nombre);
 	
 	public List<Equipo> getEquiposDisponibles();
 	

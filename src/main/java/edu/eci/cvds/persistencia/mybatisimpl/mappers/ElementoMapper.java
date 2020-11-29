@@ -22,7 +22,7 @@ public interface ElementoMapper
 	
 	public List<Elemento> getElementoOrdenadoPorIdEquipo();
 	
-	public void agregarElemento(@Param("nombre") String nombre, @Param("fabricante") String fabricante, @Param("disponible") boolean disponible, @Param("idequipo") int idequipo);
+	public void agregarElemento(@Param("nombre") String nombre, @Param("fabricante") String fabricante);
 	
 	public List<Elemento> getElementosDisponible();
 	
@@ -30,7 +30,7 @@ public interface ElementoMapper
 	
 	public List<Elemento> getElementosPorFabricante(@Param("fabricante") String fabricante);
 	
-	public void asociarElemento(@Param("id") int id);
+	public void asociarElemento(@Param("equipo") String nombre, @Param("id") int id);
 	
 	public void bajarElemento(@Param("id") int id);
 }

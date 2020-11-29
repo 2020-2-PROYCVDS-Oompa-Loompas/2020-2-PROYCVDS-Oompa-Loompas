@@ -42,6 +42,7 @@ public class ServiciosBean extends BasePageBean
 	
 	private Laboratorio seleccionarLaboratorio;
 	private Equipo seleccionarEquipo;
+	private Elemento seleccionarElemento;
 	
 	public List<Laboratorio> getLaboratorios()
 	{
@@ -180,20 +181,22 @@ public class ServiciosBean extends BasePageBean
 		return equipos;
 	}
 	
-	public void agregarEquipo(String nombre, boolean disponible, boolean funcionamiento, int idlaboratorio) throws PersistenceException
+	public void agregarEquipo(String nombre, String carnet) throws PersistenceException
 	{
 		try
 		{
-			servicioEquipo.agregarEquipo(nombre, disponible, funcionamiento, idlaboratorio);
-			String descripcion = "Se el equipo "+nombre+".";
-			//agregarNovedadDeEquipo(carnet, descripcion, TipoNovedad.REGISTRAR);
+			servicioEquipo.agregarEquipo(nombre);
+			String descripcion = "Se registro el equipo "+nombre+".";
+			agregarNovedadDeEquipo(carnet, descripcion, TipoNovedad.REGISTRAR);
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Agregar equipo", "Registro del equipo exitoso."));
 		} catch(ExcepcionServiciosLab e)
 		{
 			FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Agregar equipo", "No se pudo agregar el equipo"));
 		}
 	}
-	   
+
 	public List<Equipo> getEquiposDisponibles()
 	{
 		List<Equipo> equipos = null;
@@ -285,11 +288,14 @@ public class ServiciosBean extends BasePageBean
 		return elemento;
 	}
 	   
-	public void agregarElemento(String nombre, String fabricante, boolean disponible, int idequipo) throws ExcepcionServiciosLab, PersistenceException
+	public void agregarElemento(String nombre, String fabricante, String carnet) throws ExcepcionServiciosLab, PersistenceException
 	{
 		try
 		{
-			servicioElemento.agregarElemento(nombre, fabricante, disponible, idequipo);
+			servicioElemento.agregarElemento(nombre, fabricante);
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Agregar Novedad", "Novedad de registro agregada."));
+			agregarNovedadElemento(carnet, nombre, fabricante);
 		} catch(ExcepcionServiciosLab e)
 		{
 			FacesContext context = FacesContext.getCurrentInstance();
@@ -431,15 +437,17 @@ public class ServiciosBean extends BasePageBean
 		return elementos;
 	}
 		
-	public void asociarElemento(int id) throws ExcepcionServiciosLab
+	public void asociarElemento(String nombre, int id) throws ExcepcionServiciosLab
 	{
 		try
 		{
-			servicioElemento.asociarElemento(id);
+			servicioElemento.asociarElemento(nombre, id);
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Asociar Elemento", "Asociación del elemento exitosa"));
 		} catch(ExcepcionServiciosLab e)
 		{
 			FacesContext context = FacesContext.getCurrentInstance();
-            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Bajar equipo", "No se pudo dar de baja al equipo"));
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Asociar Elemento", "No se pudo asociar el elemento"));
 		}
 	}
 
@@ -453,6 +461,16 @@ public class ServiciosBean extends BasePageBean
 			FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Bajar equipo", "No se pudo dar de baja al equipo"));
 		}
+	}
+	
+	public void setSeleccionarElemento(Elemento elemento){
+		System.out.println("Entro al set de elemento");
+		this.seleccionarElemento = elemento;
+	}
+
+	public Elemento getSeleccionarElemento(){
+		System.out.println("Entro al get de elemento");
+		return seleccionarElemento;
 	}
 	
 	public Novedad getNovedad(int id) throws ExcepcionServiciosLab, PersistenceException
@@ -507,6 +525,17 @@ public class ServiciosBean extends BasePageBean
 			FacesContext context = FacesContext.getCurrentInstance();
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Registrar novedad", "No se pudo agregar la novedad"));
 		}
+	}
+	
+	private void agregarNovedadDeEquipo(String carnet, String descripcion, TipoNovedad registrar) throws ExcepcionServiciosLab
+	{
+		servicioNovedad.agregarNovedadDeEquipo(carnet, descripcion, registrar);
+	}
+	
+	private void agregarNovedadElemento(String carnet, String nombre, String fabricante) throws ExcepcionServiciosLab
+	{
+		String descripcion = "Se registro el elemento " + nombre + "y su fabricante " + fabricante + ".";
+		servicioNovedad.agregarNovedadElemento(carnet, descripcion, TipoNovedad.REGISTRAR);
 	}
 	   
 	public List<Novedad> getNovedadPorEquipo(int idequipo)throws ExcepcionServiciosLab, PersistenceException

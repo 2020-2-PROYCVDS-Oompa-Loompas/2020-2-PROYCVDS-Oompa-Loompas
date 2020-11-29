@@ -9,7 +9,7 @@ public interface ServiciosElemento
 {
 	public Elemento getElemento(int id) throws ExcepcionServiciosLab;
 	   
-	public void agregarElemento(String nombre, String fabricante, boolean disponible, int idequipo) throws ExcepcionServiciosLab, PersistenceException;
+	public void agregarElemento(String nombre, String fabricante) throws ExcepcionServiciosLab, PersistenceException;
 	   
 	public List<Elemento> getElementos() throws ExcepcionServiciosLab;
 		
@@ -29,7 +29,7 @@ public interface ServiciosElemento
 	   
 	public List<Elemento> getElementosPorFabricante(String fabricante) throws ExcepcionServiciosLab;
 		
-	public void asociarElemento(int id) throws ExcepcionServiciosLab;
+	public void asociarElemento(String nombre, int id) throws ExcepcionServiciosLab;
 
 	public void bajarElemento(int id) throws ExcepcionServiciosLab, PersistenceException;
 }

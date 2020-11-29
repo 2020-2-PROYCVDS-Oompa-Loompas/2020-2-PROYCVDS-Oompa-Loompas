@@ -10,7 +10,8 @@
   		u.categoria,
   		u.fabricante,
   		u.disponible,
-  		u.idequipo
+  		u.funcionamiento,
+  		u.equipo
   		FROM elemento as u
   		WHERE id = #{id};
   	</select>
@@ -68,7 +69,7 @@
   		ORDER BY idequipo ASC;
   	</select>
   	<update parameterType = "map" id = "asociarElemento">
-  		UPDATE elemento SET disponible = False, idequipo = #{idequipo}
+  		UPDATE elemento SET disponible = False, equipo = #{equipo}
   		WHERE id = #{id} AND disponible = True;
   	</update>
   	<update parameterType = "map" id = "bajarElemento">
@@ -77,9 +78,9 @@
   	</update>
   	<insert parameterType = "map" id = "agregarElemento">
   		INSERT INTO elemento
-  		(categoria, fabricante, disponible, idequipo)
+  		(categoria, fabricante, disponible, funcionamiento, equipo)
   		VALUES 
-  		(#{nombre}, #{fabricante}, #{disponible}, #{idequipo});
+  		(#{nombre}, #{fabricante}, true, true, null);
   	</insert>
   	
   	<resultMap type = 'Elemento' id = 'ElementoResult'>
@@ -87,6 +88,7 @@
   		<result property = "categoria" column = "categoria" />
   		<result property = "fabricante" column = "fabricante" />
   		<result property = "disponible" column = "disponible" />
-  		<result property = "idequipo" column = "idequipo" />
+  		<result property = "funcionamiento" column = "funcionamiento" />
+  		<result property = "equipo" column = "equipo" />
   	</resultMap>
   </mapper>

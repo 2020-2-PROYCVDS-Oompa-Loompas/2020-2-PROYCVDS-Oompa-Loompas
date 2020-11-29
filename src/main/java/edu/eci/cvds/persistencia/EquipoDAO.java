@@ -10,7 +10,7 @@ public interface EquipoDAO
 	
 	public List<Equipo> getEquipos();
 	
-	public void agregarEquipo(String nombre, boolean disponible, boolean funcionamiento, int idlaboratorio) throws PersistenceException;
+	public void agregarEquipo(String nombre) throws PersistenceException;
 	
 	public List<Equipo> getEquiposDisponibles();
 	

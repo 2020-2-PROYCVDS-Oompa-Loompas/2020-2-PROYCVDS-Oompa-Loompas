@@ -33,11 +33,11 @@ public class ServiciosECIEquipoImpl implements ServiciosEquipo
 	}
 
 	@Override
-	public void agregarEquipo(String nombre, boolean disponible, boolean funcionamiento, int idlaboratorio) throws PersistenceException
+	public void agregarEquipo(String nombre) throws PersistenceException
 	{
 		try 
 		{
-			equipoDAO.agregarEquipo(nombre, disponible, funcionamiento, idlaboratorio);
+			equipoDAO.agregarEquipo(nombre);
 		} catch (PersistenceException e) 
 		{
 			throw new PersistenceException("Error al agregar el equipo");
