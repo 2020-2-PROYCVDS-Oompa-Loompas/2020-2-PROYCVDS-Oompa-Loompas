@@ -1,10 +1,11 @@
+
 CREATE TABLE IF NOT EXISTS Rol(tipo VARCHAR(14) PRIMARY KEY);
 
 CREATE TABLE IF NOT EXISTS Usuario(carnet VARCHAR(50) PRIMARY KEY, nombre VARCHAR(50) NOT NULL, correo VARCHAR(50), contrasena VARCHAR(80) NOT NULL, estado VARCHAR(15) NOT NULL, rol VARCHAR(14) REFERENCES Rol(tipo));
 
 CREATE TABLE IF NOT EXISTS TipoNovedad(tipo VARCHAR(14) PRIMARY KEY);
 
-CREATE TABLE IF NOT EXISTS Laboratorio(id SERIAL PRIMARY KEY, nombre VARCHAR(15) unique, capacidad BIGINT, fechacreacion DATE, fechacierre DATE);
+CREATE TABLE IF NOT EXISTS Laboratorio(id SERIAL PRIMARY KEY, nombre VARCHAR(15) unique, capacidad BIGINT, disponible BOOLEAN,fechacreacion DATE, fechacierre DATE);
 
 CREATE TABLE IF NOT EXISTS Equipo(id SERIAL PRIMARY KEY, nombre VARCHAR(15) unique, disponible BOOLEAN, funcionamiento BOOLEAN, laboratorio VARCHAR(15) references Laboratorio(nombre));
 
@@ -31,9 +32,9 @@ insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values ('21
 insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values ('2154957', 'Daniela', 'angie.ruiz@mail.escuelaing.edu.co', 'snowball', 'Activo', 'ESTUDIANTE');
 insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values ('1234567', 'prueba', 'prueba@pruebita.com', 'prueba', 'Activo', 'ADMINISTRATIVO');
 
-insert into Laboratorio(nombre, capacidad, fechacreacion, fechacierre) values ('Ing. Software', 20, '1996-05-25', null);
-insert into Laboratorio(nombre, capacidad, fechacreacion, fechacierre) values ('Lab. Redes', 15, '1996-07-25', null);
-insert into Laboratorio(nombre, capacidad, fechacreacion, fechacierre) values ('Lab. Ingenio', 20, '1996-05-25', '2018-05-25');
+insert into Laboratorio(nombre, capacidad, disponible,fechacreacion, fechacierre) values ('Ing. Software', 20,true, '1996-05-25', null);
+insert into Laboratorio(nombre, capacidad, disponible,fechacreacion, fechacierre) values ('Lab. Redes', 15,true, '1996-07-25', null);
+insert into Laboratorio(nombre, capacidad, disponible,fechacreacion, fechacierre) values ('Lab. Ingenio', 20,true, '1996-05-25', '2018-05-25');
 
 insert into Equipo(nombre, disponible, funcionamiento, laboratorio) values ('Computador 1', false, true, 'Ing. Software');
 insert into Equipo(nombre, disponible, funcionamiento, laboratorio) values ('Computador 2', false, true, 'Lab. Redes');
@@ -86,6 +87,19 @@ CREATE TRIGGER tb_fecha_novedad
 BEFORE INSERT ON public.novedad
 FOR EACH ROW
 EXECUTE PROCEDURE funcionFechaNovedad();
+
+
+CREATE OR REPLACE FUNCTION funcionFechaCierreLaboratorio() RETURNS trigger AS
+$$
+BEGIN
+	NEW.fechacierre:= current_date;
+	RETURN NEW;
+END;
+$$ LANGUAGE 'plpgsql';
+CREATE TRIGGER tb_fechaCierreLaboratorio
+BEFORE UPDATE ON public.laboratorio
+FOR EACH ROW
+EXECUTE PROCEDURE funcionFechaCierreLaboratorio();
 
 -- Consultas --------------------------------------------
 select * from TipoNovedad;
@@ -210,5 +224,7 @@ drop table TipoNovedad cascade;
 drop table Novedad cascade;
 DROP TRIGGER tb_fecha_inicio ON laboratorio;
 DROP TRIGGER tb_fecha_novedad ON novedad;
+drop trigger tb_fechaCierreLaboratorio on laboratorio;
 drop function funcionFecha();
 drop function funcionFechaNovedad();
+drop function funcionFechaCierreLaboratorio();
