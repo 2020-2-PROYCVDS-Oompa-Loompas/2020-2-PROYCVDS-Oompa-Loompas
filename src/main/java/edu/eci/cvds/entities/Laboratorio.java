@@ -8,10 +8,19 @@ public class Laboratorio {
 	private int id;
 	private String nombre;
 	private int capacidad;
+	private boolean disponible;
 	private Date fechacierre;
 	private Date fechacreacion;
 	
 	public Laboratorio() {}
+
+	public boolean isDisponible() {
+		return disponible;
+	}
+
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
+	}
 
 	public void setId(int id)
 	{

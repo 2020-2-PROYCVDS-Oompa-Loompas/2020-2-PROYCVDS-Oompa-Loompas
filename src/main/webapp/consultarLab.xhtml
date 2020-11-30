@@ -60,9 +60,14 @@
 											<h:outputText value="#{laboratorio.nombre}" />
 										</p:column>
 				 
-										<p:column headerText="Capacidad" >
+										<p:column headerText="Capacidad" filterBy="#{laboratorio.capacidad}">
 											<h:outputText value="#{laboratorio.capacidad}"/>
 										</p:column>
+										
+										<p:column headerText="Disponible" filterBy="#{laboratorio.disponible}">
+											<h:outputText value="#{laboratorio.disponible}"/>
+										</p:column>
+										
 										<p:column headerText = "Fecha de Creación">
 											<h:outputText value = "#{laboratorio.getFechaCreacionString()}"/>
 										</p:column>
