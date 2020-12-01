@@ -31,4 +31,6 @@ public interface ElementoDAO
 	public void asociarElemento(String nombre, int id) throws PersistenceException;
 	
 	public void bajarElemento(int id) throws PersistenceException;
+
+	public void habilitarElemento(int id)throws PersistenceException;
 }

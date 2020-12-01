@@ -29,4 +29,6 @@ public interface NovedadDAO
 
 	public void agregarNovedadAsociarElemento(String carnet, int idEquipo, int idElemento, String descripcion,
 			TipoNovedad registrar);
+	public void agregarNovedadEliminarAscElemento(String carnet, int idElemento, String descripcion,
+			TipoNovedad registrar);
 }

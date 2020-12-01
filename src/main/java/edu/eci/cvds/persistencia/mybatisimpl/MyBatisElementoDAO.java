@@ -2,6 +2,8 @@ package edu.eci.cvds.persistencia.mybatisimpl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.google.inject.Inject;
 
 import edu.eci.cvds.entities.Elemento;
@@ -112,4 +114,12 @@ public class MyBatisElementoDAO implements ElementoDAO
 			mapper.bajarElemento(id);
 		}
 	}
+	
+	@Override
+	public void habilitarElemento(int id) throws PersistenceException{
+		mapper.habilitarElemento(id);
+	}
+
+
+	
 }

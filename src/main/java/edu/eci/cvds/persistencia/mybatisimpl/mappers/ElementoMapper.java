@@ -33,4 +33,6 @@ public interface ElementoMapper
 	public void asociarElemento(@Param("equipo") String nombre, @Param("id") int id);
 	
 	public void bajarElemento(@Param("id") int id);
+	
+	public void habilitarElemento(@Param("id") int id);
 }

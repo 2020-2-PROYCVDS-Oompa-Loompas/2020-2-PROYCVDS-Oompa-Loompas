@@ -30,7 +30,7 @@
   		SELECT
   		*
   		FROM elemento
-  		WHERE disponible = True AND categoria = #{categoria};
+  		WHERE categoria = #{categoria};
   	</select>
   	<select parameterType = "map" id = "getElementosPorFabricante" resultMap = "ElementoResult">
   		SELECT
@@ -82,6 +82,10 @@
   		VALUES 
   		(#{nombre}, #{fabricante}, true, true, null);
   	</insert>
+  	<update parameterType = "map" id = "habilitarElemento">
+	  		UPDATE elemento SET disponible = True, equipo = null
+	  		WHERE id = #{id};
+  	</update>
   	
   	<resultMap type = 'Elemento' id = 'ElementoResult'>
   		<id property = 'id' column = 'id' />

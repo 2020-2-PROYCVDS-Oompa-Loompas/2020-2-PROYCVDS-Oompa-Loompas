@@ -79,6 +79,8 @@
 						rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarElemento}" rowKey="#{elemento.id}">
 							<f:facet name="header">Elementos:
 								<p:commandButton value="Dar de baja a elementos"  action = "#{serviciosBean.bajarElemento(serviciosBean.seleccionarElemento.id)}"/>
+								  
+								<p:commandButton value="Eliminar Asociación" action = "#{serviciosBean.eliminarAsociacionElemento(serviciosBean.seleccionarElemento.id, shiroBean.email)}"/>
 							</f:facet>
 				
 							<p:column headerText="Categoria">
@@ -104,7 +106,22 @@
                     <br></br>
 
                     <br></br>
-                    <p:commandButton value="Asociar elemento" action = "#{serviciosBean.asociarElemento(serviciosBean.seleccionarEquipo.id,serviciosBean.seleccionarEquipo.nombre, serviciosBean.seleccionarElemento.id, shiroBean.email)}"></p:commandButton>
+                    <button onclick="myFunction()">Asociar Elemento</button>
+					<script type="text/javascript">
+									function myFunction() {
+									var txt;
+									var r = confirm("Press a button!");
+									if (r == true) {
+										txt = "#{serviciosBean.asociarElemento(serviciosBean.seleccionarEquipo.id,serviciosBean.seleccionarEquipo.nombre, serviciosBean.seleccionarElemento.id, shiroBean.email)}";
+										alert("Asociacion realizada")
+									} 
+									else
+									{
+										alert("La Asociacion no fue realizada")
+									}
+									}
+					</script> 			 
+                   
                 </h:form>
 
             </div>

@@ -262,6 +262,13 @@ public class ServiciosBean extends BasePageBean
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminar asociacion del equipo", "Asociacion eliminada"));
 		eliminarAsociacionNovedad(idequipo, carnet);
 	}
+	public void eliminarAsociacionElemento(int id, String carnet) throws ExcepcionServiciosLab, PersistenceException
+	{
+		servicioElemento.habilitarElemento(id);
+		FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminar asociacion novedad", "Se genero la novedad"));
+        eliminarAsociacionElementoNovedad(id, carnet);
+	}
 	
 	public void setSeleccionarEquipo(Equipo equipo){
 		System.out.println("Entro al set de equipo");
@@ -438,12 +445,29 @@ public class ServiciosBean extends BasePageBean
 		return elementos;
 	}
 		
-	public void asociarElemento(int idEquipo, String nombre, int elementoId, String carnet) throws ExcepcionServiciosLab
+	public void asociarElemento(int idEquipo, String nombre, int elementoId, String carnet) throws ExcepcionServiciosLab, PersistenceException
 	{
 		try
 		{
 			String numero = Integer.toString(elementoId);
 			String descripcion = "Se registra la asociacion del elemento "+numero+".";
+			
+			String categoria = servicioElemento.getElemento(elementoId).getCategoria();
+			List<Elemento> listaElementoTorres = servicioElemento.getElementosPorCategoria(categoria);
+			System.out.println("tamanio");
+			System.out.println(nombre);
+			System.out.println(listaElementoTorres.size());
+			for(int i=0; i < listaElementoTorres.size(); i++) {
+				System.out.println("nombreEquipos");
+				System.out.println(listaElementoTorres.get(i).getEquipo());
+				if(listaElementoTorres.get(i).getEquipo() != null && listaElementoTorres.get(i).getEquipo().equals(nombre)) {
+					System.out.println("entro");
+					int idEsp = listaElementoTorres.get(i).getId();
+					servicioElemento.habilitarElemento(idEsp);
+					String descripcion2 = "Se reemplazo el elemento " + categoria + " "+ idEsp + "por el elemento " + categoria + " " + elementoId;
+					agregarNovedadAlAsociarElemento(carnet, idEquipo, elementoId,descripcion2, TipoNovedad.REEMPLAZAR);
+				}
+			}	
 			servicioElemento.asociarElemento(nombre, elementoId);
 			agregarNovedadAlAsociarElemento(carnet, idEquipo, elementoId,descripcion, TipoNovedad.REGISTRAR);
 			FacesContext context = FacesContext.getCurrentInstance();
@@ -587,6 +611,17 @@ public class ServiciosBean extends BasePageBean
         context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Novedad", "Se registro la novedad"));
 	}
 	
+	@SuppressWarnings("null")
+	public void eliminarAsociacionElementoNovedad(int idequipo, String carnet) throws ExcepcionServiciosLab, PersistenceException
+	{
+		String numero = Integer.toString(idequipo);
+		String descripcion = "Se elimino la asociacion del elemento "+numero+".";
+		agregarNovedadElemeto(carnet, idequipo, descripcion, TipoNovedad.ELIMINAR);
+	}
+	
+	public void agregarNovedadElemeto(String carnet, int id, String descripcion, TipoNovedad tipoNovedad) throws PersistenceException {
+		servicioNovedad.agregarNovedadEliminarAscElemento(carnet, id, descripcion, tipoNovedad);
+	}
 	public List<Usuario> consultarUsuarios() throws ExcepcionServiciosLab, PersistenceException
 	{
 		List<Usuario> usuarios = null;

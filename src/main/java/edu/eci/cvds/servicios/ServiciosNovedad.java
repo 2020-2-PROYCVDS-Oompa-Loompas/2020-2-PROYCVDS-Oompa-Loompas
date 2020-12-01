@@ -29,4 +29,7 @@ public interface ServiciosNovedad
 
 	public void agregarNovedadAlAsociarElemento(String carnet, int idEquipo, int idElemento, String descripcion,
 			TipoNovedad registrar);
+	
+	public void agregarNovedadEliminarAscElemento(String carnet, int idElemento, String descripcion,
+	TipoNovedad registrar);
 }

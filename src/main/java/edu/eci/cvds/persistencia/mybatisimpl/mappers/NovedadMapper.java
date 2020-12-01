@@ -28,5 +28,7 @@ public interface NovedadMapper
 	public List<Novedad> getNovedadPorElemento(@Param("idelemento") int id);
 
 	public void agregarNovedadAsociarElemento(@Param("carnet") String carnet,@Param("idEquipo") int idEquipo, @Param("idElemento") int idElemento, @Param("descripcion") String descripcion,
-			@Param("registrar") TipoNovedad registrar);	
+			@Param("registrar") TipoNovedad registrar);
+	public void agregarNovedadEliminarAscElemento(@Param("carnet") String carnet, @Param("idElemento") int idElemento, @Param("descripcion") String descripcion,
+			@Param("registrar") TipoNovedad registrar);
 }

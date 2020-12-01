@@ -98,4 +98,11 @@ public class ServiciosECIElementoImpl implements ServiciosElemento
 	{
 		elementoDAO.bajarElemento(id);
 	}
+
+	@Override
+	public void habilitarElemento(int id) throws ExcepcionServiciosLab, PersistenceException 
+	{
+		elementoDAO.habilitarElemento(id);
+		
+	}
 }
