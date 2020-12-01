@@ -122,4 +122,10 @@ public class MyBatisNovedadDAO implements NovedadDAO
 			TipoNovedad registrar) {
 		mapper.agregarNovedadEliminarAscElemento(carnet, idElemento, descripcion, registrar);
 	}
+	
+	@Override
+	public void agregarNovedadBajarEquipo(String carnet, int id, String descripcion, TipoNovedad darDeBaja)
+	{
+		mapper.agregarNovedadBajarEquipo(carnet, id, descripcion, darDeBaja);
+	}
 }

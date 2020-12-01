@@ -50,6 +50,7 @@
 						<p:autoUpdate />
 					</p:messages>
 					<div class = "col">
+						<p:commandButton value="Bajar Equipo" action = "#{serviciosBean.bajarEquipo(serviciosBean.seleccionarEquipo.id, shiroBean.email)}"/>
 						<p:dataTable id = "singleDT" var="equipo" value="#{serviciosBean.getEquipos()}"
 							paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 							rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarEquipo}" rowKey="#{equipo.id}">
@@ -106,21 +107,7 @@
                     <br></br>
 
                     <br></br>
-                    <button onclick="myFunction()">Asociar Elemento</button>
-					<script type="text/javascript">
-									function myFunction() {
-									var txt;
-									var r = confirm("Press a button!");
-									if (r == true) {
-										txt = "#{serviciosBean.asociarElemento(serviciosBean.seleccionarEquipo.id,serviciosBean.seleccionarEquipo.nombre, serviciosBean.seleccionarElemento.id, shiroBean.email)}";
-										alert("Asociacion realizada")
-									} 
-									else
-									{
-										alert("La Asociacion no fue realizada")
-									}
-									}
-					</script> 			 
+                    <p:commandButton value="Asociar Elemento" action = "#{serviciosBean.asociarElemento(serviciosBean.seleccionarEquipo.id,serviciosBean.seleccionarEquipo.nombre, serviciosBean.seleccionarElemento.id, shiroBean.email)}"/>	 
                    
                 </h:form>
 

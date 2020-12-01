@@ -31,4 +31,6 @@ public interface NovedadMapper
 			@Param("registrar") TipoNovedad registrar);
 	public void agregarNovedadEliminarAscElemento(@Param("carnet") String carnet, @Param("idElemento") int idElemento, @Param("descripcion") String descripcion,
 			@Param("registrar") TipoNovedad registrar);
+	
+	public void agregarNovedadBajarEquipo(@Param("carnet") String carnet, @Param("idequipo") int idequipo, @Param("descripcion") String descripcion, @Param("tiponovedad") TipoNovedad darDeBaja);
 }

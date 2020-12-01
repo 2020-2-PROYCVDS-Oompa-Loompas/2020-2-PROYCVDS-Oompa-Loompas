@@ -90,7 +90,7 @@ public class App
 		System.out.println("----------------------");
         System.out.println("----------------------");
         System.out.println("Consulta los equipos de un laboratorio");
-		System.out.println(lm.getEquiposLaboratorio("Ing. Software"));
+		System.out.println(eqm.getEquiposLaboratorio("Ing. Software"));
 		System.out.println("----------------------");
         System.out.println("----------------------");
         System.out.println("Consultar los elementos disponibles");

@@ -10,6 +10,8 @@ public interface ServiciosEquipo
 	public Equipo getEquipo(int id) throws ExcepcionServiciosLab;
 	
 	public List<Equipo> getEquipos() throws ExcepcionServiciosLab;
+	
+	public List<Equipo> getEquiposLaboratorio(String laboratorio) throws ExcepcionServiciosLab;
 	   
 	public void agregarEquipo(String nombre) throws ExcepcionServiciosLab, PersistenceException;
 	   

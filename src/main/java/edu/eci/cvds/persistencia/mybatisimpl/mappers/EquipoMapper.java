@@ -16,6 +16,8 @@ public interface EquipoMapper
 	
 	public List<Equipo> getEquiposDisponibles();
 	
+	public List<Equipo> getEquiposLaboratorio(@Param("laboratorio") String nombre);
+	
 	public void asociarEquipo(@Param("id") int idlaboratorio, @Param("idequipo") int idequipo);
 	
 	public void bajarEquipo(@Param("id") int id);

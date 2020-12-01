@@ -31,4 +31,6 @@ public interface NovedadDAO
 			TipoNovedad registrar);
 	public void agregarNovedadEliminarAscElemento(String carnet, int idElemento, String descripcion,
 			TipoNovedad registrar);
+
+	public void agregarNovedadBajarEquipo(String carnet, int idequipo, String descripcion, TipoNovedad darDeBaja);
 }

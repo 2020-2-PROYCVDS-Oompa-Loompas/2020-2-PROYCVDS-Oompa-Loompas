@@ -16,9 +16,7 @@ public interface ServiciosLab
    
    public List<Laboratorio> getLaboratoriosDisponibles() throws ExcepcionServiciosLab;
    
-   public List<Equipo> getEquiposLaboratorio(String nombre) throws ExcepcionServiciosLab;
-   
    public void asociarEquipo(String nombre) throws ExcepcionServiciosLab, PersistenceException;
    
-   public void cerrarLaboratorio(String nombre, Date fechacierre) throws ExcepcionServiciosLab;
+   public void cerrarLaboratorio(String nombre) throws ExcepcionServiciosLab;
 }

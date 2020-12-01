@@ -52,6 +52,7 @@
 							<p:autoUpdate />
 						</p:messages>
 						<div class="col">
+							<p:commandButton value="Cerrar Laboratorio" action = "#{serviciosBean.cerrarLaboratorio(serviciosBean.seleccionarLaboratorio.nombre, shiroBean.email)}"/>
 								<p:dataTable id = "singleLaboratorio" var="laboratorio" value="#{serviciosBean.getLaboratorios()}"
 									paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 									rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarLaboratorio}" rowKey="#{laboratorio.id}">

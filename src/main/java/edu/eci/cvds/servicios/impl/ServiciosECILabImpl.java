@@ -42,21 +42,15 @@ public  class ServiciosECILabImpl implements ServiciosLab
 	}
 
 	@Override
-	public List<Equipo> getEquiposLaboratorio(String nombre) 
-	{
-		return laboratorioDAO.getEquiposLaboratorio(nombre);
-	}
-
-	@Override
 	public void asociarEquipo(String nombre) throws ExcepcionServiciosLab, PersistenceException
 	{
 		laboratorioDAO.asociarEquipo(nombre);
 	}
 	
 	@Override
-	public void cerrarLaboratorio(String nombre, Date fechacierre)
+	public void cerrarLaboratorio(String nombre)
 	{
-		laboratorioDAO.cerrarLaboratorio(nombre, fechacierre);
+		laboratorioDAO.cerrarLaboratorio(nombre);
 	}
 
 	@Override

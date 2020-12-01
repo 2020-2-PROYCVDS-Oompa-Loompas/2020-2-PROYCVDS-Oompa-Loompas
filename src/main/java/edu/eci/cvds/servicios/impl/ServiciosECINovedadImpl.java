@@ -84,4 +84,10 @@ public class ServiciosECINovedadImpl implements ServiciosNovedad
 			TipoNovedad registrar){
 				novedadDAO.agregarNovedadEliminarAscElemento(carnet, idElemento, descripcion, registrar);
 			}
+	
+	@Override
+	public void agregarNovedadBajarEquipo(String carnet, int idequipo, String descripcion, TipoNovedad darDeBaja)
+	{
+		novedadDAO.agregarNovedadBajarEquipo(carnet, idequipo, descripcion, darDeBaja);
+	}
 }

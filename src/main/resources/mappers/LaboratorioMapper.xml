@@ -32,20 +32,13 @@
   		FROM laboratorio as u
   		WHERE u.fechacierre = null;
   	</select>
-  	<select id = "getEquiposLaboratorio" resultMap = "LaboratorioResult">
-		SELECT
-		equipo.id,
-		equipo.nombre
-		FROM laboratorio, equipo
-		WHERE laboratorio.nombre = #{nombre} AND laboratorio.nombre = equipo.laboratorio;
-  	</select>
   	<update parameterType = "map" id = "asociarEquipo">
   		UPDATE
   		laboratorio SET capacidad = capacidad - 1
   		WHERE nombre = #{nombre};
   	</update>
   	<update parameterType = "map" id = "cerrarLaboratorio">
-  		UPDATE laboratorio SET fechacierre = #{fechacierre}
+  		UPDATE laboratorio SET fechacierre = null
   		WHERE nombre = #{nombre};
   	</update>
   	<insert parameterType = "map" id = "agregarLaboratorio">

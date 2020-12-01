@@ -33,12 +33,6 @@ public class MyBatisLaboratorioDAO implements LaboratorioDAO
 	}
 	
 	@Override
-	public List<Equipo> getEquiposLaboratorio(String nombre)
-	{
-		return mapper.getEquiposLaboratorio(nombre);
-	}
-	
-	@Override
 	public void agregarLaboratorio(String nombre, int capacidad) throws PersistenceException
 	{
 		if(nombre == null || nombre == "")
@@ -67,8 +61,8 @@ public class MyBatisLaboratorioDAO implements LaboratorioDAO
 	}
 	
 	@Override
-	public void cerrarLaboratorio(String nombre, Date fechacierre)
+	public void cerrarLaboratorio(String nombre)
 	{
-		mapper.cerrarLaboratorio(nombre, fechacierre);
+		mapper.cerrarLaboratorio(nombre);
 	}
 }

@@ -34,7 +34,7 @@ insert into Usuario(carnet, nombre, correo, contrasena, estado, rol) values ('12
 
 insert into Laboratorio(nombre, capacidad, disponible,fechacreacion, fechacierre) values ('Ing. Software', 20,true, '1996-05-25', null);
 insert into Laboratorio(nombre, capacidad, disponible,fechacreacion, fechacierre) values ('Lab. Redes', 15,true, '1996-07-25', null);
-insert into Laboratorio(nombre, capacidad, disponible,fechacreacion, fechacierre) values ('Lab. Ingenio', 20,true, '1996-05-25', '2018-05-25');
+insert into Laboratorio(nombre, capacidad, disponible,fechacreacion, fechacierre) values ('Lab. Ingenio', 20, false, '1996-05-25', '2018-05-25');
 
 insert into Equipo(nombre, disponible, funcionamiento, laboratorio) values ('Computador 1', false, true, 'Ing. Software');
 insert into Equipo(nombre, disponible, funcionamiento, laboratorio) values ('Computador 2', false, true, 'Lab. Redes');
@@ -214,7 +214,13 @@ select * from elemento;
 select * from novedad;
 select * from equipo;
 ----------------------------------------------------
-  	
+
+DROP TRIGGER tb_fecha_inicio ON laboratorio;
+DROP TRIGGER tb_fecha_novedad ON novedad;
+drop trigger tb_fechaCierreLaboratorio on laboratorio;
+drop function funcionFecha();
+drop function funcionFechaNovedad();
+drop function funcionFechaCierreLaboratorio();
 drop table Elemento cascade;
 drop table Equipo cascade;
 drop table Laboratorio cascade;
@@ -222,9 +228,3 @@ drop table Rol cascade;
 drop table Usuario cascade;
 drop table TipoNovedad cascade;
 drop table Novedad cascade;
-DROP TRIGGER tb_fecha_inicio ON laboratorio;
-DROP TRIGGER tb_fecha_novedad ON novedad;
-drop trigger tb_fechaCierreLaboratorio on laboratorio;
-drop function funcionFecha();
-drop function funcionFechaNovedad();
-drop function funcionFechaCierreLaboratorio();

@@ -16,9 +16,7 @@ public interface LaboratorioMapper
 	
 	public List<Laboratorio> getLaboratoriosDisponibles();
 	
-	public List<Equipo> getEquiposLaboratorio(@Param("nombre") String nombre);
-	
 	public void asociarEquipo(@Param("nombre") String nombre);
 	
-	public void cerrarLaboratorio(@Param("nombre") String nombre, @Param("fechacierre") Date fechacierre);
+	public void cerrarLaboratorio(@Param("nombre") String nombre);
 }

@@ -27,6 +27,12 @@ public class MyBatisEquipoDAO implements EquipoDAO
 	}
 	
 	@Override
+	public List<Equipo> getEquiposLaboratorio(String laboratorio)
+	{
+		return mapper.getEquiposLaboratorio(laboratorio);
+	}
+	
+	@Override
 	public void agregarEquipo(String nombre) throws PersistenceException
 	{
 		mapper.agregarEquipo(nombre);

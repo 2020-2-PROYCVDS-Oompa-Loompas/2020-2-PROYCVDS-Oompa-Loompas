@@ -15,9 +15,7 @@ public interface LaboratorioDAO
 	
 	public List<Laboratorio> getLaboratoriosDisponibles();
 	
-	public List<Equipo> getEquiposLaboratorio(String nombre);
-	
 	public void asociarEquipo(String nombre) throws PersistenceException;
 	
-	public void cerrarLaboratorio(String nombre, Date fechacierre);
+	public void cerrarLaboratorio(String nombre);
 }

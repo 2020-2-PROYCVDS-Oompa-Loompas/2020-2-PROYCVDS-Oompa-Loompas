@@ -33,6 +33,12 @@ public class ServiciosECIEquipoImpl implements ServiciosEquipo
 	}
 
 	@Override
+	public List<Equipo> getEquiposLaboratorio(String laboratorio)
+	{
+		return equipoDAO.getEquiposLaboratorio(laboratorio);
+	}
+	
+	@Override
 	public void agregarEquipo(String nombre) throws PersistenceException
 	{
 		try 
