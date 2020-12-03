@@ -2,12 +2,27 @@ package edu.eci.cvds.beans;
 
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+
+import org.primefaces.model.charts.ChartData;
+import org.primefaces.model.charts.axes.cartesian.CartesianScales;
+import org.primefaces.model.charts.axes.cartesian.linear.CartesianLinearAxes;
+import org.primefaces.model.charts.axes.cartesian.linear.CartesianLinearTicks;
+import org.primefaces.model.charts.bar.BarChartDataSet;
+import org.primefaces.model.charts.bar.BarChartModel;
+import org.primefaces.model.charts.bar.BarChartOptions;
+import org.primefaces.model.charts.optionconfig.legend.Legend;
+import org.primefaces.model.charts.optionconfig.legend.LegendLabel;
+import org.primefaces.model.charts.optionconfig.title.Title;
+
 import com.google.inject.Inject;
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
@@ -43,6 +58,83 @@ public class ServiciosBean extends BasePageBean
 	private Laboratorio seleccionarLaboratorio;
 	private Equipo seleccionarEquipo;
 	private Elemento seleccionarElemento;
+    private BarChartModel barModel;
+	
+
+
+
+	public BarChartModel getBarModel() {
+		return barModel;
+	}
+
+	public void setBarModel(BarChartModel barModel) {
+		this.barModel = barModel;
+	}
+	public void createBarModel() {
+		barModel = new BarChartModel();
+        ChartData data = new ChartData();
+        
+       
+		try {
+			
+	         
+	        BarChartDataSet barDataSet = new BarChartDataSet();
+	        barDataSet.setLabel("Estadistica");
+	         
+	        List<Number> values = new ArrayList<>();
+			System.out.println("Entra a try Bar");
+			List<Laboratorio> lista = new ArrayList<Laboratorio>();
+			if(serviciosLaboratorio.getLaboratorios() == null) {
+				System.out.println("Es nulo");
+			}
+			lista = serviciosLaboratorio.getLaboratorios();
+			System.out.println(lista.size());
+			for(int i = 0; i < lista.size(); i++) {
+	        	values.add(lista.get(i).getCapacidad());
+	        }
+	        barDataSet.setData(values);
+	         
+	        data.addChartDataSet(barDataSet);
+	         
+	        List<String> labels = new ArrayList<>();
+	        for(int i = 0; i < lista.size(); i++) {
+	        	labels.add(lista.get(i).getNombre());
+	        }
+	        data.setLabels(labels);
+	        barModel.setData(data);
+	         
+	        //Options
+	        BarChartOptions options = new BarChartOptions();
+	        CartesianScales cScales = new CartesianScales();
+	        CartesianLinearAxes linearAxes = new CartesianLinearAxes();
+	        CartesianLinearTicks ticks = new CartesianLinearTicks();
+	        ticks.setBeginAtZero(true);
+	        linearAxes.setTicks(ticks);
+	        cScales.addYAxesData(linearAxes);
+	        options.setScales(cScales);
+	         
+	        Title title = new Title();
+	        title.setDisplay(true);
+	        title.setText("Bar Chart");
+	        options.setTitle(title);
+	 
+	        Legend legend = new Legend();
+	        legend.setDisplay(true);
+	        legend.setPosition("top");
+	        LegendLabel legendLabels = new LegendLabel();
+	        legendLabels.setFontStyle("bold");
+	        legendLabels.setFontColor("#2980B9");
+	        legendLabels.setFontSize(24);
+	        legend.setLabels(legendLabels);
+	        options.setLegend(legend);
+	 
+	        barModel.setOptions(options);
+		} catch (ExcepcionServiciosLab e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+    }
 	
 	public List<Laboratorio> getLaboratorios()
 	{

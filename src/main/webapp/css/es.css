@@ -214,3 +214,10 @@ body{
 	opacity: 1;
 }
 
+.tabla{
+	width: 900px;
+	height:300px;
+	margin: 30px auto;
+	background: #fff;
+}
+

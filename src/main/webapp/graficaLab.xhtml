@@ -30,7 +30,7 @@
 									<ul class="submenu">
 										<li><a href="consultarLab.xhtml">Configurar Laboratorios</a></li>
 										<li><a href="registrarLaboratorio.xhtml">Registrar Laboratorios</a></li>
-										<li><a href="graficaLab.xhtml">Reporte Laboratorios</a></li>
+									    <li><a href="graficaLab.xhtml">Reporte Laboratorios</a></li>
 									</ul>
 								</li>
 								<li><a href="admin.xhtml">Equipos</a>
@@ -49,14 +49,19 @@
                     
                     <div id="pitch">
                     </div>
-                    <div class="col">
-                        <h2>Bienvenid@! administrador:</h2>
-						<h:form action="#">
-							<h:outputText value="#{shiroBean.email}" style="color:#ffffff"/>
-						</h:form>
-                    </div>
+                    
+                    
                 </div>
+                
+              
+				
                
             </div>
+            	<header>
+                    <div class = "tabla">
+                		<p:barChart model="#{chartView.barModel}" style="width: 1000px; height: 200px;"/>
+                	</div>
+                </header>
+           
         </body>
 </html>
