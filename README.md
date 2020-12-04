@@ -44,11 +44,82 @@ Esta aplicación tiene como objetivo poder brindar un servicio de información y
 
 ## Funcionalidad y/o manual de usuario 🖇️
 
+## MENU BIENVENIDA
 Como pagina inicial tendremos el login para iniciar sesión, donde cada usuario ingresara con su usuario y contraseña ya registrado en la base de datos. Dependiendo su rol la página web lo redirigirá a una página web que le ofrecerá ciertas funcionalidades.
-A demás se podrá registrar un nuevo usuario
+A demás se podrá registrar un nuevo usuario.
 
 ![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/pagina.PNG)
 
+## Crear Cuenta
+Para poder crear una nueva cuenta es necesario registrar el número de carnet, nombre, correo, contraseña, estado y rol para cada usuario.
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/creaUser.PNG)
+
+## Pagina Administrador
+
+En esta página tendrá acceso a las distintas funcionalidades que le ofrece el programa entre ellas podrá: registrar, configurar y obtener un reporte de los laboratorios, equipos, elementos y podrá consultar los usuarios creados.
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/pagAdmin.PNG)
+
+## Funcionalidades Laboratorio
+
+Para cada laboratorio usted como usuario podrá: registrar, configurar y obtener un reporte del laboratorio.
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/funciLab.PNG)
+
+## Configurar Laboratorios
+
+Si queremos cerrar un laboratorio por cualquier motivo, es necesario colocar su nombre y en seguida se podrá cerrar el laboratorio, para asignar un equipo de igual forma es necesario poner su nombre para que este se pueda vincular correctamente.
+
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/confLab.PNG)
+
+## Registrar Laboratorio
+Para registrar un laboratorio es necesario su nombre y la capacidad que este va a tener, una vez completados estos datos se puede crear el laboratorio correctamente
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/registroLab.PNG)
+
+## Reporte Laboratorios
+
+Acá podrá encontrar un reporte, el cual analiza las capacidades de cada laboratorio para poder brindar una experiencia mas agradable a la hora de asignar equipos o administrar el laboratorio.
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/reporteLab.PNG)
+
+## Funcionalidades Equipos
+Para cada equipo usted como usuario podrá: registrar, configurar de igual manera podrá registrar un elemento para poder realizar su respectiva vinculación con un equipo.
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/funcEqui.PNG)
+
+## Registrar Equipos
+A partir de un nombre único el cual se le asigna a cada equipo, se podrá registrar en la base de datos para su posterior uso.
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/registroEqui.PNG)
+
+## Configurar Equipos
+
+En este formulario se podrá dar de baja a un equipo, eliminar su asociación con un laboratorio simplemente seleccionándolo y pulsando sobre el respectivo botón, así mismo podrá asociar, eliminar y dar de baja a los elementos de igual forma seleccionando el elemento y pulsando sobre el respectivo botón.
+
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/confEquipos.PNG)
+
+## Registrar Elementos
+
+En este formulario se podrá registrar un elemento colocando su fabricante y la respectiva categoría a la que este pertenece, una vez completados estos datos se podrá registrar pulsando sobre el botón.
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/regiEleme.PNG)
+
+## Historial
+
+En este formulario el usuario podrá consultar el reporte de las novedades que se generan para los equipos y los elementos que sufren una alteración, simplemente pulsando sobre el botón correspondiente.
+
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/Historial.PNG)
+
+## Usuarios
+En este formulario se podrá consultar lo diferentes usuarios creados con sus respectivos roles.
+
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/usuarios.PNG)
 
 ## Descripción de Sprints 🛠️
 ### Sprint 1
