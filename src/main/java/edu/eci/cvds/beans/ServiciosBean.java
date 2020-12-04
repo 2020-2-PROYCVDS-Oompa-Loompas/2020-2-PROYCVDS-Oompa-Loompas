@@ -2,6 +2,7 @@ package edu.eci.cvds.beans;
 
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -677,6 +678,7 @@ public void cerrarLaboratorio(String nombre, String carnet) throws PersistenceEx
 		try
 		{
 			novedades = servicioNovedad.getNovedadPorEquipo(idequipo);
+			System.out.println(seleccionarEquipo.id+" Id del equipo seleccionado en novedad por equipo.");
 		} catch(ExcepcionServiciosLab e)
 		{
 			FacesContext context = FacesContext.getCurrentInstance();
@@ -730,5 +732,23 @@ public void cerrarLaboratorio(String nombre, String carnet) throws PersistenceEx
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Consultar usuarios", "No se pudo encontrar los usuarios registrados"));
 		}
 		return usuarios;
+	}
+	
+	public void redireccionNovedadEquipo() throws IOException
+	{
+	    FacesContext facesContext = FacesContext.getCurrentInstance();
+		facesContext.getExternalContext().redirect("../novedadEquipo.xhtml");
+	}
+	
+	public void redireccionNovedadElemento() throws IOException
+	{
+	    FacesContext facesContext = FacesContext.getCurrentInstance();
+		facesContext.getExternalContext().redirect("../novedadElemento.xhtml");
+	}
+	
+	public void redireccionNovedad() throws IOException
+	{
+	    FacesContext facesContext = FacesContext.getCurrentInstance();
+		facesContext.getExternalContext().redirect("../novedadNovedad.xhtml");
 	}
 }

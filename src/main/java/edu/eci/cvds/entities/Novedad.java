@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@SuppressWarnings("serial")
 public class Novedad implements Serializable
 {	
 	private int id;
@@ -14,7 +15,7 @@ public class Novedad implements Serializable
 	private int idequipo;
 	private int idelemento;
 	private String descripcion;
-	private String tiponovedad;
+	private TipoNovedad tiponovedad;
 	
 	public Novedad() {}
 
@@ -123,14 +124,14 @@ public class Novedad implements Serializable
 	/**
 	 * @return the tipoNovedad
 	 */
-	public String getTipoNovedad() {
+	public TipoNovedad getTipoNovedad() {
 		return tiponovedad;
 	}
 
 	/**
 	 * @param tipoNovedad the tipoNovedad to set
 	 */
-	public void setTipoNovedad(String tipoNovedad) {
+	public void setTipoNovedad(TipoNovedad tipoNovedad) {
 		this.tiponovedad = tipoNovedad;
 	}
 	

@@ -25,6 +25,9 @@
         <header>
             <nav class="navegacion">
                 <ul class="menu">
+                    <li><a href="admin.xhtml">Perfil</a></li>
+                    <li><a href="admin.xhtml">Laboratorios</a>
+                        <ul class="submenu">
 								<li><a href="admin.xhtml">Perfil</a></li>
 								<li><a href="admin.xhtml">Laboratorios</a>
 									<ul class="submenu">
@@ -32,6 +35,8 @@
 										<li><a href="registrarLaboratorio.xhtml">Registrar Laboratorios</a></li>
 										<li><a href="consultarLab.xhtml">Reporte Laboratorios</a></li>
 									</ul>
+								</li>
+								</ul>
 								</li>
 								<li><a href="admin.xhtml">Equipos</a>
 									<ul class="submenu">
@@ -52,36 +57,27 @@
 				<p:autoUpdate />
 			</p:messages>
 			<div class = "col">
-				<p:dataTable id = "singleDT" var="equipo" value="#{serviciosBean.getEquipos()}"
+				<p:dataTable id = "singleDT" var="novedad" value="#{serviciosBean.getNovedadPorEquipo(serviciosBean.seleccionarEquipo.getId())}"
 					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-					rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarEquipo}" rowKey="#{equipo.id}">
-					<f:facet name="header">Equipos:
-						<p:commandButton value="Ver reporte" action = "#{serviciosBean.redireccionNovedadEquipo()}"/>
+					rows="4">
+					<f:facet name="header">Novedad Equipos:
 					</f:facet>
 					<p:column headerText="Identificador">
-						<h:outputText value="#{equipo.id}" />
+						<h:outputText value="#{novedad.id}" />
 					</p:column>
-				 	<p:column headerText="Nombre">
-						<h:outputText value="#{equipo.nombre}"/>
+				 	<p:column headerText="Fecha">
+						<h:outputText value="#{novedad.fecha}"/>
 					</p:column>
+					<p:column headerText = "Usuario">
+						<h:outputText value = "#{novedad.carnet}"/>
+					</p:column>
+
+					<p:column headerText="Descripcion">
+						<h:outputText value="#{novedad.descripcion}"/>
+					</p:column>
+
 				</p:dataTable>
 			</div>
-			<div class = "col">
-				<p:dataTable id = "singleDT2" var="elemento" value="#{serviciosBean.getElementos()}"
-					paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-					rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarElemento}" rowKey="#{elemento.id}">
-					<f:facet name="header">Elementos:
-						<p:commandButton value="Ver reporte" action = "#{serviciosBean.redireccionNovedadElemento()}"/>
-					</f:facet>
-					<p:column headerText="Identificador">
-						<h:outputText value="#{elemento.id}" />
-					</p:column>
-					<p:column headerText="Categoria">
-						<h:outputText value="#{elemento.categoria}"/>
-					</p:column>
-				</p:dataTable>  
-			</div>
-			<p:commandButton value="Ver reporte" action = "#{serviciosBean.redireccionNovedad()}"/>
 			<br></br>
             <br></br>
             <br></br>	 

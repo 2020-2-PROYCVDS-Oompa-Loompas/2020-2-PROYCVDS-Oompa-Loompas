@@ -19,15 +19,15 @@
  	</select>
   	<select parameterType="map" id="getNovedades" resultMap="NovedadResult">
  		SELECT
- 		a.id,
- 		a.fecha,
- 		a.carnet,
- 		a.idequipo,
- 		a.idelemento,
- 		a.descripcion,
- 		a.tiponovedad
- 		FROM novedad as a
- 		ORDER BY a.fecha DESC;
+ 		id,
+ 		fecha,
+ 		carnet,
+ 		idequipo,
+ 		idelemento,
+ 		descripcion,
+ 		tiponovedad
+ 		FROM novedad
+ 		ORDER BY fecha DESC;
  	</select>
  	<select parameterType = "map" id = "getNovedadPorEquipo" resultMap = "NovedadResult">
  		SELECT

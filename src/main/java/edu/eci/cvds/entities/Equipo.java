@@ -2,7 +2,7 @@ package edu.eci.cvds.entities;
 
 public class Equipo {
 	
-	private int id;
+	public int id;
 	private String nombre;
 	private boolean disponible;
 	private boolean funcionamiento;
