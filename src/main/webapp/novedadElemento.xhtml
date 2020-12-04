@@ -57,7 +57,7 @@
 				<div class = "col">
 					<p:dataTable id = "singleDT" var="novedad" value="#{serviciosBean.getNovedadPorElemento(serviciosBean.seleccionarElemento.getId())}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-						rows="4">
+						rows="4" style="width:900px;margin-top:20px;">
 						<f:facet name="header">Novedad Equipos:
 						</f:facet>
 						<p:column headerText="Identificador">
