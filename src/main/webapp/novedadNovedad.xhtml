@@ -52,8 +52,9 @@
 				<div class = "col">
 					<p:dataTable id = "singleDT" var="novedad" value="#{serviciosBean.getNovedades()}"
 						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-						rows="4" style="width:900px;margin-top:20px;">
-						<f:facet name="header">Novedad Equipos:
+						rows="4">
+						<f:facet name="header">Novedades:
+							<p:commandButton value="Generar Reporte" action = "#{serviciosBean.crearReporteNovedad()}"/>
 						</f:facet>
 						<p:column headerText="Identificador">
 							<h:outputText value="#{novedad.id}" />

@@ -751,4 +751,40 @@ public void cerrarLaboratorio(String nombre, String carnet) throws PersistenceEx
 	    FacesContext facesContext = FacesContext.getCurrentInstance();
 		facesContext.getExternalContext().redirect("../novedadNovedad.xhtml");
 	}
+	
+	public void crearReporteEquipo(int id) throws ExcepcionServiciosLab, PersistenceException
+	{
+		CrearExcel excel = new CrearExcel();
+		excel.NovedadEquipo(getNovedadPorEquipo(id));
+	}
+	
+	public void crearReporteElemento(int id) throws ExcepcionServiciosLab, PersistenceException
+	{
+		CrearExcel excel = new CrearExcel();
+		excel.NovedadElemento(getNovedadPorElemento(id));
+	}
+	
+	public void crearReporteNovedad() throws ExcepcionServiciosLab, PersistenceException
+	{
+		CrearExcel excel = new CrearExcel();
+		excel.NovedadNovedad(getNovedades());
+	}
+	
+	public void crearReporteLaboratorio() throws ExcepcionServiciosLab, PersistenceException
+	{
+		CrearExcel excel = new CrearExcel();
+		excel.reporteLaboratorio(getLaboratorios());
+	}
+	
+	public void crearReporteEquipo() throws ExcepcionServiciosLab, PersistenceException
+	{
+		CrearExcel excel = new CrearExcel();
+		excel.reporteEquipos(getEquipos());
+	}
+	
+	public void crearReporteElemento() throws ExcepcionServiciosLab, PersistenceException
+	{
+		CrearExcel excel = new CrearExcel();
+		excel.reporteElementos(getElementos());
+	}
 }
