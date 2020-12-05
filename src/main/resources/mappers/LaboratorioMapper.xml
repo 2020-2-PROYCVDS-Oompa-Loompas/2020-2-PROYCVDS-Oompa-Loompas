@@ -43,9 +43,9 @@
   	</update>
   	<insert parameterType = "map" id = "agregarLaboratorio">
   		INSERT INTO laboratorio
-  		(nombre, capacidad, fechacreacion, fechacierre)
+  		(nombre, capacidad, disponible, fechacreacion, fechacierre)
   		VALUES
-  		(#{nombre}, #{capacidad}, #{fechacreacion}, #{fechacierre});
+  		(#{nombre}, #{capacidad}, #{disponible}, #{fechacreacion}, #{fechacierre});
   	</insert>
   	
   	<resultMap type = 'Laboratorio' id = 'LaboratorioResult'>
