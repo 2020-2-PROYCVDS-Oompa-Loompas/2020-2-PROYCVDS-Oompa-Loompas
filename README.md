@@ -127,3 +127,15 @@ En este formulario se podrá consultar lo diferentes usuarios creados con sus re
 ![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/graficaTaiga.PNG)
 
 Para el primer Sprint nuestro mayor problema fue que no sabíamos manejar la herramienta de Taiga. No entendiamos como era el funcionamiento y como debíamos distrubuir sus tareas, por ende la gráfica que se muestra es incorrecta, ya que no poniamos las tareas en progreso y tampoco las cerrabamos.
+
+### Sprint 2
+Para el segundo sprint, tuvimos algunas dificultades ya que asignamos algunas tareas pero no se completaron y calificaron completamente en el taiga ademas de esto dejamos acumular mucho trabajo por lo que se encontraron varios errores sobre la aplicación.
+
+### Sprint 3
+Para el tercer sprint, corregimos algunos errores dentro de el back los cuales venian acumulados desde el sprint 1, pero sin embargo nos falto poder agrgar la funcionalidad de descargar los reportes para que se pudieran visualizar en el usuario.
+
+### Metodología
+
+Durante el desarrollo del proyecto no fue posible trabajar de forma presencial asi que se utilizo la metodolofia ágil de: SCRUM formadno tres sprints en los cuales se asignaron diferentes tareas a cumplir por cada uno de los desarrolladores, adicionalmente se hicieron llamadas grupales por medio de distintas plataformas para discutir las ideas y organizacion del proyecto.
+
+
