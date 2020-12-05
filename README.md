@@ -32,15 +32,15 @@ Esta aplicación tiene como objetivo poder brindar un servicio de información y
 
 ## Información de la base de datos 🛠️
 
-* Anfitrión = ec2-23-20-70-32.compute-1.amazonaws.com
-* Base de datos = decigqpg9tb8ia
-* Usuario = qcwmpnwwywpfsk
+* Anfitrión = ec2-34-200-106-49.compute-1.amazonaws.com
+* Base de datos = deb9gbr8ogbsmb
+* Usuario = cszbmxlumicpxg
 * Puerto = 5432
-* Contraseña = c463dede95cbc843ce3298e4af86da6d9286578e8f0a07f93e52967845948c30 
+* Contraseña = eb623bc7420e360154046148915fdd104e9706f03a68a10b8e9c8112f7dc0c1f 
 
 ## Diagrama de clases
 
-![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/diagramaDeClases.PNG)
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/diagramaClases.PNG)
 
 ## Funcionalidad y/o manual de usuario 🖇️
 
