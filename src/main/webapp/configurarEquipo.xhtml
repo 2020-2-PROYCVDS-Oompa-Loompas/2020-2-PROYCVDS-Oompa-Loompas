@@ -52,9 +52,11 @@
 					</p:messages>
 					<div class = "col">
 						<p:commandButton value="Bajar Equipo" action = "#{serviciosBean.bajarEquipo(serviciosBean.seleccionarEquipo.id, shiroBean.email)}"/>
+						<p:commandButton value="Asociar Elemento" action = "#{serviciosBean.asociarElemento(serviciosBean.seleccionarEquipo.id,serviciosBean.seleccionarEquipo.nombre, serviciosBean.seleccionarElemento.id, shiroBean.email)}"/>
+
 						<p:dataTable id = "singleDT" var="equipo" value="#{serviciosBean.getEquipos()}"
 							paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-							rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarEquipo}" rowKey="#{equipo.id}">
+							rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarEquipo}" rowKey="#{equipo.id}" style="width:900px;margin-top:20px;">
 								<f:facet name="header">Equipos:
 									<p:commandButton value="Eliminar Asociación" action = "#{serviciosBean.eliminarAsociacionLaboratorio(serviciosBean.seleccionarEquipo.id, shiroBean.email)}"/>
 								</f:facet>
@@ -74,43 +76,42 @@
 								</p:column>
 
 						</p:dataTable>
+						<div class = "col">
+							<p:dataTable id = "singleDT2" var="elemento" value="#{serviciosBean.getElementos()}"
+										 paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+										 rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarElemento}" rowKey="#{elemento.id}" style="width:900px;margin-top:20px;">
+								<f:facet name="header">Elementos:
+									<p:commandButton value="Dar de baja a elementos"  action = "#{serviciosBean.bajarElemento(serviciosBean.seleccionarElemento.id)}"/>
+
+									<p:commandButton value="Eliminar Asociación" action = "#{serviciosBean.eliminarAsociacionElemento(serviciosBean.seleccionarElemento.id, shiroBean.email)}"/>
+								</f:facet>
+
+								<p:column headerText="Categoria">
+									<h:outputText value="#{elemento.categoria}" />
+								</p:column>
+
+								<p:column headerText="Fabricante">
+									<h:outputText value="#{elemento.fabricante}"/>
+								</p:column>
+								<p:column headerText = "En funcionamiento">
+									<h:outputText value = "#{elemento.funcionamiento}"/>
+								</p:column>
+								<p:column headerText = "Disponible">
+									<h:outputText value = "#{elemento.disponible}"/>
+								</p:column>
+								<p:column headerText = "Nombre del equipo">
+									<h:outputText value = "#{elemento.equipo}"/>
+								</p:column>
+							</p:dataTable>
+						</div>
 					</div>
-					<div class = "col">
-						<p:dataTable id = "singleDT2" var="elemento" value="#{serviciosBean.getElementos()}"
-						paginator="true" paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-						rows="10" selectionMode="single" selection="#{serviciosBean.seleccionarElemento}" rowKey="#{elemento.id}">
-							<f:facet name="header">Elementos:
-								<p:commandButton value="Dar de baja a elementos"  action = "#{serviciosBean.bajarElemento(serviciosBean.seleccionarElemento.id)}"/>
-								  
-								<p:commandButton value="Eliminar Asociación" action = "#{serviciosBean.eliminarAsociacionElemento(serviciosBean.seleccionarElemento.id, shiroBean.email)}"/>
-							</f:facet>
-				
-							<p:column headerText="Categoria">
-								<h:outputText value="#{elemento.categoria}" />
-							</p:column>
-				 
-							<p:column headerText="Fabricante">
-								<h:outputText value="#{elemento.fabricante}"/>
-							</p:column>
-							<p:column headerText = "En funcionamiento">
-								<h:outputText value = "#{elemento.funcionamiento}"/>
-							</p:column>
-		      				<p:column headerText = "Disponible">
-								<h:outputText value = "#{elemento.disponible}"/>
-							</p:column>
-							<p:column headerText = "Nombre del equipo">
-								<h:outputText value = "#{elemento.equipo}"/>
-							</p:column>
-						</p:dataTable>  
-					</div>
+
 					
                     <br></br>
                     <br></br>
 
                     <br></br>
-                    <p:commandButton value="Asociar Elemento" action = "#{serviciosBean.asociarElemento(serviciosBean.seleccionarEquipo.id,serviciosBean.seleccionarEquipo.nombre, serviciosBean.seleccionarElemento.id, shiroBean.email)}"/>	 
-                   	<p:commandButton value="Generar Reporte Equipos" action = "#{serviciosBean.crearReporteEquipo()}"/>
-                   	<p:commandButton value="Generar Reporte Equipos" action = "#{serviciosBean.crearReporteElemento()}"/>
+
                 </h:form>
 
             </div>
