@@ -26,5 +26,15 @@ public class MyBatisUsuarioDAO implements UsuarioDAO {
          }	
         
    
-    }		
+    }
+
+
+
+	@Override
+	public void agregarUsuario(String carnet, String nombre, String correo, String contrasena, String estado, Rol rol) {
+		usuarioMapper.agregarUsuario(carnet, nombre, correo, contrasena, estado, rol);
+		
+	}		
+	
+	
 }

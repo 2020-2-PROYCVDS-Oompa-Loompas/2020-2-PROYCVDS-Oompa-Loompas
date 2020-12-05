@@ -14,7 +14,12 @@
 	    <id property='estado' column='estado'/>
 		<result property='rol' column='rol'/>	
 	</resultMap>
-	
+	<insert parameterType = "map" id = "agregarUsuario">
+		INSERT INTO usuario
+		(carnet, nombre, correo, contrasena, estado, rol)
+  		VALUES 
+  		(#{carnet}, #{nombre}, #{correo}, #{contrasena}, #{estado}, #{rol});
+  	</insert>
 	<select parameterType="map" id="consultarUsuarios" resultMap="UsuarioResult">
 		select 
 		u.nombre,

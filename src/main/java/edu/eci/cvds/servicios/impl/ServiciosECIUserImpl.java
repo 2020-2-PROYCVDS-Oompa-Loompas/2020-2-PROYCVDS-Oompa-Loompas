@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.inject.Inject;
 
+import edu.eci.cvds.entities.Rol;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.persistencia.PersistenceException;
 import edu.eci.cvds.persistencia.UsuarioDAO;
@@ -19,4 +20,10 @@ public class ServiciosECIUserImpl implements ServiciosUsuario
 	public List<Usuario> consultarUsuarios() throws ExcepcionServiciosLab, PersistenceException{
 		   return usuarioDAO.obtenerUsuarios();
 	   }
+	
+	@Override
+	public void agregarUsuario(String carnet, String nombre, String correo, String contrasena, String estado, Rol rol)
+	{
+		usuarioDAO.agregarUsuario(carnet, nombre, correo, contrasena, estado, rol);
+	}
 }

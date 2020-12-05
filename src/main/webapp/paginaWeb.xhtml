@@ -37,6 +37,9 @@
 					</div>
 					<h2 style="color: white">Crea tu Cuenta</h2>
 					<h:form action="#">
+				   		<p:messages id="messages" showDetail="true" closable="true" life="4000" style="width:630px;margin-top:20px;">
+							<p:autoUpdate />
+						</p:messages>
 						<p:inputText id="carnet"  type="text" binding="#{carnet}" placeholder="Carnet"></p:inputText>
 						
 						<p:inputText id="nombre"  type="text" binding="#{nombre}" placeholder="Nombre"></p:inputText>

@@ -29,6 +29,7 @@ import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.entities.Novedad;
+import edu.eci.cvds.entities.Rol;
 import edu.eci.cvds.entities.TipoNovedad;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.persistencia.PersistenceException;
@@ -732,6 +733,21 @@ public void cerrarLaboratorio(String nombre, String carnet) throws PersistenceEx
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Consultar usuarios", "No se pudo encontrar los usuarios registrados"));
 		}
 		return usuarios;
+	}
+	
+	public void agregarUsuario(String carnet, String nombre, String correo, String  contrasena, String estado, Rol rol)
+	{
+		try
+		{
+			servicioUsuario.agregarUsuario(carnet, nombre, correo, contrasena, estado, rol);
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Registrar Usuario", "Registro exitoso"));
+		} catch(ExcepcionServiciosLab e)
+		{
+			FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Registrar Usuario", "Registro fallido"));
+		}
+		
 	}
 	
 	public void redireccionNovedadEquipo() throws IOException
