@@ -45,7 +45,7 @@
   		INSERT INTO laboratorio
   		(nombre, capacidad, disponible, fechacreacion, fechacierre)
   		VALUES
-  		(#{nombre}, #{capacidad}, #{disponible}, #{fechacreacion}, #{fechacierre});
+  		(#{nombre}, #{capacidad}, True, #{fechacreacion}, #{fechacierre});
   	</insert>
   	
   	<resultMap type = 'Laboratorio' id = 'LaboratorioResult'>
