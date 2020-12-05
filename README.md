@@ -131,8 +131,12 @@ Para el primer Sprint nuestro mayor problema fue que no sabíamos manejar la her
 ### Sprint 2
 Para el segundo sprint, tuvimos algunas dificultades ya que asignamos algunas tareas pero no se completaron y calificaron completamente en el taiga ademas de esto dejamos acumular mucho trabajo por lo que se encontraron varios errores sobre la aplicación.
 
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/Sprint2.PNG)
+
 ### Sprint 3
 Para el tercer sprint, corregimos algunos errores dentro de el back los cuales venian acumulados desde el sprint 1, pero sin embargo nos falto poder agrgar la funcionalidad de descargar los reportes para que se pudieran visualizar en el usuario.
+
+![](https://github.com/2020-2-PROYCVDS-Oompa-Loompas/2020-2-PROYCVDS-Oompa-Loompas/blob/main/src/main/webapp/img/sprint3.PNG)
 
 ### Metodología
 
